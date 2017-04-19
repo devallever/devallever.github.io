@@ -102,7 +102,7 @@
             </li>
         
             <li class="waves-block waves-effect">
-              <a href="/custom"  >
+              <a href="/"  >
                 <i class="icon icon-lg icon-link"></i>
                 测试
               </a>
@@ -340,10 +340,10 @@ var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
     var OriginTitile = document.title, titleTime;
     document.addEventListener('visibilitychange', function() {
         if (document.hidden) {
-            document.title = '死鬼去哪里了！';
+            document.title = 'false';
             clearTimeout(titleTime);
         } else {
-            document.title = '(つェ⊂)咦!又好了!';
+            document.title = 'false';
             titleTime = setTimeout(function() {
                 document.title = OriginTitile;
             },2000);
