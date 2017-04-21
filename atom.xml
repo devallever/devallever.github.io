@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://devallever.github.io/"/>
-  <updated>2017-04-21T08:35:32.817Z</updated>
+  <updated>2017-04-21T09:20:44.418Z</updated>
   <id>https://devallever.github.io/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="https://devallever.github.io/2017/04/21/markdown-learn/"/>
     <id>https://devallever.github.io/2017/04/21/markdown-learn/</id>
     <published>2017-04-21T08:32:17.000Z</published>
-    <updated>2017-04-21T08:35:32.817Z</updated>
+    <updated>2017-04-21T09:20:44.418Z</updated>
     
     <content type="html"><![CDATA[<p><a href="https://www.zybuluo.com/mdeditor" title="作业部落旗下 Cmd 在线 Markdown 编辑阅读器" target="_blank" rel="external">『Cmd 技术渲染的沙箱页面，点击此处编写自己的文档』</a></p>
 <blockquote>
@@ -198,6 +198,8 @@
     
     </summary>
     
+      <category term="Markdown" scheme="https://devallever.github.io/categories/Markdown/"/>
+    
     
       <category term="Markdown" scheme="https://devallever.github.io/tags/Markdown/"/>
     
@@ -208,7 +210,7 @@
     <link href="https://devallever.github.io/2017/04/21/Java%E8%BF%9E%E6%8E%A5%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
     <id>https://devallever.github.io/2017/04/21/Java连接数据库/</id>
     <published>2017-04-21T05:49:27.000Z</published>
-    <updated>2017-04-21T08:03:16.620Z</updated>
+    <updated>2017-04-21T09:20:14.465Z</updated>
     
     <content type="html"><![CDATA[<figure class="image-bubble">
                 <div class="img-lightbox">
@@ -245,7 +247,7 @@
     
     </summary>
     
-      <category term="java" scheme="https://devallever.github.io/categories/java/"/>
+      <category term="Java" scheme="https://devallever.github.io/categories/Java/"/>
     
     
       <category term="java" scheme="https://devallever.github.io/tags/java/"/>
