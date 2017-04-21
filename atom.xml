@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://devallever.github.io/"/>
-  <updated>2017-04-21T05:57:30.977Z</updated>
+  <updated>2017-04-21T06:25:12.730Z</updated>
   <id>https://devallever.github.io/</id>
   
   <author>
@@ -20,20 +20,39 @@
     <link href="https://devallever.github.io/2017/04/21/Java%E8%BF%9E%E6%8E%A5%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
     <id>https://devallever.github.io/2017/04/21/Java连接数据库/</id>
     <published>2017-04-21T05:49:27.000Z</published>
-    <updated>2017-04-21T05:57:30.977Z</updated>
+    <updated>2017-04-21T06:25:12.730Z</updated>
     
-    <content type="html"><![CDATA[<h3 id="1-下载相关的驱动程序"><a href="#1-下载相关的驱动程序" class="headerlink" title="1.下载相关的驱动程序"></a>1.下载相关的驱动程序</h3><p>如 Java与MySQL的连接,可到MySQL官网上下载</p>
+    <content type="html"><![CDATA[<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://www.bing.com/az/hprichbg/rb/SolarFarm_ZH-CN4853771923_1366x768.jpg" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<blockquote>
+<p>MySQL provides standards-based drivers for JDBC, ODBC, and .Net enabling developers to build database applications in their language of choice. In addition, a native C library allows developers to embed MySQL directly into their applications.</p>
+</blockquote>
+<h3 id="1-下载相关的驱动程序"><a href="#1-下载相关的驱动程序" class="headerlink" title="1.下载相关的驱动程序"></a>1.下载相关的驱动程序</h3><p>如 Java与MySQL的连接,可到MySQL官网上下载<br><a href="https://www.mysql.com/products/connector/" target="_blank" rel="external">下载地址</a></p>
 <h3 id="2-数据库的URL格式"><a href="#2-数据库的URL格式" class="headerlink" title="2.数据库的URL格式"></a>2.数据库的URL格式</h3><p>如: jdbc:mysql://127.0.0.1/dbname<br>在连接数据库时,我们必须使用各种与数据库类型相关的参数,例如主机名,端口号和数据库名<br>jdbc的一般语法:jdbc:subprotocol:other stuff</p>
 <ul>
-<li>subprotocol:连接数据库的具体驱动程序</li>
-<li>other stuff:随subprotocol的不同而不同,应查阅供应商的相关文档</li>
+<li><em>subprotocol:连接数据库的具体驱动程序</em></li>
+<li><em>other stuff:随subprotocol的不同而不同,应查阅供应商的相关文档</em></li>
 </ul>
-<h3 id="3-注册驱动器类"><a href="#3-注册驱动器类" class="headerlink" title="3.注册驱动器类"></a>3.注册驱动器类</h3>]]></content>
+<h3 id="3-注册驱动器类"><a href="#3-注册驱动器类" class="headerlink" title="3.注册驱动器类"></a>3.注册驱动器类</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Class.forName(&quot;com.mysql.jdbc.Driver&quot;);</div></pre></td></tr></table></figure>
+<p>字符串的内容为驱动器类所在包的全路径<br>这条语句使得驱动器类被加载,由此将执行可以注册驱动器的静态初始化器</p>
+<h3 id="4-连接到数据库"><a href="#4-连接到数据库" class="headerlink" title="4.连接到数据库"></a>4.连接到数据库</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Connection conn = DriverManager.getConnection(sqlUrl, username, password);</div></pre></td></tr></table></figure>
+<p>以上三个参数类型都是字符串类型, 连接成功会返回Connection对象,用它去执行SQL语句.</p>
+<h3 id="5-操作数据库"><a href="#5-操作数据库" class="headerlink" title="5.操作数据库"></a>5.操作数据库</h3><h4 id="5-1-基本方法"><a href="#5-1-基本方法" class="headerlink" title="5.1 基本方法"></a>5.1 基本方法</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">String sql = &quot;select nickname, phone from tuser where username=&apos;xm&apos;&quot;;</div></pre></td></tr></table></figure>
+<p>执行sql命令首先创建Statement对象或其子类PreparedStatement对象<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">statement = conn.createStatement();</div><div class="line">preparedStatement = conn.preparedStatement(sql);</div><div class="line">ResultSet resultSet = statement.executeQuery(sql);</div><div class="line">或</div><div class="line">resultSet = preparedStatement.executeQuery();</div></pre></td></tr></table></figure></p>
+<p>executeQuery()方法可以执行select 语句, executeUpdate()方法可以执行insert, update和delete之类的操作. 也可以执行create table 和drop table之类的数据定义语句. execute()方法可以执行任意的sql语句.</p>
+]]></content>
     
     <summary type="html">
     
-      &lt;h3 id=&quot;1-下载相关的驱动程序&quot;&gt;&lt;a href=&quot;#1-下载相关的驱动程序&quot; class=&quot;headerlink&quot; title=&quot;1.下载相关的驱动程序&quot;&gt;&lt;/a&gt;1.下载相关的驱动程序&lt;/h3&gt;&lt;p&gt;如 Java与MySQL的连接,可到MySQL官网上下载&lt;/p&gt;
-&lt;
+      &lt;figure class=&quot;image-bubble&quot;&gt;
+                &lt;div class=&quot;img-lightbox&quot;&gt;
+                    &lt;div class=&quot;overlay&quot;&gt;&lt;/div&gt;
+                   
     
     </summary>
     
