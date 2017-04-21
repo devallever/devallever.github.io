@@ -20,17 +20,17 @@
     
     
     <meta name="keywords" content="">
-    <meta name="description" content="1.下载相关的驱动程序如 Java与MySQL的连接,可到MySQL官网上下载 ###2.数据库的URL格式如: jdbc:mysql://127.0.0.1/dbname在连接数据库时,我们必须使用各种与数据库类型相关的参数,例如主机名,端口号和数据库名jdbc的一般语法:jdbc:subprotocol:other stuff  subprotocol:连接数据库的具体驱动程序 other s">
+    <meta name="description" content="1.下载相关的驱动程序如 Java与MySQL的连接,可到MySQL官网上下载 2.数据库的URL格式如: jdbc:mysql://127.0.0.1/dbname在连接数据库时,我们必须使用各种与数据库类型相关的参数,例如主机名,端口号和数据库名jdbc的一般语法:jdbc:subprotocol:other stuff  subprotocol:连接数据库的具体驱动程序 other stuf">
 <meta name="keywords">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Java连接数据库">
 <meta property="og:url" content="https://devallever.github.io/2017/04/21/Java连接数据库/index.html">
 <meta property="og:site_name" content="Allever Blog">
-<meta property="og:description" content="1.下载相关的驱动程序如 Java与MySQL的连接,可到MySQL官网上下载 ###2.数据库的URL格式如: jdbc:mysql://127.0.0.1/dbname在连接数据库时,我们必须使用各种与数据库类型相关的参数,例如主机名,端口号和数据库名jdbc的一般语法:jdbc:subprotocol:other stuff  subprotocol:连接数据库的具体驱动程序 other s">
-<meta property="og:updated_time" content="2017-04-21T05:50:02.152Z">
+<meta property="og:description" content="1.下载相关的驱动程序如 Java与MySQL的连接,可到MySQL官网上下载 2.数据库的URL格式如: jdbc:mysql://127.0.0.1/dbname在连接数据库时,我们必须使用各种与数据库类型相关的参数,例如主机名,端口号和数据库名jdbc的一般语法:jdbc:subprotocol:other stuff  subprotocol:连接数据库的具体驱动程序 other stuf">
+<meta property="og:updated_time" content="2017-04-21T05:57:30.977Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Java连接数据库">
-<meta name="twitter:description" content="1.下载相关的驱动程序如 Java与MySQL的连接,可到MySQL官网上下载 ###2.数据库的URL格式如: jdbc:mysql://127.0.0.1/dbname在连接数据库时,我们必须使用各种与数据库类型相关的参数,例如主机名,端口号和数据库名jdbc的一般语法:jdbc:subprotocol:other stuff  subprotocol:连接数据库的具体驱动程序 other s">
+<meta name="twitter:description" content="1.下载相关的驱动程序如 Java与MySQL的连接,可到MySQL官网上下载 2.数据库的URL格式如: jdbc:mysql://127.0.0.1/dbname在连接数据库时,我们必须使用各种与数据库类型相关的参数,例如主机名,端口号和数据库名jdbc的一般语法:jdbc:subprotocol:other stuff  subprotocol:连接数据库的具体驱动程序 other stuf">
     
         <link rel="alternate" type="application/atom+xml" title="Allever Blog" href="/atom.xml">
     
@@ -166,7 +166,7 @@
     <aside class="post-widget">
         <nav class="post-toc-wrap" id="post-toc">
             <h4>TOC</h4>
-            <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#1-下载相关的驱动程序"><span class="post-toc-number">1.</span> <span class="post-toc-text">1.下载相关的驱动程序</span></a></li></ol>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#1-下载相关的驱动程序"><span class="post-toc-number">1.</span> <span class="post-toc-text">1.下载相关的驱动程序</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#2-数据库的URL格式"><span class="post-toc-number">2.</span> <span class="post-toc-text">2.数据库的URL格式</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#3-注册驱动器类"><span class="post-toc-number">3.</span> <span class="post-toc-text">3.注册驱动器类</span></a></li></ol>
         </nav>
     </aside>
     
@@ -192,20 +192,19 @@
         </div>
         <div class="post-content" id="post-content" itemprop="postContent">
             <h3 id="1-下载相关的驱动程序"><a href="#1-下载相关的驱动程序" class="headerlink" title="1.下载相关的驱动程序"></a>1.下载相关的驱动程序</h3><p>如 Java与MySQL的连接,可到MySQL官网上下载</p>
-<p>###2.数据库的URL格式<br>如: jdbc:mysql://127.0.0.1/dbname<br>在连接数据库时,我们必须使用各种与数据库类型相关的参数,例如主机名,端口号和数据库名<br>jdbc的一般语法:jdbc:subprotocol:other stuff</p>
+<h3 id="2-数据库的URL格式"><a href="#2-数据库的URL格式" class="headerlink" title="2.数据库的URL格式"></a>2.数据库的URL格式</h3><p>如: jdbc:mysql://127.0.0.1/dbname<br>在连接数据库时,我们必须使用各种与数据库类型相关的参数,例如主机名,端口号和数据库名<br>jdbc的一般语法:jdbc:subprotocol:other stuff</p>
 <ul>
 <li>subprotocol:连接数据库的具体驱动程序</li>
 <li>other stuff:随subprotocol的不同而不同,应查阅供应商的相关文档</li>
 </ul>
-<p>###3.注册驱动器类</p>
-
+<h3 id="3-注册驱动器类"><a href="#3-注册驱动器类" class="headerlink" title="3.注册驱动器类"></a>3.注册驱动器类</h3>
         </div>
 
         <blockquote class="post-copyright">
     <div class="content">
         
 <span class="post-time">
-    Last updated: <time datetime="2017-04-21T05:50:02.152Z" itemprop="dateUpdated">2017-04-21 13:50:02</time>
+    Last updated: <time datetime="2017-04-21T05:57:30.977Z" itemprop="dateUpdated">2017-04-21 13:57:30</time>
 </span><br>
 
 
