@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://devallever.github.io/"/>
-  <updated>2017-04-21T14:13:12.622Z</updated>
+  <updated>2017-04-23T02:57:07.828Z</updated>
   <id>https://devallever.github.io/</id>
   
   <author>
@@ -14,6 +14,151 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Android 应用开发所需的技能和自我评分</title>
+    <link href="https://devallever.github.io/2017/04/23/android-developer-base-skill-20/"/>
+    <id>https://devallever.github.io/2017/04/23/android-developer-base-skill-20/</id>
+    <published>2017-04-23T02:22:57.000Z</published>
+    <updated>2017-04-23T02:57:07.828Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="Android-应用开发所需的技能和自我评分"><a href="#Android-应用开发所需的技能和自我评分" class="headerlink" title="Android 应用开发所需的技能和自我评分"></a>Android 应用开发所需的技能和自我评分</h1><blockquote>
+<p>参考: App研发录</p>
+</blockquote>
+<h2 id="评分标准"><a href="#评分标准" class="headerlink" title="评分标准"></a>评分标准</h2><p>每个技能点都是五分制</p>
+<ul>
+<li>完全不知道:0分</li>
+<li>听说过:1分</li>
+<li>看过相关文章:2分</li>
+<li>做过demo:3分</li>
+<li>项目中使用过:4分</li>
+<li>非常熟悉:5分</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>技能</th>
+<th>描述</th>
+<th style="text-align:center">得分(4月23日)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Activity相关</td>
+<td>launchModel, onSaveInstanceState, 生命周期</td>
+<td style="text-align:center">3</td>
+</tr>
+<tr>
+<td>Fragment相关</td>
+<td></td>
+<td style="text-align:center">3</td>
+</tr>
+<tr>
+<td>序列化技术</td>
+<td>前者基于Service, 后者基于Bundle</td>
+<td style="text-align:center">1</td>
+</tr>
+<tr>
+<td>ImageLoader原理与实现</td>
+<td>Parcelable和Serialiable</td>
+<td style="text-align:center">1</td>
+</tr>
+<tr>
+<td>fastJSO和GSON</td>
+<td></td>
+<td style="text-align:center">4</td>
+</tr>
+<tr>
+<td>多线程</td>
+<td>Handler, Looper, ExecuteService等</td>
+<td style="text-align:center">3</td>
+</tr>
+<tr>
+<td>Adapter和RecyclerView</td>
+<td></td>
+<td style="text-align:center">3</td>
+</tr>
+<tr>
+<td>Cookie</td>
+<td>登录机制, HttpRequest夹带Cookie进行身份验证</td>
+<td style="text-align:center">3</td>
+</tr>
+<tr>
+<td>网络请求封装</td>
+<td>使用AsyncTask, 使用Handler+Runnable</td>
+<td style="text-align:center">1</td>
+</tr>
+<tr>
+<td>Android与HTML5的交互</td>
+<td>Android调用HTML5 和 HTML5调用Android</td>
+<td style="text-align:center">1</td>
+</tr>
+<tr>
+<td>代码混淆</td>
+<td>proGuard</td>
+<td style="text-align:center">1</td>
+</tr>
+<tr>
+<td>打包机制</td>
+<td>Android sdk 命令, 打包过程, Ant 或 Gradle 或 Maven</td>
+<td style="text-align:center">0</td>
+</tr>
+<tr>
+<td>线上Crash分析和修复</td>
+<td>分析Crash信息修复线上 Crash</td>
+<td style="text-align:center">0</td>
+</tr>
+<tr>
+<td>内存泄漏</td>
+<td>内存优化, 内存泄露, MAT</td>
+<td style="text-align:center">1</td>
+</tr>
+<tr>
+<td>调试工具</td>
+<td>DDMS</td>
+<td style="text-align:center">2</td>
+</tr>
+<tr>
+<td>Monkey机制</td>
+<td>Monkey测试</td>
+<td style="text-align:center">0</td>
+</tr>
+<tr>
+<td>单元测试</td>
+<td>JUnit</td>
+<td style="text-align:center">1</td>
+</tr>
+<tr>
+<td>Git</td>
+<td></td>
+<td style="text-align:center">2</td>
+</tr>
+<tr>
+<td>插件化编程</td>
+<td>DexClassLoader</td>
+<td style="text-align:center">0</td>
+</tr>
+<tr>
+<td>设计模式</td>
+<td>工厂, 生成器, 适配器, 代理, 策略, 观察者, 单例等</td>
+<td style="text-align:center">2</td>
+</tr>
+</tbody>
+</table>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;Android-应用开发所需的技能和自我评分&quot;&gt;&lt;a href=&quot;#Android-应用开发所需的技能和自我评分&quot; class=&quot;headerlink&quot; title=&quot;Android 应用开发所需的技能和自我评分&quot;&gt;&lt;/a&gt;Android 应用开发所需的技能和自我
+    
+    </summary>
+    
+      <category term="Android" scheme="https://devallever.github.io/categories/Android/"/>
+    
+    
+      <category term="Android" scheme="https://devallever.github.io/tags/Android/"/>
+    
+  </entry>
   
   <entry>
     <title>Material Design 笔记</title>
