@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://devallever.github.io/"/>
-  <updated>2017-04-26T12:22:43.995Z</updated>
+  <updated>2017-04-26T12:27:29.422Z</updated>
   <id>https://devallever.github.io/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="https://devallever.github.io/2017/04/26/myCoolWeather/"/>
     <id>https://devallever.github.io/2017/04/26/myCoolWeather/</id>
     <published>2017-04-26T04:07:24.000Z</published>
-    <updated>2017-04-26T12:22:43.995Z</updated>
+    <updated>2017-04-26T12:27:29.422Z</updated>
     
     <content type="html"><![CDATA[<figure class="image-bubble">
                 <div class="img-lightbox">
@@ -30,7 +30,9 @@
                 <div class="image-caption"></div>
             </figure>
 <blockquote>
-<p>项目地址:  <a href="https://github.com/devallever/MyCoolWeather" target="_blank" rel="external">https://github.com/devallever/MyCoolWeather</a><br>我的博客: <a href="https://devallever.github.io/">https://devallever.github.io/</a></p>
+<p>项目地址:  <a href="https://github.com/devallever/MyCoolWeather" target="_blank" rel="external">https://github.com/devallever/MyCoolWeather</a></p>
+<p><a href="https://raw.githubusercontent.com/devallever/MyCoolWeather/master/app/simpleWeather.apk" target="_blank" rel="external">下载apk</a></p>
+<p>我的博客: <a href="https://devallever.github.io/">https://devallever.github.io/</a></p>
 </blockquote>
 <h1 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h1><p>极简天气, 天气应用,是我看完Android第一行代码后, 参考并修改的练习项目, 以巩固所学知识</p>
 <p>感谢开源</p>
