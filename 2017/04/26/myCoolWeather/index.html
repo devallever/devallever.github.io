@@ -28,7 +28,12 @@
 <meta property="og:site_name" content="Allever Blog">
 <meta property="og:description" content="项目地址:  https://github.com/devallever/MyCoolWeather我的博客: https://devallever.github.io/  简介极简天">
 <meta property="og:image" content="http://www.bing.com/az/hprichbg/rb/CivitadiBagnoregio_ZH-CN12942138675_1366x768.jpg">
-<meta property="og:updated_time" content="2017-04-26T12:16:44.211Z">
+<meta property="og:image" content="https://github.com/devallever/MyCoolWeather/blob/master/pic_01.png?raw=true">
+<meta property="og:image" content="https://github.com/devallever/MyCoolWeather/blob/master/pic_02.png?raw=true">
+<meta property="og:image" content="https://github.com/devallever/MyCoolWeather/blob/master/pic_03.png?raw=true">
+<meta property="og:image" content="https://github.com/devallever/MyCoolWeather/blob/master/pic_04.png?raw=true">
+<meta property="og:image" content="https://github.com/devallever/MyCoolWeather/blob/master/pic_05.png?raw=true">
+<meta property="og:updated_time" content="2017-04-26T12:22:43.995Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Android练手项目 极简天气">
 <meta name="twitter:description" content="项目地址:  https://github.com/devallever/MyCoolWeather我的博客: https://devallever.github.io/  简介极简天">
@@ -218,7 +223,19 @@
 <li>滑动切换城市</li>
 <li>城市管理: 增加,删除</li>
 <li>下拉刷新</li>
-<li>缓存省市县, 天气信息</li>
+<li><p>缓存省市县, 天气信息</p>
+<p><img src="https://github.com/devallever/MyCoolWeather/blob/master/pic_01.png?raw=true" alt=""></p>
+<p><img src="https://github.com/devallever/MyCoolWeather/blob/master/pic_02.png?raw=true" alt=""></p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://github.com/devallever/MyCoolWeather/blob/master/pic_03.png?raw=true" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<p><img src="https://github.com/devallever/MyCoolWeather/blob/master/pic_04.png?raw=true" alt=""></p>
+<p><img src="https://github.com/devallever/MyCoolWeather/blob/master/pic_05.png?raw=true" alt=""></p>
+</li>
 </ul>
 <h2 id="第二版-还没开始着手呢"><a href="#第二版-还没开始着手呢" class="headerlink" title="第二版(还没开始着手呢)"></a>第二版(还没开始着手呢)</h2><ul>
 <li>后台自动刷新</li>
@@ -229,7 +246,7 @@
 </ul>
 <h2 id="已知bug"><a href="#已知bug" class="headerlink" title="已知bug"></a>已知bug</h2><p>在主界面旋转屏幕时候, 报错<br>找不到数据<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">weatherList = DataSupport.where(&quot;weatherId = ? &quot;, weather_id).find(Weather.class);</div></pre></td></tr></table></figure></p>
 <p>我想应该是旋转时候Activity和Fragment重新运行导致,weatherId空了, 导致查不到数据<br>然而我在Activity的onSaveInstanceState方法中保存了临时数据<br>并在onCreate中进行数据恢复,还是不行</p>
-<h1 id="功能实现细节"><a href="#功能实现细节" class="headerlink" title="功能实现细节"></a>功能实现细节</h1><h2 id="第一版功能细节"><a href="#第一版功能细节" class="headerlink" title="第一版功能细节"></a>第一版功能细节</h2><h3 id="选择城市-ChooseCItyActivity"><a href="#选择城市-ChooseCItyActivity" class="headerlink" title="选择城市 ChooseCItyActivity"></a>选择城市 ChooseCItyActivity</h3><p>界面如下<br>首先访问数据库中是否有所有省份数据,有则获取,没有则请求服务器,然后得到全国省份的json数据,保存到数据库中<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">private void queryProvince()&#123;</div><div class="line">    toolbar.setTitle(&quot;中国&quot;);</div><div class="line">    provinceList = DataSupport.findAll(Province.class);</div><div class="line">    if (provinceList.size() &gt; 0)&#123;</div><div class="line">        dataList.clear();</div><div class="line">        for (Province province:provinceList)&#123;</div><div class="line">            dataList.add(province.getProvinceName());</div><div class="line">        &#125;</div><div class="line">        adapter.notifyDataSetChanged();</div><div class="line">        listView.setSelection(0);</div><div class="line">        currentLevel = LEVEL_PROVINCE;</div><div class="line">    &#125;else &#123;</div><div class="line">        String address = &quot;http://guolin.tech/api/china/&quot;;</div><div class="line">        queryFromServer(address, &quot;province&quot;);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h1 id="功能实现细节"><a href="#功能实现细节" class="headerlink" title="功能实现细节"></a>功能实现细节</h1><h2 id="第一版功能细节"><a href="#第一版功能细节" class="headerlink" title="第一版功能细节"></a>第一版功能细节</h2><h3 id="选择城市-ChooseCItyActivity"><a href="#选择城市-ChooseCItyActivity" class="headerlink" title="选择城市 ChooseCItyActivity"></a>选择城市 ChooseCItyActivity</h3><p>首先访问数据库中是否有所有省份数据,有则获取,没有则请求服务器,然后得到全国省份的json数据,保存到数据库中<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">private void queryProvince()&#123;</div><div class="line">    toolbar.setTitle(&quot;中国&quot;);</div><div class="line">    provinceList = DataSupport.findAll(Province.class);</div><div class="line">    if (provinceList.size() &gt; 0)&#123;</div><div class="line">        dataList.clear();</div><div class="line">        for (Province province:provinceList)&#123;</div><div class="line">            dataList.add(province.getProvinceName());</div><div class="line">        &#125;</div><div class="line">        adapter.notifyDataSetChanged();</div><div class="line">        listView.setSelection(0);</div><div class="line">        currentLevel = LEVEL_PROVINCE;</div><div class="line">    &#125;else &#123;</div><div class="line">        String address = &quot;http://guolin.tech/api/china/&quot;;</div><div class="line">        queryFromServer(address, &quot;province&quot;);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">public static boolean handleProvinceResponse(String response)&#123;</div><div class="line">    if (!TextUtils.isEmpty(response))&#123;</div><div class="line">        try &#123;</div><div class="line">            JSONArray allProvince = new JSONArray(response);</div><div class="line">            for (int i = 0; i&lt;allProvince.length(); i++)&#123;</div><div class="line">                JSONObject provinceObject = allProvince.getJSONObject(i);</div><div class="line">                Province province = new Province();</div><div class="line">                province.setProvinceCode(provinceObject.getInt(&quot;id&quot;));</div><div class="line">                province.setProvinceName(provinceObject.getString(&quot;name&quot;));</div><div class="line">                province.save();</div><div class="line">            &#125;</div><div class="line">            return  true;</div><div class="line">        &#125;catch (JSONException je)&#123;</div><div class="line">            je.printStackTrace();</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    return false;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>然后解析json数据,设置到Listview中,点击时记录省份id, 然后根据这个id访问数据库中是否有该省份的城市信息,有则获取,没有则请求服务器,然后得到该省份所有城市的json数据,保存到数据库中</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">private void queryCity()&#123;</div><div class="line">    toolbar.setTitle(selectedProvince.getProvinceName());</div><div class="line">    cityList = DataSupport.where(&quot;provinceCode = ? &quot;, String.valueOf(selectedProvince.getProvinceCode())).find(City.class);</div><div class="line">    if (cityList.size() &gt; 0)&#123;</div><div class="line">        dataList.clear();</div><div class="line">        for (City city: cityList)&#123;</div><div class="line">            dataList.add(city.getCityName());</div><div class="line">        &#125;</div><div class="line">        adapter.notifyDataSetChanged();</div><div class="line">        listView.setSelection(0);</div><div class="line">        currentLevel = LEVEL_CITY;</div><div class="line">    &#125;else &#123;</div><div class="line">        int provinceCode = selectedProvince.getProvinceCode();</div><div class="line">        String address = &quot;http://guolin.tech/api/china/&quot; + provinceCode;</div><div class="line">        queryFromServer(address,&quot;city&quot;);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
@@ -260,7 +277,7 @@
     <div class="content">
         
 <span class="post-time">
-    Last updated: <time datetime="2017-04-26T12:16:44.211Z" itemprop="dateUpdated">2017-04-26 20:16:44</time>
+    Last updated: <time datetime="2017-04-26T12:22:43.995Z" itemprop="dateUpdated">2017-04-26 20:22:43</time>
 </span><br>
 
 
