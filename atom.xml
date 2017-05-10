@@ -123,7 +123,7 @@
     <link href="https://devallever.github.io/2017/04/26/myCoolWeather/"/>
     <id>https://devallever.github.io/2017/04/26/myCoolWeather/</id>
     <published>2017-04-26T04:07:24.000Z</published>
-    <updated>2017-05-10T03:39:00.773Z</updated>
+    <updated>2017-05-10T04:15:23.495Z</updated>
     
     <content type="html"><![CDATA[<figure class="image-bubble">
                 <div class="img-lightbox">
@@ -181,7 +181,25 @@
                     <img src="https://github.com/devallever/MyCoolWeather/blob/master/pic_05.png?raw=true" alt="" title="">
                 </div>
                 <div class="image-caption"></div>
-            </figure></p>
+            </figure><br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://github.com/devallever/MyCoolWeather/blob/master/pic_06.png?raw=true" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure><br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://github.com/devallever/MyCoolWeather/blob/master/pic_07.png?raw=true" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure><br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://github.com/devallever/MyCoolWeather/blob/master/pic_08.png?raw=true" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>  </p>
 <h2 id="第二版"><a href="#第二版" class="headerlink" title="第二版"></a>第二版</h2><ul>
 <li>后台自动刷新</li>
 <li>自动下载壁纸</li>
