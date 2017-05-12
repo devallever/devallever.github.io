@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://devallever.github.io/"/>
-  <updated>2017-05-11T04:20:58.905Z</updated>
+  <updated>2017-05-12T02:04:15.210Z</updated>
   <id>https://devallever.github.io/</id>
   
   <author>
@@ -14,6 +14,42 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>设计模式(一) 单例模式</title>
+    <link href="https://devallever.github.io/2017/05/12/singleton/"/>
+    <id>https://devallever.github.io/2017/05/12/singleton/</id>
+    <published>2017-05-12T01:40:29.000Z</published>
+    <updated>2017-05-12T02:04:15.210Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h1><p>确保每个类只存在一个实例，而且自行实例化并向整个系统提供这个实例  </p>
+<h1 id="使用场景"><a href="#使用场景" class="headerlink" title="使用场景"></a>使用场景</h1><p>访问IO，数据库，网络等需要消耗多资源的对象</p>
+<h1 id="实现方式"><a href="#实现方式" class="headerlink" title="实现方式"></a>实现方式</h1><h2 id="饿汉模式"><a href="#饿汉模式" class="headerlink" title="饿汉模式"></a>饿汉模式</h2><p>这家伙太饥饿难耐啦，什么也不干，也不想想在多线程时候怎么保证单例对象的唯一性。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">HungrySingleton</span> </span>&#123;</div><div class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> HungrySingleton hungrySingleton = <span class="keyword">new</span> HungrySingleton();</div><div class="line">    <span class="function"><span class="keyword">private</span> <span class="title">HungrySingleton</span><span class="params">()</span></span>&#123;&#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> HungrySingleton <span class="title">getInstance</span><span class="params">()</span></span>&#123;</div><div class="line">        <span class="keyword">return</span> hungrySingleton;</div><div class="line">    &#125;</div><div class="line">    <span class="comment">/**防止反序列化重新构建对象*/</span></div><div class="line">    <span class="function"><span class="keyword">private</span> Object <span class="title">readResolve</span><span class="params">()</span> <span class="keyword">throws</span> ObjectStreamException</span>&#123;</div><div class="line">        <span class="keyword">return</span> hungrySingleton;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="懒汉模式"><a href="#懒汉模式" class="headerlink" title="懒汉模式"></a>懒汉模式</h2><p>这家伙懂事点点，考虑到多线程时候怎么保证单例对象的唯一性。就加个synchronized关键字嘛，每次调用该方法都进行同步，但是反应还是有点迟钝。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">public class LazySingleton &#123;</div><div class="line">    private static LazySingleton lazySingleton = null;</div><div class="line">    private LazySingleton()&#123;&#125;</div><div class="line"></div><div class="line">    /**偷懒！ 只判断一次，造成每次调用该方法都进行同步*/</div><div class="line">    public static synchronized LazySingleton getInstance()&#123;</div><div class="line">        if (lazySingleton == null)&#123;</div><div class="line">            lazySingleton = new LazySingleton();</div><div class="line">        &#125;</div><div class="line">        return lazySingleton;</div><div class="line">    &#125;</div><div class="line">    /**防止反序列化重新构建对象*/</div><div class="line">    private Object readResolve() throws ObjectStreamException &#123;</div><div class="line">        return lazySingleton;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h2 id="双重检查锁定"><a href="#双重检查锁定" class="headerlink" title="双重检查锁定"></a>双重检查锁定</h2><p>还是这家伙还是挺老实的，干活不怕苦不怕累，使用了两次判空操作，第一次判空防止不必要的同步，第二次判空保证在null情况下才创建实例。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">DCLSingleton</span> </span>&#123;</div><div class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">volatile</span> DCLSingleton dclSingleton = <span class="keyword">null</span>;</div><div class="line">    <span class="function"><span class="keyword">private</span> <span class="title">DCLSingleton</span><span class="params">()</span></span>&#123;&#125;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> DCLSingleton <span class="title">getInstance</span><span class="params">()</span></span>&#123;</div><div class="line">        <span class="keyword">if</span> (dclSingleton == <span class="keyword">null</span>)&#123;  <span class="comment">//避免不必要的同步</span></div><div class="line">            <span class="keyword">synchronized</span> (DCLSingleton.class)&#123;</div><div class="line">                <span class="keyword">if</span> (dclSingleton == <span class="keyword">null</span>)&#123;</div><div class="line">                    dclSingleton = <span class="keyword">new</span> DCLSingleton();</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> dclSingleton;</div><div class="line">    &#125;</div><div class="line">    <span class="comment">/**防止反序列化重新构建对象*/</span></div><div class="line">    <span class="function"><span class="keyword">private</span> Object <span class="title">readResolve</span><span class="params">()</span> <span class="keyword">throws</span> ObjectStreamException </span>&#123;</div><div class="line">        <span class="keyword">return</span> dclSingleton;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="静态内部类"><a href="#静态内部类" class="headerlink" title="静态内部类"></a>静态内部类</h2><p>这家伙比较靠谱了，既保证线程安全，也保证单例唯一性，又延迟了单例的实例化，mua<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">public class StaticInnerSingleton &#123;</div><div class="line">    private StaticInnerSingleton()&#123;&#125;</div><div class="line">    public static StaticInnerSingleton getInstance()&#123;</div><div class="line">        return StaticInnerSingleHolder.staticInnerSingleton;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    private static class StaticInnerSingleHolder&#123;</div><div class="line">        private static final StaticInnerSingleton staticInnerSingleton = new StaticInnerSingleton();</div><div class="line">    &#125;</div><div class="line">    /**防止反序列化重新构建对象*/</div><div class="line">    private Object readResolve() throws ObjectStreamException &#123;</div><div class="line">        return StaticInnerSingleHolder.staticInnerSingleton;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h1 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h1><p>以上实现方式，在反序列化时候会重新创建对象，所以必须加入以下方法</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">/**防止反序列化重新构建对象*/</div><div class="line">private Object readResolve() throws ObjectStreamException &#123;</div><div class="line">        return StaticInnerSingleHolder.staticInnerSingleton;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>待更新…</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;定义&quot;&gt;&lt;a href=&quot;#定义&quot; class=&quot;headerlink&quot; title=&quot;定义&quot;&gt;&lt;/a&gt;定义&lt;/h1&gt;&lt;p&gt;确保每个类只存在一个实例，而且自行实例化并向整个系统提供这个实例  &lt;/p&gt;
+&lt;h1 id=&quot;使用场景&quot;&gt;&lt;a href=&quot;#使用场景&quot; c
+    
+    </summary>
+    
+      <category term="设计模式" scheme="https://devallever.github.io/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"/>
+    
+    
+      <category term="设计模式" scheme="https://devallever.github.io/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"/>
+    
+      <category term="单例模式" scheme="https://devallever.github.io/tags/%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F/"/>
+    
+  </entry>
   
   <entry>
     <title>设计模式之六大原则</title>
