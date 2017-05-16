@@ -20,17 +20,17 @@
     
     
     <meta name="keywords" content="Java,Tomcat,MySQL,Ubuntu">
-    <meta name="description" content="配置JDK环境 参考：http://blog.csdn.net/yebhweb/article/details/55098189 安装下载好jdk包，如：jdk-8u121-linux-x64.tar.gz为了同一管理安装目录统一为：/opt/复制压缩包到 /opt/jdk目录下进入到 /opt/jdk解压：tar -xvf jdk-8u121-linux-x64.tar.gz删除压缩包  配置j">
+    <meta name="description" content="配置JDK环境 参考：http://blog.csdn.net/yebhweb/article/details/55098189  安装下载好jdk包，如：jdk-8u121-linux-x64.tar.gz为了同一管理安装目录统一为：/opt/复制压缩包到 /opt/jdk目录下进入到 /opt/jdk解压：tar -xvf jdk-8u121-linux-x64.tar.gz删除压缩包 配置j">
 <meta name="keywords" content="Java,Tomcat,MySQL,Ubuntu">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Ubuntu server 下配置JDK，Tomcat，MySQL">
 <meta property="og:url" content="https://devallever.github.io/2017/05/16/build-java-tomcat-mysql/index.html">
 <meta property="og:site_name" content="Allever Blog">
-<meta property="og:description" content="配置JDK环境 参考：http://blog.csdn.net/yebhweb/article/details/55098189 安装下载好jdk包，如：jdk-8u121-linux-x64.tar.gz为了同一管理安装目录统一为：/opt/复制压缩包到 /opt/jdk目录下进入到 /opt/jdk解压：tar -xvf jdk-8u121-linux-x64.tar.gz删除压缩包  配置j">
-<meta property="og:updated_time" content="2017-05-16T08:27:37.611Z">
+<meta property="og:description" content="配置JDK环境 参考：http://blog.csdn.net/yebhweb/article/details/55098189  安装下载好jdk包，如：jdk-8u121-linux-x64.tar.gz为了同一管理安装目录统一为：/opt/复制压缩包到 /opt/jdk目录下进入到 /opt/jdk解压：tar -xvf jdk-8u121-linux-x64.tar.gz删除压缩包 配置j">
+<meta property="og:updated_time" content="2017-05-16T08:31:16.261Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Ubuntu server 下配置JDK，Tomcat，MySQL">
-<meta name="twitter:description" content="配置JDK环境 参考：http://blog.csdn.net/yebhweb/article/details/55098189 安装下载好jdk包，如：jdk-8u121-linux-x64.tar.gz为了同一管理安装目录统一为：/opt/复制压缩包到 /opt/jdk目录下进入到 /opt/jdk解压：tar -xvf jdk-8u121-linux-x64.tar.gz删除压缩包  配置j">
+<meta name="twitter:description" content="配置JDK环境 参考：http://blog.csdn.net/yebhweb/article/details/55098189  安装下载好jdk包，如：jdk-8u121-linux-x64.tar.gz为了同一管理安装目录统一为：/opt/复制压缩包到 /opt/jdk目录下进入到 /opt/jdk解压：tar -xvf jdk-8u121-linux-x64.tar.gz删除压缩包 配置j">
     
         <link rel="alternate" type="application/atom+xml" title="Allever Blog" href="/atom.xml">
     
@@ -120,7 +120,7 @@
             <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
                 <i class="icon icon-lg icon-chevron-left"></i>
             </a>
-            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="Search">
             <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
                 <i class="icon icon-lg icon-search"></i>
             </a>
@@ -190,8 +190,8 @@
         <div class="post-content" id="post-content" itemprop="postContent">
             <h1 id="配置JDK环境"><a href="#配置JDK环境" class="headerlink" title="配置JDK环境"></a>配置JDK环境</h1><blockquote>
 <p>参考：<a href="http://blog.csdn.net/yebhweb/article/details/55098189" target="_blank" rel="external">http://blog.csdn.net/yebhweb/article/details/55098189</a></p>
-<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p>下载好jdk包，如：jdk-8u121-linux-x64.tar.gz<br>为了同一管理安装目录统一为：/opt/<br>复制压缩包到 /opt/jdk目录下<br>进入到 /opt/jdk<br>解压：tar -xvf jdk-8u121-linux-x64.tar.gz<br>删除压缩包</p>
 </blockquote>
+<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p>下载好jdk包，如：jdk-8u121-linux-x64.tar.gz<br>为了同一管理安装目录统一为：/opt/<br>复制压缩包到 /opt/jdk目录下<br>进入到 /opt/jdk<br>解压：tar -xvf jdk-8u121-linux-x64.tar.gz<br>删除压缩包</p>
 <h2 id="配置jdk环境"><a href="#配置jdk环境" class="headerlink" title="配置jdk环境"></a>配置jdk环境</h2><p>修改文件进行全局配置<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">gedit/.bashrc</div></pre></td></tr></table></figure></p>
 <p>在最后加入如下内容<br>打开之后在末尾添加<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">export JAVA_HOME=/usr/lib/jdk/jdk1.8.0_121  </div><div class="line">export JRE_HOME=$&#123;JAVA_HOME&#125;/jre  </div><div class="line">export CLASSPATH=.:$&#123;JAVA_HOME&#125;/lib:$&#123;JRE_HOME&#125;/lib  </div><div class="line">export PATH=$&#123;JAVA_HOME&#125;/bin:$PATH</div></pre></td></tr></table></figure></p>
 <p>请记住，在上述添加过程中，等号两侧不要加入空格，不然会出现“不是有效的标识符”，因为source /etc/profile 时不能识别多余到空格，会理解为是路径一部分。<br>然后保存。</p>
@@ -214,7 +214,7 @@
     <div class="content">
         
 <span class="post-time">
-    最后更新时间：<time datetime="2017-05-16T08:27:37.611Z" itemprop="dateUpdated">2017-05-16 16:27:37</time>
+    Last updated: <time datetime="2017-05-16T08:31:16.261Z" itemprop="dateUpdated">2017-05-16 16:31:16</time>
 </span><br>
 
 
@@ -362,7 +362,7 @@
             
                 <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
             
-            <span>博客内容遵循<a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+            <span>This blog is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.</span>
         </p>
     </div>
     <div class="bottom">

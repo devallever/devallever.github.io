@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://devallever.github.io/"/>
-  <updated>2017-05-16T08:27:37.611Z</updated>
+  <updated>2017-05-16T08:31:16.261Z</updated>
   <id>https://devallever.github.io/</id>
   
   <author>
@@ -20,12 +20,12 @@
     <link href="https://devallever.github.io/2017/05/16/build-java-tomcat-mysql/"/>
     <id>https://devallever.github.io/2017/05/16/build-java-tomcat-mysql/</id>
     <published>2017-05-16T07:56:38.000Z</published>
-    <updated>2017-05-16T08:27:37.611Z</updated>
+    <updated>2017-05-16T08:31:16.261Z</updated>
     
     <content type="html"><![CDATA[<h1 id="配置JDK环境"><a href="#配置JDK环境" class="headerlink" title="配置JDK环境"></a>配置JDK环境</h1><blockquote>
 <p>参考：<a href="http://blog.csdn.net/yebhweb/article/details/55098189" target="_blank" rel="external">http://blog.csdn.net/yebhweb/article/details/55098189</a></p>
-<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p>下载好jdk包，如：jdk-8u121-linux-x64.tar.gz<br>为了同一管理安装目录统一为：/opt/<br>复制压缩包到 /opt/jdk目录下<br>进入到 /opt/jdk<br>解压：tar -xvf jdk-8u121-linux-x64.tar.gz<br>删除压缩包</p>
 </blockquote>
+<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p>下载好jdk包，如：jdk-8u121-linux-x64.tar.gz<br>为了同一管理安装目录统一为：/opt/<br>复制压缩包到 /opt/jdk目录下<br>进入到 /opt/jdk<br>解压：tar -xvf jdk-8u121-linux-x64.tar.gz<br>删除压缩包</p>
 <h2 id="配置jdk环境"><a href="#配置jdk环境" class="headerlink" title="配置jdk环境"></a>配置jdk环境</h2><p>修改文件进行全局配置<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">gedit/.bashrc</div></pre></td></tr></table></figure></p>
 <p>在最后加入如下内容<br>打开之后在末尾添加<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">export JAVA_HOME=/usr/lib/jdk/jdk1.8.0_121  </div><div class="line">export JRE_HOME=$&#123;JAVA_HOME&#125;/jre  </div><div class="line">export CLASSPATH=.:$&#123;JAVA_HOME&#125;/lib:$&#123;JRE_HOME&#125;/lib  </div><div class="line">export PATH=$&#123;JAVA_HOME&#125;/bin:$PATH</div></pre></td></tr></table></figure></p>
 <p>请记住，在上述添加过程中，等号两侧不要加入空格，不然会出现“不是有效的标识符”，因为source /etc/profile 时不能识别多余到空格，会理解为是路径一部分。<br>然后保存。</p>
