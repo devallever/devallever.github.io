@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    <title>JavaWeb 项目搭建Hibernate环境 | Allever Blog | Android Developer</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="JavaWeb,Hibernate">
+    <meta name="description" content="环境 Eclipse MySQL  下载Hibernate所需jar包可到官网下载: 快速通道   下载好后解压，打开压缩包下的lib目录下的require文件夹，这是hibernate的所以来的必须的jar包，copy到Project/WebContent/WEB-INF/lib 目录下，并添加依赖, 没有的自行创建   由于我们需要连接MySQL数据库，将所需的mysql-connector-">
+<meta name="keywords" content="JavaWeb,Hibernate">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JavaWeb 项目搭建Hibernate环境">
+<meta property="og:url" content="https://devallever.github.io/2017/05/19/hibernate-config/index.html">
+<meta property="og:site_name" content="Allever Blog">
+<meta property="og:description" content="环境 Eclipse MySQL  下载Hibernate所需jar包可到官网下载: 快速通道   下载好后解压，打开压缩包下的lib目录下的require文件夹，这是hibernate的所以来的必须的jar包，copy到Project/WebContent/WEB-INF/lib 目录下，并添加依赖, 没有的自行创建   由于我们需要连接MySQL数据库，将所需的mysql-connector-">
+<meta property="og:updated_time" content="2017-05-19T09:54:10.271Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="JavaWeb 项目搭建Hibernate环境">
+<meta name="twitter:description" content="环境 Eclipse MySQL  下载Hibernate所需jar包可到官网下载: 快速通道   下载好后解压，打开压缩包下的lib目录下的require文件夹，这是hibernate的所以来的必须的jar包，copy到Project/WebContent/WEB-INF/lib 目录下，并添加依赖, 没有的自行创建   由于我们需要连接MySQL数据库，将所需的mysql-connector-">
+    
+        <link rel="alternate" type="application/atom+xml" title="Allever Blog" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@1.6.1/css/style.css">
+    <script>window.lazyScripts=[]</script>
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">Allever</h5>
+          <a href="mailto:devallever@163.com" title="devallever@163.com" class="mail">devallever@163.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                Home
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                Categories
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/devallever" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="http://blog.csdn.net/devallever"  >
+                <i class="icon icon-lg icon-link"></i>
+                CSDN
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">JavaWeb 项目搭建Hibernate环境</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">JavaWeb 项目搭建Hibernate环境</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2017-05-19T08:31:34.000Z" itemprop="datePublished" class="page-time">
+  2017-05-19
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/JavaWeb/">JavaWeb</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#环境"><span class="post-toc-number">1.</span> <span class="post-toc-text">环境</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#下载Hibernate所需jar包"><span class="post-toc-number">2.</span> <span class="post-toc-text">下载Hibernate所需jar包</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#配置Hibernate-conf-xml"><span class="post-toc-number">3.</span> <span class="post-toc-text">配置Hibernate.conf.xml</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#自动生成数据库表"><span class="post-toc-number">4.</span> <span class="post-toc-text">自动生成数据库表</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#创建DDLCreator类"><span class="post-toc-number">4.1.</span> <span class="post-toc-text">创建DDLCreator类</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#创建HibernateUtil类"><span class="post-toc-number">4.2.</span> <span class="post-toc-text">创建HibernateUtil类</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#创建实体类"><span class="post-toc-number">4.3.</span> <span class="post-toc-text">创建实体类</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#在Hibernate-cfg-xml中添加映射关系"><span class="post-toc-number">4.4.</span> <span class="post-toc-text">在Hibernate.cfg.xml中添加映射关系</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#创建数据库"><span class="post-toc-number">4.5.</span> <span class="post-toc-text">创建数据库</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#运行DDLCreator类"><span class="post-toc-number">4.6.</span> <span class="post-toc-text">运行DDLCreator类</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#对数据库进行增删改查"><span class="post-toc-number">5.</span> <span class="post-toc-text">对数据库进行增删改查</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#创建VersionDAO类"><span class="post-toc-number">5.1.</span> <span class="post-toc-text">创建VersionDAO类</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#创建VersionTest类进行测试"><span class="post-toc-number">5.2.</span> <span class="post-toc-text">创建VersionTest类进行测试</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#初始化DAO"><span class="post-toc-number">5.2.1.</span> <span class="post-toc-text">初始化DAO</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#增加一条记录"><span class="post-toc-number">5.2.2.</span> <span class="post-toc-text">增加一条记录</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#查询一条记录"><span class="post-toc-number">5.2.3.</span> <span class="post-toc-text">查询一条记录</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#查询所有记录"><span class="post-toc-number">5.2.4.</span> <span class="post-toc-text">查询所有记录</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#修改数据"><span class="post-toc-number">5.2.5.</span> <span class="post-toc-text">修改数据</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#删除数据"><span class="post-toc-number">5.2.6.</span> <span class="post-toc-text">删除数据</span></a></li></ol></li></ol></li></ol>
+        </nav>
+    </aside>
+    
+<article id="post-hibernate-config"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">JavaWeb 项目搭建Hibernate环境</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2017-05-19 16:31:34" datetime="2017-05-19T08:31:34.000Z"  itemprop="datePublished">2017-05-19</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/JavaWeb/">JavaWeb</a></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+            
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h1 id="环境"><a href="#环境" class="headerlink" title="环境"></a>环境</h1><ul>
+<li>Eclipse</li>
+<li>MySQL</li>
+</ul>
+<h1 id="下载Hibernate所需jar包"><a href="#下载Hibernate所需jar包" class="headerlink" title="下载Hibernate所需jar包"></a>下载Hibernate所需jar包</h1><p>可到官网下载: <a href="http://hibernate.org/orm/" target="_blank" rel="external">快速通道</a>  </p>
+<p>下载好后解压，打开压缩包下的lib目录下的require文件夹，这是hibernate的所以来的必须的jar包，copy到Project/WebContent/WEB-INF/lib 目录下，并添加依赖, 没有的自行创建  </p>
+<p>由于我们需要连接MySQL数据库，将所需的mysql-connector-java-5.0.8-bin.jar引用进去，关于这些jar包，可以在网上搜索。  </p>
+<blockquote>
+<p>注意这里我用的是4.2版本的hibernate-core-4.2.1.Final.jar</p>
+</blockquote>
+<h1 id="配置Hibernate-conf-xml"><a href="#配置Hibernate-conf-xml" class="headerlink" title="配置Hibernate.conf.xml"></a>配置Hibernate.conf.xml</h1><p>我们需要配置最重要的hibernate配置文件hibernate.cfg.xml以及进行日志处理的log4j.properties属性文件：打开上一步解压后的hibernate文件夹，打开project—&gt;etc文件夹，将该文件夹下的hibernate.cfg.xml和log4j.properties文件拷贝到项目的src文件夹下，打开hibernate.cfg.xml文件，将session-factory标签中的内容替换成如下的内容：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">&lt;session-factory&gt;</div><div class="line">	&lt;!-- MySQL --&gt;</div><div class="line">	&lt;property name=&quot;hibernate.connection.url&quot;&gt;jdbc:mysql://localhost:3306?useUnicode=true&amp;amp;characterEncoding=UTF-8&lt;/property&gt; </div><div class="line">	&lt;property name=&quot;hibernate.connection.driver_class&quot;&gt;com.mysql.jdbc.Driver&lt;/property&gt; </div><div class="line">	&lt;property name=&quot;hibernate.connection.username&quot;&gt;root&lt;/property&gt; </div><div class="line">	&lt;property name=&quot;hibernate.connection.password&quot;&gt;dixm&lt;/property&gt;</div><div class="line">	&lt;property name=&quot;hibernate.dialect&quot;&gt;org.hibernate.dialect.MySQL5InnoDBDialect&lt;/property&gt; </div><div class="line">	&lt;property name=&quot;hibernate.show_sql&quot;&gt;true&lt;/property&gt;</div><div class="line">	&lt;property name=&quot;hibernate.use_sql_comments&quot;&gt;true&lt;/property&gt; </div><div class="line">	&lt;property name=&quot;hibernate.connection.pool_size&quot;&gt;0&lt;/property&gt;</div><div class="line">	</div><div class="line">	&lt;!-- Mappings  --&gt;</div><div class="line">	</div><div class="line">&lt;/session-factory&gt;</div></pre></td></tr></table></figure></p>
+<h1 id="自动生成数据库表"><a href="#自动生成数据库表" class="headerlink" title="自动生成数据库表"></a>自动生成数据库表</h1><h2 id="创建DDLCreator类"><a href="#创建DDLCreator类" class="headerlink" title="创建DDLCreator类"></a>创建DDLCreator类</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">import org.hibernate.cfg.Configuration;</div><div class="line">import org.hibernate.tool.hbm2ddl.SchemaExport;</div><div class="line"></div><div class="line">public class DDLCreator &#123;</div><div class="line"></div><div class="line">	/**</div><div class="line">	 * @param args</div><div class="line">	 */</div><div class="line">	public static void main(String[] args) &#123;</div><div class="line">		Configuration cfg = new Configuration().configure();</div><div class="line">		SchemaExport se = new SchemaExport(cfg);</div><div class="line">		se.drop(true, true);    //ɾ</div><div class="line">		se.create(true, true);  //</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="创建HibernateUtil类"><a href="#创建HibernateUtil类" class="headerlink" title="创建HibernateUtil类"></a>创建HibernateUtil类</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div><div class="line">112</div><div class="line">113</div><div class="line">114</div><div class="line">115</div><div class="line">116</div><div class="line">117</div><div class="line">118</div><div class="line">119</div><div class="line">120</div><div class="line">121</div><div class="line">122</div><div class="line">123</div><div class="line">124</div><div class="line">125</div><div class="line">126</div><div class="line">127</div><div class="line">128</div><div class="line">129</div><div class="line">130</div><div class="line">131</div><div class="line">132</div><div class="line">133</div><div class="line">134</div></pre></td><td class="code"><pre><div class="line">import java.util.List;</div><div class="line"></div><div class="line">import org.hibernate.Query;</div><div class="line">import org.hibernate.Session;</div><div class="line"></div><div class="line">import com.social.pojo.TVersion;</div><div class="line">import com.social.util.HibernateUtil;</div><div class="line"></div><div class="line">public class VersionDAO &#123;</div><div class="line">	</div><div class="line">	Session session = null;</div><div class="line">	boolean commit = false;</div><div class="line"></div><div class="line">	public VersionDAO() &#123;</div><div class="line">		this.session = HibernateUtil.getSession();</div><div class="line">		commit = true;</div><div class="line">		HibernateUtil.beginSession(session);</div><div class="line">	&#125;</div><div class="line">	</div><div class="line">	</div><div class="line">	public VersionDAO(Session session) &#123;</div><div class="line">		this.session = session;</div><div class="line">		commit = false;</div><div class="line">	&#125;</div><div class="line">	</div><div class="line">	public void close() &#123;</div><div class="line">		if (commit == true) &#123;</div><div class="line">			HibernateUtil.commitTransaction(session);</div><div class="line">			session.close();</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	public Session getSession() &#123;</div><div class="line">		return session;</div><div class="line">	&#125;</div><div class="line">	</div><div class="line">	</div><div class="line">	public TVersion getById(long id) throws Exception &#123;</div><div class="line">		TVersion d = null;</div><div class="line">		try &#123;</div><div class="line">			d = (TVersion) session.get(TVersion.class, id);</div><div class="line">		&#125; catch (Exception e) &#123;</div><div class="line">			HibernateUtil.rollbackTransaction(session);</div><div class="line">			throw e;</div><div class="line">		&#125;</div><div class="line">		return d;</div><div class="line">	&#125;</div><div class="line">	</div><div class="line">	</div><div class="line">	@SuppressWarnings(&quot;unchecked&quot;)</div><div class="line">	public List&lt;TVersion&gt; getByQuery(String conditions, long start,</div><div class="line">			long limit) throws Exception &#123;</div><div class="line">		List&lt;TVersion&gt; dl = null;</div><div class="line"></div><div class="line">		try &#123;</div><div class="line">			String hql = &quot;from TVersion&quot;;</div><div class="line">			if ((conditions != null) &amp;&amp; (conditions.length() &gt; 0))</div><div class="line">				hql += &quot; where &quot; + conditions;</div><div class="line"></div><div class="line">			Query query = session.createQuery(hql);</div><div class="line">			if (limit &gt; 0) &#123;</div><div class="line">				query.setFirstResult((int) start);</div><div class="line">				query.setMaxResults((int) limit);</div><div class="line">			&#125;</div><div class="line">			dl = (List&lt;TVersion&gt;) query.list();</div><div class="line">		&#125; catch (Exception e) &#123;</div><div class="line">			HibernateUtil.rollbackTransaction(session);</div><div class="line">			throw e;</div><div class="line">		&#125;</div><div class="line"></div><div class="line">		return dl;</div><div class="line">	&#125;</div><div class="line">	</div><div class="line">	@SuppressWarnings(&quot;unchecked&quot;)</div><div class="line">	public List&lt;TVersion&gt; getUpdateVersion(long start,long limit) throws Exception &#123;</div><div class="line">		List&lt;TVersion&gt; dl = null;</div><div class="line"></div><div class="line">		try &#123;</div><div class="line">			String hql = &quot;from TVersion ORDER BY version_code DESC&quot;;</div><div class="line"></div><div class="line">			Query query = session.createQuery(hql);</div><div class="line">			if (limit &gt; 0) &#123;</div><div class="line">				query.setFirstResult((int) 0);</div><div class="line">				query.setMaxResults((int) 0);</div><div class="line">			&#125;</div><div class="line">			dl = (List&lt;TVersion&gt;) query.list();</div><div class="line">		&#125; catch (Exception e) &#123;</div><div class="line">			HibernateUtil.rollbackTransaction(session);</div><div class="line">			throw e;</div><div class="line">		&#125;</div><div class="line"></div><div class="line">		return dl;</div><div class="line">	&#125;</div><div class="line">	</div><div class="line">	public TVersion add(TVersion d) throws Exception &#123;</div><div class="line">		Long id = null;</div><div class="line"></div><div class="line">		try &#123;</div><div class="line">			id = (Long) session.save(d);</div><div class="line">		&#125; catch (Exception e) &#123;</div><div class="line">			HibernateUtil.rollbackTransaction(session);</div><div class="line">			throw e;</div><div class="line">		&#125;</div><div class="line"></div><div class="line">		return getById(id);</div><div class="line">	&#125;</div><div class="line">	</div><div class="line">	public void deleteById(long id) throws Exception &#123;</div><div class="line">		TVersion d = null;</div><div class="line"></div><div class="line">		try &#123;</div><div class="line">			d = (TVersion) session.get(TVersion.class, id);</div><div class="line">			if (d != null)</div><div class="line">				session.delete(d);</div><div class="line">		&#125; catch (Exception e) &#123;</div><div class="line">			HibernateUtil.rollbackTransaction(session);</div><div class="line">			throw e;</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">	</div><div class="line">	public TVersion update(TVersion d) throws Exception &#123;</div><div class="line">		try &#123;</div><div class="line">			session.update(d);</div><div class="line">		&#125;</div><div class="line">		catch(RuntimeException e) &#123;</div><div class="line">			HibernateUtil.rollbackTransaction(session);</div><div class="line">			throw e;</div><div class="line">		&#125;</div><div class="line">		</div><div class="line">		return getById(d.getId());</div><div class="line">	&#125;</div><div class="line">	</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="创建实体类"><a href="#创建实体类" class="headerlink" title="创建实体类"></a>创建实体类</h2><p>如 TVersion<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div></pre></td><td class="code"><pre><div class="line">import javax.persistence.Entity;</div><div class="line">import javax.persistence.GeneratedValue;</div><div class="line">import javax.persistence.GenerationType;</div><div class="line">import javax.persistence.Id;</div><div class="line">import javax.persistence.Table;</div><div class="line"></div><div class="line">@Entity							//表示实体类</div><div class="line">@Table(catalog = &quot;dbcoolweather&quot;) //数据库名</div><div class="line">public class TVersion &#123;</div><div class="line">	</div><div class="line">	private long id;</div><div class="line">	private int version_code;</div><div class="line">	private String version_name;</div><div class="line">	private String description;</div><div class="line">	private String path;</div><div class="line">	</div><div class="line">	//主键，自增</div><div class="line">	@Id</div><div class="line">	@GeneratedValue(strategy=GenerationType.AUTO)</div><div class="line">	public long getId() &#123;</div><div class="line">		return id;</div><div class="line">	&#125;</div><div class="line">	public void setId(long id) &#123;</div><div class="line">		this.id = id;</div><div class="line">	&#125;</div><div class="line">	public int getVersion_code() &#123;</div><div class="line">		return version_code;</div><div class="line">	&#125;</div><div class="line">	public void setVersion_code(int version_code) &#123;</div><div class="line">		this.version_code = version_code;</div><div class="line">	&#125;</div><div class="line">	public String getVersion_name() &#123;</div><div class="line">		return version_name;</div><div class="line">	&#125;</div><div class="line">	public void setVersion_name(String version_name) &#123;</div><div class="line">		this.version_name = version_name;</div><div class="line">	&#125;</div><div class="line">	public String getDescription() &#123;</div><div class="line">		return description;</div><div class="line">	&#125;</div><div class="line">	public void setDescription(String description) &#123;</div><div class="line">		this.description = description;</div><div class="line">	&#125;</div><div class="line">	public String getPath() &#123;</div><div class="line">		return path;</div><div class="line">	&#125;</div><div class="line">	public void setPath(String path) &#123;</div><div class="line">		this.path = path;</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h2 id="在Hibernate-cfg-xml中添加映射关系"><a href="#在Hibernate-cfg-xml中添加映射关系" class="headerlink" title="在Hibernate.cfg.xml中添加映射关系"></a>在Hibernate.cfg.xml中添加映射关系</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&lt;!-- Mappings  --&gt;</div><div class="line">&lt;mapping class=&quot;com.allever.mycoolweather.bean.TVersion&quot;/&gt;</div></pre></td></tr></table></figure>
+<h2 id="创建数据库"><a href="#创建数据库" class="headerlink" title="创建数据库"></a>创建数据库</h2><p>首先在MySQL中手动创建数据库： dbcoolweather</p>
+<h2 id="运行DDLCreator类"><a href="#运行DDLCreator类" class="headerlink" title="运行DDLCreator类"></a>运行DDLCreator类</h2><p>刷新数据库表，此时，tversion表已经建好了, 有木有很惊讶～～～</p>
+<h1 id="对数据库进行增删改查"><a href="#对数据库进行增删改查" class="headerlink" title="对数据库进行增删改查"></a>对数据库进行增删改查</h1><h2 id="创建VersionDAO类"><a href="#创建VersionDAO类" class="headerlink" title="创建VersionDAO类"></a>创建VersionDAO类</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div><div class="line">112</div><div class="line">113</div><div class="line">114</div><div class="line">115</div><div class="line">116</div><div class="line">117</div><div class="line">118</div><div class="line">119</div><div class="line">120</div><div class="line">121</div><div class="line">122</div><div class="line">123</div><div class="line">124</div><div class="line">125</div><div class="line">126</div><div class="line">127</div><div class="line">128</div><div class="line">129</div><div class="line">130</div><div class="line">131</div><div class="line">132</div><div class="line">133</div></pre></td><td class="code"><pre><div class="line">import java.util.List;</div><div class="line"></div><div class="line">import org.hibernate.Query;</div><div class="line">import org.hibernate.Session;</div><div class="line"></div><div class="line">import com.allever.mycoolweather.bean.TVersion;</div><div class="line">import com.allever.mycoolweather.util.HibernateUtil;</div><div class="line"></div><div class="line"></div><div class="line">public class VersionDAO &#123;</div><div class="line">	</div><div class="line">	Session session = null;</div><div class="line">	boolean commit = false;</div><div class="line"></div><div class="line">	public VersionDAO() &#123;</div><div class="line">		this.session = HibernateUtil.getSession();</div><div class="line">		commit = true;</div><div class="line">		HibernateUtil.beginSession(session);</div><div class="line">	&#125;</div><div class="line">	</div><div class="line">	</div><div class="line">	public VersionDAO(Session session) &#123;</div><div class="line">		this.session = session;</div><div class="line">		commit = false;</div><div class="line">	&#125;</div><div class="line">	</div><div class="line">	public void close() &#123;</div><div class="line">		if (commit == true) &#123;</div><div class="line">			HibernateUtil.commitTransaction(session);</div><div class="line">			session.close();</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	public Session getSession() &#123;</div><div class="line">		return session;</div><div class="line">	&#125;</div><div class="line">	</div><div class="line">	</div><div class="line">	public TVersion getById(long id) throws Exception &#123;</div><div class="line">		TVersion d = null;</div><div class="line">		try &#123;</div><div class="line">			d = (TVersion) session.get(TVersion.class, id);</div><div class="line">		&#125; catch (Exception e) &#123;</div><div class="line">			HibernateUtil.rollbackTransaction(session);</div><div class="line">			throw e;</div><div class="line">		&#125;</div><div class="line">		return d;</div><div class="line">	&#125;</div><div class="line">	</div><div class="line">	</div><div class="line">	@SuppressWarnings(&quot;unchecked&quot;)</div><div class="line">	public List&lt;TVersion&gt; getByQuery(String conditions, long start,</div><div class="line">			long limit) throws Exception &#123;</div><div class="line">		List&lt;TVersion&gt; dl = null;</div><div class="line"></div><div class="line">		try &#123;</div><div class="line">			String hql = &quot;from TVersion&quot;;</div><div class="line">			if ((conditions != null) &amp;&amp; (conditions.length() &gt; 0))</div><div class="line">				hql += &quot; where &quot; + conditions;</div><div class="line"></div><div class="line">			Query query = session.createQuery(hql);</div><div class="line">			if (limit &gt; 0) &#123;</div><div class="line">				query.setFirstResult((int) start);</div><div class="line">				query.setMaxResults((int) limit);</div><div class="line">			&#125;</div><div class="line">			dl = (List&lt;TVersion&gt;) query.list();</div><div class="line">		&#125; catch (Exception e) &#123;</div><div class="line">			HibernateUtil.rollbackTransaction(session);</div><div class="line">			throw e;</div><div class="line">		&#125;</div><div class="line"></div><div class="line">		return dl;</div><div class="line">	&#125;</div><div class="line">	</div><div class="line">	@SuppressWarnings(&quot;unchecked&quot;)</div><div class="line">	public List&lt;TVersion&gt; getUpdateVersion(long start,long limit) throws Exception &#123;</div><div class="line">		List&lt;TVersion&gt; dl = null;</div><div class="line"></div><div class="line">		try &#123;</div><div class="line">			String hql = &quot;from TVersion ORDER BY version_code DESC&quot;;</div><div class="line"></div><div class="line">			Query query = session.createQuery(hql);</div><div class="line">			if (limit &gt; 0) &#123;</div><div class="line">				query.setFirstResult((int) 0);</div><div class="line">				query.setMaxResults((int) 0);</div><div class="line">			&#125;</div><div class="line">			dl = (List&lt;TVersion&gt;) query.list();</div><div class="line">		&#125; catch (Exception e) &#123;</div><div class="line">			HibernateUtil.rollbackTransaction(session);</div><div class="line">			throw e;</div><div class="line">		&#125;</div><div class="line"></div><div class="line">		return dl;</div><div class="line">	&#125;</div><div class="line">	</div><div class="line">	public TVersion add(TVersion d) throws Exception &#123;</div><div class="line">		Long id = null;</div><div class="line"></div><div class="line">		try &#123;</div><div class="line">			id = (Long) session.save(d);</div><div class="line">		&#125; catch (Exception e) &#123;</div><div class="line">			HibernateUtil.rollbackTransaction(session);</div><div class="line">			throw e;</div><div class="line">		&#125;</div><div class="line"></div><div class="line">		return getById(id);</div><div class="line">	&#125;</div><div class="line">	</div><div class="line">	public void deleteById(long id) throws Exception &#123;</div><div class="line">		TVersion d = null;</div><div class="line"></div><div class="line">		try &#123;</div><div class="line">			d = (TVersion) session.get(TVersion.class, id);</div><div class="line">			if (d != null)</div><div class="line">				session.delete(d);</div><div class="line">		&#125; catch (Exception e) &#123;</div><div class="line">			HibernateUtil.rollbackTransaction(session);</div><div class="line">			throw e;</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">	</div><div class="line">	public TVersion update(TVersion d) throws Exception &#123;</div><div class="line">		try &#123;</div><div class="line">			session.update(d);</div><div class="line">		&#125;</div><div class="line">		catch(RuntimeException e) &#123;</div><div class="line">			HibernateUtil.rollbackTransaction(session);</div><div class="line">			throw e;</div><div class="line">		&#125;</div><div class="line">		</div><div class="line">		return getById(d.getId());</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>各位看函数名就知道要干什么了吧，这里就不哆嗦了</p>
+<h2 id="创建VersionTest类进行测试"><a href="#创建VersionTest类进行测试" class="headerlink" title="创建VersionTest类进行测试"></a>创建VersionTest类进行测试</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">public class VersionTest &#123;</div><div class="line">	public static void main(String[] args)&#123;</div><div class="line">		</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>就是一个普通的JAVA类</p>
+<h3 id="初始化DAO"><a href="#初始化DAO" class="headerlink" title="初始化DAO"></a>初始化DAO</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">VersionDAO dao = new VersionDAO();</div><div class="line">//operation</div><div class="line">dao.close();</div></pre></td></tr></table></figure>
+<h3 id="增加一条记录"><a href="#增加一条记录" class="headerlink" title="增加一条记录"></a>增加一条记录</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">try&#123;</div><div class="line">	TVersion v1 = new TVersion();</div><div class="line">	v1.setVersion_code(5);</div><div class="line">	v1.setDescription(&quot;第3版&quot;);</div><div class="line">	v1.setVersion_name(&quot;1.3&quot;);</div><div class="line">	v1.setPath(&quot;/apk/mycoolweather_1.3.apk&quot;);</div><div class="line">	dao.add(v1);</div><div class="line">&#125;catch(Exception e)&#123;</div><div class="line">	e.printStackTrace();</div><div class="line">&#125;finally&#123;</div><div class="line">	dao.close();</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="查询一条记录"><a href="#查询一条记录" class="headerlink" title="查询一条记录"></a>查询一条记录</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">List&lt;TVersion&gt; list_tversion = new ArrayList&lt;&gt;();</div><div class="line">list_tversion = dao.getByQuery(&quot;version_code=&quot;+ 5, 0, 0);</div><div class="line">if(list_tversion.size()&gt;0)&#123;</div><div class="line">	TVersion v = list_tversion.get(0);</div><div class="line">	v.getVersion_name();</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="查询所有记录"><a href="#查询所有记录" class="headerlink" title="查询所有记录"></a>查询所有记录</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">List&lt;TVersion&gt; list_tversion = new ArrayList&lt;&gt;();</div><div class="line">// null or &quot;&quot;</div><div class="line">list_tversion = dao.getByQuery(null, 0, 0);</div><div class="line">for(TVersion tversion: list_tversion)&#123;</div><div class="line">	tversion.getVersion_name();</div><div class="line">	System.out.println(tversion.getDescription());</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="修改数据"><a href="#修改数据" class="headerlink" title="修改数据"></a>修改数据</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">List&lt;TVersion&gt; list_tversion = new ArrayList&lt;&gt;();</div><div class="line">list_tversion = dao.getByQuery(&quot;version_code=&quot;+ 5, 0, 0);</div><div class="line">if(list_tversion.size()&gt;0)&#123;</div><div class="line">	TVersion v = list_tversion.get(0);</div><div class="line">	v.setDescription(&quot;new Description&quot;);</div><div class="line">	dao.update(v);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="删除数据"><a href="#删除数据" class="headerlink" title="删除数据"></a>删除数据</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">List&lt;TVersion&gt; list_tversion = new ArrayList&lt;&gt;();</div><div class="line">list_tversion = dao.getByQuery(&quot;version_code=&quot;+ 5, 0, 0);</div><div class="line">if(list_tversion.size()&gt;0)&#123;</div><div class="line">	TVersion v = list_tversion.get(0);</div><div class="line">	v.setDescription(&quot;new Description&quot;);</div><div class="line">	dao.deleteById(v.getId());</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>OK,大功告成.<br>写这篇复习了以前所学知识，下一步，继续学习新版本的知识</p>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2017-05-19T09:54:10.271Z" itemprop="dateUpdated">2017-05-19 17:54:10</time>
+</span><br>
+
+
+        这里写留言或版权声明：<a href="/2017/05/19/hibernate-config/" target="_blank" rel="external">https://devallever.github.io/2017/05/19/hibernate-config/</a>
+    </div>
+    <footer>
+        <a href="https://devallever.github.io">
+            <img src="/img/avatar.jpg" alt="Allever">
+            Allever
+        </a>
+    </footer>
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Hibernate/">Hibernate</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaWeb/">JavaWeb</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://devallever.github.io/2017/05/19/hibernate-config/&title=《JavaWeb 项目搭建Hibernate环境》 — Allever Blog&pic=https://devallever.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://devallever.github.io/2017/05/19/hibernate-config/&title=《JavaWeb 项目搭建Hibernate环境》 — Allever Blog&source=Android Developer" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://devallever.github.io/2017/05/19/hibernate-config/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《JavaWeb 项目搭建Hibernate环境》 — Allever Blog&url=https://devallever.github.io/2017/05/19/hibernate-config/&via=https://devallever.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://devallever.github.io/2017/05/19/hibernate-config/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2017/05/18/builder-patterns/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">设计模式(二) 建造者模式</h4>
+      </a>
+    </div>
+  
+
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+<section class="comments" id="comments">
+    <!-- UY BEGIN -->
+    <div id="uyan_frame"></div>
+    <script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid=2131486"></script>
+    <!-- UY END -->
+</section>
+
+
+
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        Thanks
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <ul class="reward-items">
+        
+
+        
+    </ul>
+</div>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>博客内容遵循<a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p>
+            <span>Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a></span>
+            <span>Allever &copy; 2015 - 2017</span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://devallever.github.io/2017/05/19/hibernate-config/&title=《JavaWeb 项目搭建Hibernate环境》 — Allever Blog&pic=https://devallever.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://devallever.github.io/2017/05/19/hibernate-config/&title=《JavaWeb 项目搭建Hibernate环境》 — Allever Blog&source=Android Developer" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://devallever.github.io/2017/05/19/hibernate-config/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《JavaWeb 项目搭建Hibernate环境》 — Allever Blog&url=https://devallever.github.io/2017/05/19/hibernate-config/&via=https://devallever.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://devallever.github.io/2017/05/19/hibernate-config/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="//api.qrserver.com/v1/create-qr-code/?data=https://devallever.github.io/2017/05/19/hibernate-config/" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@1.6.1/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@1.6.1/js/search.min.js" async></script>
+
+
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+</body>
+</html>
