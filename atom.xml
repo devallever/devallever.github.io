@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://devallever.github.io/"/>
-  <updated>2017-05-21T10:00:05.595Z</updated>
+  <updated>2017-05-21T10:03:42.521Z</updated>
   <id>https://devallever.github.io/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="https://devallever.github.io/2017/05/21/hello-kotlin/"/>
     <id>https://devallever.github.io/2017/05/21/hello-kotlin/</id>
     <published>2017-05-21T09:26:42.000Z</published>
-    <updated>2017-05-21T10:00:05.595Z</updated>
+    <updated>2017-05-21T10:03:42.521Z</updated>
     
     <content type="html"><![CDATA[<figure class="image-bubble">
                 <div class="img-lightbox">
@@ -29,6 +29,9 @@
                 </div>
                 <div class="image-caption"></div>
             </figure>
+<blockquote>
+<p>在此仅整理所学资料<br><a href="https://www.gitbook.com/book/wangjiegulu/kotlin-for-android-developers-zh/details" target="_blank" rel="external">原文地址: 《Kotlin for android developers》中文版翻译</a></p>
+</blockquote>
 <h1 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h1><h2 id="什么是Kotlin？"><a href="#什么是Kotlin？" class="headerlink" title="什么是Kotlin？"></a>什么是Kotlin？</h2><p>Kotlin，如前面所说，它是JetBrains开发的基于JVM的语言。JetBrains因为创造了一个强大的Java开发IDE被大家所熟知。Android Studio，官方的Android IDE，就是基于Intellij，作为一个该平台的插件。<br>Kotlin是使用Java开发者的思维被创建的，Intellij作为它主要的开发IDE。对于Android开发者，有两个有趣的特点：</p>
 <ul>
 <li>对Java开发者来说，Kotlin是非常直觉化的，并且非常容易学习。语言的大部分内容都是与我们知道的非常相似，不同的地方，它的基础概念也能迅速地掌握它。</li>
