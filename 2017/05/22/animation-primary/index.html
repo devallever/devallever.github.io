@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    <title>Android 动画 简单使用 | Allever Blog | Android Developer</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="Android,Animation">
+    <meta name="description" content="顺便学习一下Kotlin语言  介绍动画能带来良好的用户体验,作为Android程序员,必须掌握最最最基本的几种动画实现方式,包括透明度,位移,旋转,缩放. 属性动画属性动画是Android 3.0推出的动画框架,能实现视图动画所有动画效果,并且能完成视图动画不具备的功能. 例如一个在左上角的按钮使用视图动画将他移动到右下角,点击时候发现原来的点击监听已经不起作用了. 简单说,视图动画仅仅改变了">
+<meta name="keywords" content="Android,Animation">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Android 动画 简单使用">
+<meta property="og:url" content="https://devallever.github.io/2017/05/22/animation-primary/index.html">
+<meta property="og:site_name" content="Allever Blog">
+<meta property="og:description" content="顺便学习一下Kotlin语言  介绍动画能带来良好的用户体验,作为Android程序员,必须掌握最最最基本的几种动画实现方式,包括透明度,位移,旋转,缩放. 属性动画属性动画是Android 3.0推出的动画框架,能实现视图动画所有动画效果,并且能完成视图动画不具备的功能. 例如一个在左上角的按钮使用视图动画将他移动到右下角,点击时候发现原来的点击监听已经不起作用了. 简单说,视图动画仅仅改变了">
+<meta property="og:updated_time" content="2017-05-22T11:48:49.392Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Android 动画 简单使用">
+<meta name="twitter:description" content="顺便学习一下Kotlin语言  介绍动画能带来良好的用户体验,作为Android程序员,必须掌握最最最基本的几种动画实现方式,包括透明度,位移,旋转,缩放. 属性动画属性动画是Android 3.0推出的动画框架,能实现视图动画所有动画效果,并且能完成视图动画不具备的功能. 例如一个在左上角的按钮使用视图动画将他移动到右下角,点击时候发现原来的点击监听已经不起作用了. 简单说,视图动画仅仅改变了">
+    
+        <link rel="alternate" type="application/atom+xml" title="Allever Blog" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@1.6.1/css/style.css">
+    <script>window.lazyScripts=[]</script>
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">Allever</h5>
+          <a href="mailto:devallever@163.com" title="devallever@163.com" class="mail">devallever@163.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                Home
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                Categories
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/devallever" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="http://blog.csdn.net/devallever"  >
+                <i class="icon icon-lg icon-link"></i>
+                CSDN
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">Android 动画 简单使用</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="Search">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">Android 动画 简单使用</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2017-05-22T08:54:53.000Z" itemprop="datePublished" class="page-time">
+  2017-05-22
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Android/">Android</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#介绍"><span class="post-toc-number">1.</span> <span class="post-toc-text">介绍</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#属性动画"><span class="post-toc-number">2.</span> <span class="post-toc-text">属性动画</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#ValueAnimator"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">ValueAnimator</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#ObjectAnimator"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">ObjectAnimator</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#透明动画"><span class="post-toc-number">2.2.1.</span> <span class="post-toc-text">透明动画</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#旋转动画"><span class="post-toc-number">2.2.2.</span> <span class="post-toc-text">旋转动画</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#位移动画"><span class="post-toc-number">2.2.3.</span> <span class="post-toc-text">位移动画</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#X轴位移"><span class="post-toc-number">2.2.3.1.</span> <span class="post-toc-text">X轴位移</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#Y轴位移"><span class="post-toc-number">2.2.3.2.</span> <span class="post-toc-text">Y轴位移</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#缩放动画"><span class="post-toc-number">2.2.4.</span> <span class="post-toc-text">缩放动画</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#X轴缩放"><span class="post-toc-number">2.2.4.1.</span> <span class="post-toc-text">X轴缩放</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#动画集合"><span class="post-toc-number">2.2.5.</span> <span class="post-toc-text">动画集合</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#使用XML动画"><span class="post-toc-number">2.3.</span> <span class="post-toc-text">使用XML动画</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#视图动画"><span class="post-toc-number">3.</span> <span class="post-toc-text">视图动画</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#透明度动画"><span class="post-toc-number">3.1.</span> <span class="post-toc-text">透明度动画</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#旋转动画-1"><span class="post-toc-number">3.2.</span> <span class="post-toc-text">旋转动画</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#位移动画-1"><span class="post-toc-number">3.3.</span> <span class="post-toc-text">位移动画</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#缩放动画-1"><span class="post-toc-number">3.4.</span> <span class="post-toc-text">缩放动画</span></a></li></ol></li></ol>
+        </nav>
+    </aside>
+    
+<article id="post-animation-primary"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">Android 动画 简单使用</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2017-05-22 16:54:53" datetime="2017-05-22T08:54:53.000Z"  itemprop="datePublished">2017-05-22</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Android/">Android</a></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+            
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <blockquote>
+<p>顺便学习一下Kotlin语言</p>
+</blockquote>
+<h1 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h1><p>动画能带来良好的用户体验,作为Android程序员,必须掌握最最最基本的几种动画实现方式,包括透明度,位移,旋转,缩放.</p>
+<h1 id="属性动画"><a href="#属性动画" class="headerlink" title="属性动画"></a>属性动画</h1><p>属性动画是Android 3.0推出的动画框架,能实现视图动画所有动画效果,并且能完成视图动画不具备的功能. 例如一个在左上角的按钮使用视图动画将他移动到右下角,点击时候发现原来的点击监听已经不起作用了. 简单说,视图动画仅仅改变了控件的绘制,并没有改变其属性值.如果使用属性动画将它移动,那么原来的监听还是有的,这是真正的移动啊.属性动画就是这么强大  </p>
+<p> 属性动画最重要的两个类</p>
+<ul>
+<li>ValueAnimator</li>
+<li>ObjectAnimator</li>
+</ul>
+<blockquote>
+<p>原理:<br>属性动画作用于任何对象, 变化的属性名必须有该对象要有对应的getXXX和setXXX方法.</p>
+</blockquote>
+<p>下面逐一讲讲</p>
+<h2 id="ValueAnimator"><a href="#ValueAnimator" class="headerlink" title="ValueAnimator"></a>ValueAnimator</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">fun startValueAnimation()&#123;</div><div class="line">    val valueAnimator = ValueAnimator.ofFloat(0f,1f)</div><div class="line">    valueAnimator.duration = 3000</div><div class="line">    valueAnimator.repeatCount = 2</div><div class="line">    valueAnimator.repeatMode = ValueAnimator.RESTART    //重复</div><div class="line">    //valueAnimator.repeatMode = ValueAnimator.REVERSE    //倒回</div><div class="line">    valueAnimator.start()</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ul>
+<li>ofFloat()传入的值类型为float, 表示该值从1f 变化到 3f, 1f是初始值, 3f是最终值, ofFloat()传入的是可变参数, 即可以传入多个值,表示变化过程, 如: ofFloat(1f, 3f, 2f, 5f), 这里逐步并不是一下子从1f直接变化到3f,而是有个过程,每个过程值都不一样,</li>
+<li>也许这里看不到变化, 但是动画所设置的值是变化了的,</li>
+</ul>
+<h2 id="ObjectAnimator"><a href="#ObjectAnimator" class="headerlink" title="ObjectAnimator"></a>ObjectAnimator</h2><p>ObjectAnimator继承了ValueAnimator, 所以可以使用父类方法对动画进行一些通用设置, 不同的是创建ObjectAnimator对象</p>
+<h3 id="透明动画"><a href="#透明动画" class="headerlink" title="透明动画"></a>透明动画</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">fun startAlpha(view: View)&#123;</div><div class="line">        val alphaAnimator = ObjectAnimator.ofFloat(view,&quot;alpha&quot;, 1f,0f,1f)</div><div class="line">        alphaAnimator.duration = 1000</div><div class="line">        alphaAnimator.start()</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ul>
+<li>view: 动画作用的对象</li>
+<li>“alpha”: 值变化属性名, 及view对象中必须要有getAlpha()和serAlpha()方法,</li>
+<li>1f,0f,1f: 表示变化过程, 不透明-&gt;全透明-&gt;不透明</li>
+</ul>
+<h3 id="旋转动画"><a href="#旋转动画" class="headerlink" title="旋转动画"></a>旋转动画</h3><p>如旋转30度:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">fun startRotate(view: View)&#123;</div><div class="line">        val rotateAnimator = ObjectAnimator.ofFloat(view,&quot;rotation&quot;, 0f,360f)</div><div class="line">        rotateAnimator.duration = 1000</div><div class="line">        rotateAnimator.start()</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="位移动画"><a href="#位移动画" class="headerlink" title="位移动画"></a>位移动画</h3><h4 id="X轴位移"><a href="#X轴位移" class="headerlink" title="X轴位移"></a>X轴位移</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">fun startTranslateX(view: View)&#123;</div><div class="line">        val currentX: Float= view.translationX</div><div class="line">        val translateXAnimator = ObjectAnimator.ofFloat(view,&quot;translationX&quot;,currentX,-500f,currentX,500f,currentX)</div><div class="line">        translateXAnimator.duration = 1000</div><div class="line">        translateXAnimator.start()</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ul>
+<li>currentX: view原来的X坐标值</li>
+<li>动画过程,从原来位置开始,左移500像素,回到原来位置,右移500像素,回到原来位置<h4 id="Y轴位移"><a href="#Y轴位移" class="headerlink" title="Y轴位移"></a>Y轴位移</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">fun startTranslateY(view: View)&#123;</div><div class="line">        val currentY: Float= view.translationY</div><div class="line">        val translateYAnimator = ObjectAnimator.ofFloat(view,&quot;translationY&quot;,currentY,-500f,currentY,500f,currentY)</div><div class="line">        translateYAnimator.duration = 1000</div><div class="line">        translateYAnimator.start()</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="缩放动画"><a href="#缩放动画" class="headerlink" title="缩放动画"></a>缩放动画</h3><p>同样，支持Ｘ方向　和Ｙ方向</p>
+<h4 id="X轴缩放"><a href="#X轴缩放" class="headerlink" title="X轴缩放"></a>X轴缩放</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">fun startScaleX(view: View)&#123;</div><div class="line">        val scaleXAnimator = ObjectAnimator.ofFloat(view,&quot;scaleX&quot;,1F,3F,1F)</div><div class="line">        scaleXAnimator.duration = 1000</div><div class="line">        scaleXAnimator.start()</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="动画集合"><a href="#动画集合" class="headerlink" title="动画集合"></a>动画集合</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">fun startAnimatorSet(view: View)&#123;</div><div class="line">        val animatorSet = AnimatorSet()</div><div class="line"></div><div class="line">        val alphaAnimator = ObjectAnimator.ofFloat(view,&quot;alpha&quot;, 1f,0f,1f)</div><div class="line"></div><div class="line">        val rotateAnimator = ObjectAnimator.ofFloat(view,&quot;rotation&quot;, 0f,360f)</div><div class="line"></div><div class="line">        val scaleXAnimator = ObjectAnimator.ofFloat(view,&quot;scaleX&quot;,1F,3F,1F)</div><div class="line"></div><div class="line">        animatorSet.play(alphaAnimator).after(rotateAnimator).after(scaleXAnimator)</div><div class="line">        animatorSet.duration = 2000</div><div class="line">        animatorSet.start()</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="使用XML动画"><a href="#使用XML动画" class="headerlink" title="使用XML动画"></a>使用XML动画</h2><p>在res建立animator文件夹<br>在animator下创建动画的xml文件,如:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div></pre></td><td class="code"><pre><div class="line">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;</div><div class="line">&lt;set xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;</div><div class="line">    android:ordering=&quot;sequentially&quot;&gt;</div><div class="line">    &lt;objectAnimator</div><div class="line">        android:propertyName=&quot;alpha&quot;</div><div class="line">        android:duration=&quot;500&quot;</div><div class="line">        android:valueFrom=&quot;1&quot;</div><div class="line">        android:valueTo=&quot;0&quot;</div><div class="line">        android:valueType=&quot;floatType&quot;&gt;</div><div class="line">    &lt;/objectAnimator&gt;</div><div class="line"></div><div class="line">    &lt;objectAnimator</div><div class="line">        android:propertyName=&quot;alpha&quot;</div><div class="line">        android:duration=&quot;500&quot;</div><div class="line">        android:valueFrom=&quot;0&quot;</div><div class="line">        android:valueTo=&quot;1&quot;</div><div class="line">        android:valueType=&quot;floatType&quot;&gt;</div><div class="line">    &lt;/objectAnimator&gt;</div><div class="line">    &lt;set</div><div class="line">        android:ordering=&quot;together&quot;&gt;</div><div class="line">        &lt;objectAnimator</div><div class="line">            android:propertyName=&quot;rotation&quot;</div><div class="line">            android:duration=&quot;1000&quot;</div><div class="line">            android:valueFrom=&quot;0&quot;</div><div class="line">            android:valueTo=&quot;360&quot;</div><div class="line">            android:valueType=&quot;floatType&quot;&gt;</div><div class="line">        &lt;/objectAnimator&gt;</div><div class="line">        &lt;set</div><div class="line">            android:ordering=&quot;sequentially&quot;&gt;</div><div class="line">            &lt;objectAnimator</div><div class="line">                android:propertyName=&quot;scaleY&quot;</div><div class="line">                android:duration=&quot;500&quot;</div><div class="line">                android:valueFrom=&quot;1&quot;</div><div class="line">                android:valueTo=&quot;3&quot;</div><div class="line">                android:valueType=&quot;floatType&quot;&gt;</div><div class="line">            &lt;/objectAnimator&gt;</div><div class="line">            &lt;objectAnimator</div><div class="line">                android:propertyName=&quot;scaleY&quot;</div><div class="line">                android:duration=&quot;500&quot;</div><div class="line">                android:valueFrom=&quot;3&quot;</div><div class="line">                android:valueTo=&quot;1&quot;</div><div class="line">                android:valueType=&quot;floatType&quot;&gt;</div><div class="line">            &lt;/objectAnimator&gt;</div><div class="line">        &lt;/set&gt;</div><div class="line">    &lt;/set&gt;</div><div class="line">&lt;/set&gt;</div></pre></td></tr></table></figure></p>
+<p>在代码中这样调用<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">fun startXMLAnimation(view: View)&#123;</div><div class="line">        val animator = AnimatorInflater.loadAnimator(this,R.animator.animator_test)</div><div class="line">        animator.setTarget(view)</div><div class="line">        animator.start()</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h1 id="视图动画"><a href="#视图动画" class="headerlink" title="视图动画"></a>视图动画</h1><h2 id="透明度动画"><a href="#透明度动画" class="headerlink" title="透明度动画"></a>透明度动画</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">/**</div><div class="line"> * 1:不透明</div><div class="line"> * 0:全透明**/</div><div class="line">fun startAlpha()&#123;</div><div class="line">    val alphaAnimation = AlphaAnimation(0f,1f)</div><div class="line">    alphaAnimation.duration = 1000</div><div class="line">    tv_target?.startAnimation(alphaAnimation)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="旋转动画-1"><a href="#旋转动画-1" class="headerlink" title="旋转动画"></a>旋转动画</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">/**</div><div class="line"> * 参数1: 开始角</div><div class="line"> * 参数2: 旋转角</div><div class="line"> * 参数3: **/</div><div class="line">fun startRotate()&#123;</div><div class="line">    //val rotateAnimation = RotateAnimation(0f,360f,0f,0f)</div><div class="line"></div><div class="line">    //以自身中心旋转</div><div class="line">    val rotateAnimation = RotateAnimation(</div><div class="line">            0f,360f,</div><div class="line">            RotateAnimation.RELATIVE_TO_SELF,0.5F,</div><div class="line">            RotateAnimation.RELATIVE_TO_SELF,0.5F</div><div class="line">    )</div><div class="line">    rotateAnimation.duration = 1000</div><div class="line">    tv_target?.startAnimation(rotateAnimation)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="位移动画-1"><a href="#位移动画-1" class="headerlink" title="位移动画"></a>位移动画</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">/**</div><div class="line"> * fromX</div><div class="line"> * toX</div><div class="line"> * fromY</div><div class="line"> * toY**/</div><div class="line">fun startTranslate()&#123;</div><div class="line">    val translateAnimation = TranslateAnimation(0f,200f,0f,300f)</div><div class="line">    translateAnimation.duration = 1000</div><div class="line">    tv_target?.startAnimation(translateAnimation)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="缩放动画-1"><a href="#缩放动画-1" class="headerlink" title="缩放动画"></a>缩放动画</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">/**</div><div class="line"> * fromX</div><div class="line"> * toX</div><div class="line"> * fromY</div><div class="line"> * toY**/</div><div class="line">fun startScale()&#123;</div><div class="line">    //val scaleAnimation = ScaleAnimation(0f,2f,0f,2f)</div><div class="line">    //设置中心点缩放</div><div class="line">    val scaleAnimation = ScaleAnimation(0f,2f,0f,2f,</div><div class="line">            ScaleAnimation.RELATIVE_TO_SELF,0.5F,</div><div class="line">            ScaleAnimation.RELATIVE_TO_SELF,0.5F)</div><div class="line">    scaleAnimation.duration = 1000</div><div class="line">    tv_target?.startAnimation(scaleAnimation)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    <div class="content">
+        
+<span class="post-time">
+    Last updated: <time datetime="2017-05-22T11:48:49.392Z" itemprop="dateUpdated">2017-05-22 19:48:49</time>
+</span><br>
+
+
+        这里写留言或版权声明：<a href="/2017/05/22/animation-primary/" target="_blank" rel="external">https://devallever.github.io/2017/05/22/animation-primary/</a>
+    </div>
+    <footer>
+        <a href="https://devallever.github.io">
+            <img src="/img/avatar.jpg" alt="Allever">
+            Allever
+        </a>
+    </footer>
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Animation/">Animation</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://devallever.github.io/2017/05/22/animation-primary/&title=《Android 动画 简单使用》 — Allever Blog&pic=https://devallever.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://devallever.github.io/2017/05/22/animation-primary/&title=《Android 动画 简单使用》 — Allever Blog&source=Android Developer" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://devallever.github.io/2017/05/22/animation-primary/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Android 动画 简单使用》 — Allever Blog&url=https://devallever.github.io/2017/05/22/animation-primary/&via=https://devallever.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://devallever.github.io/2017/05/22/animation-primary/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2017/05/21/hello-kotlin/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">Hello Kotlin</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2017/05/22/kotlin-note-1/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">Kotlin学习笔记 1</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+<section class="comments" id="comments">
+    <!-- UY BEGIN -->
+    <div id="uyan_frame"></div>
+    <script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid=2131486"></script>
+    <!-- UY END -->
+</section>
+
+
+
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        Thanks
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <ul class="reward-items">
+        
+
+        
+    </ul>
+</div>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>This blog is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.</span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p>
+            <span>Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a></span>
+            <span>Allever &copy; 2015 - 2017</span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://devallever.github.io/2017/05/22/animation-primary/&title=《Android 动画 简单使用》 — Allever Blog&pic=https://devallever.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://devallever.github.io/2017/05/22/animation-primary/&title=《Android 动画 简单使用》 — Allever Blog&source=Android Developer" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://devallever.github.io/2017/05/22/animation-primary/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Android 动画 简单使用》 — Allever Blog&url=https://devallever.github.io/2017/05/22/animation-primary/&via=https://devallever.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://devallever.github.io/2017/05/22/animation-primary/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="//api.qrserver.com/v1/create-qr-code/?data=https://devallever.github.io/2017/05/22/animation-primary/" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@1.6.1/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@1.6.1/js/search.min.js" async></script>
+
+
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+</body>
+</html>
