@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    <title>Android动画实例 | Allever Blog | Android Developer</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="Android,动画">
+    <meta name="description" content="灵动菜单实现思路把菜单项目放在菜单按钮同一位置, 当点击带单按钮时候, 每个菜单项开始动画, 从原来位置,移动到指定位置   代码布局文件:1234567891011121314151617181920212223242526272829303132333435363738394041424344&amp;lt;?xml version=&amp;quot;1.0&amp;quot; encoding=&amp;quot;utf">
+<meta name="keywords" content="Android,动画">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Android动画实例">
+<meta property="og:url" content="https://devallever.github.io/2017/05/24/animation-demo-1/index.html">
+<meta property="og:site_name" content="Allever Blog">
+<meta property="og:description" content="灵动菜单实现思路把菜单项目放在菜单按钮同一位置, 当点击带单按钮时候, 每个菜单项开始动画, 从原来位置,移动到指定位置   代码布局文件:1234567891011121314151617181920212223242526272829303132333435363738394041424344&amp;lt;?xml version=&amp;quot;1.0&amp;quot; encoding=&amp;quot;utf">
+<meta property="og:updated_time" content="2017-05-24T07:13:15.040Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Android动画实例">
+<meta name="twitter:description" content="灵动菜单实现思路把菜单项目放在菜单按钮同一位置, 当点击带单按钮时候, 每个菜单项开始动画, 从原来位置,移动到指定位置   代码布局文件:1234567891011121314151617181920212223242526272829303132333435363738394041424344&amp;lt;?xml version=&amp;quot;1.0&amp;quot; encoding=&amp;quot;utf">
+    
+        <link rel="alternate" type="application/atom+xml" title="Allever Blog" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@1.6.1/css/style.css">
+    <script>window.lazyScripts=[]</script>
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">Allever</h5>
+          <a href="mailto:devallever@163.com" title="devallever@163.com" class="mail">devallever@163.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                Home
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                Categories
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/devallever" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="http://blog.csdn.net/devallever"  >
+                <i class="icon icon-lg icon-link"></i>
+                CSDN
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">Android动画实例</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="Search">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">Android动画实例</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2017-05-24T06:54:12.000Z" itemprop="datePublished" class="page-time">
+  2017-05-24
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Android/">Android</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#灵动菜单"><span class="post-toc-number">1.</span> <span class="post-toc-text">灵动菜单</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#实现思路"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">实现思路</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#代码"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">代码</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#下拉展开动画"><span class="post-toc-number">2.</span> <span class="post-toc-text">下拉展开动画</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#实现思路-1"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">实现思路</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#代码-1"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">代码</span></a></li></ol></li></ol>
+        </nav>
+    </aside>
+    
+<article id="post-animation-demo-1"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">Android动画实例</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2017-05-24 14:54:12" datetime="2017-05-24T06:54:12.000Z"  itemprop="datePublished">2017-05-24</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Android/">Android</a></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+            
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h1 id="灵动菜单"><a href="#灵动菜单" class="headerlink" title="灵动菜单"></a>灵动菜单</h1><h2 id="实现思路"><a href="#实现思路" class="headerlink" title="实现思路"></a>实现思路</h2><p>把菜单项目放在菜单按钮同一位置, 当点击带单按钮时候, 每个菜单项开始动画, 从原来位置,移动到指定位置  </p>
+<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><p>布局文件:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div></pre></td><td class="code"><pre><div class="line">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;</div><div class="line">&lt;RelativeLayout xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;</div><div class="line">    android:layout_width=&quot;match_parent&quot;</div><div class="line">    android:layout_height=&quot;match_parent&quot;&gt;</div><div class="line">    &lt;ImageView</div><div class="line">        android:id=&quot;@+id/id_dynamic_activity_fab_left&quot;</div><div class="line">        android:layout_width=&quot;wrap_content&quot;</div><div class="line">        android:layout_height=&quot;wrap_content&quot;</div><div class="line">        android:src=&quot;@mipmap/ic_launcher&quot;</div><div class="line">        android:layout_centerInParent=&quot;true&quot;</div><div class="line">        android:visibility=&quot;visible&quot;/&gt;</div><div class="line"></div><div class="line">    &lt;ImageView</div><div class="line">        android:id=&quot;@+id/id_dynamic_activity_fab_top&quot;</div><div class="line">        android:layout_width=&quot;wrap_content&quot;</div><div class="line">        android:layout_height=&quot;wrap_content&quot;</div><div class="line">        android:src=&quot;@mipmap/ic_launcher&quot;</div><div class="line">        android:layout_centerInParent=&quot;true&quot;</div><div class="line">        android:visibility=&quot;visible&quot;/&gt;</div><div class="line"></div><div class="line">    &lt;ImageView</div><div class="line">        android:id=&quot;@+id/id_dynamic_activity_fab_right&quot;</div><div class="line">        android:layout_width=&quot;wrap_content&quot;</div><div class="line">        android:layout_height=&quot;wrap_content&quot;</div><div class="line">        android:src=&quot;@mipmap/ic_launcher&quot;</div><div class="line">        android:layout_centerInParent=&quot;true&quot;</div><div class="line">        android:visibility=&quot;visible&quot;/&gt;</div><div class="line"></div><div class="line">    &lt;ImageView</div><div class="line">        android:id=&quot;@+id/id_dynamic_activity_fab_bottom&quot;</div><div class="line">        android:layout_width=&quot;wrap_content&quot;</div><div class="line">        android:layout_height=&quot;wrap_content&quot;</div><div class="line">        android:src=&quot;@mipmap/ic_launcher&quot;</div><div class="line">        android:layout_centerInParent=&quot;true&quot;</div><div class="line">        android:visibility=&quot;visible&quot;/&gt;</div><div class="line"></div><div class="line">    &lt;ImageView</div><div class="line">        android:id=&quot;@+id/id_dynamic_activity_fab_main&quot;</div><div class="line">        android:layout_width=&quot;wrap_content&quot;</div><div class="line">        android:layout_height=&quot;wrap_content&quot;</div><div class="line">        android:background=&quot;@mipmap/ic_launcher&quot;</div><div class="line">        android:layout_centerInParent=&quot;true&quot;/&gt;</div><div class="line"></div><div class="line">&lt;/RelativeLayout&gt;</div></pre></td></tr></table></figure></p>
+<p>展开菜单:<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">startMenu</span><span class="params">()</span></span>&#123;</div><div class="line">        ObjectAnimator mainAnimator = ObjectAnimator.ofFloat(ivMain,<span class="string">"alpha"</span>,<span class="number">1f</span>,<span class="number">0.5f</span>);</div><div class="line"></div><div class="line">        <span class="keyword">float</span> leftCurrentX = ivLeft.getTranslationX();</div><div class="line">        ObjectAnimator leftAnimator = ObjectAnimator.ofFloat(ivLeft,<span class="string">"translationX"</span>,leftCurrentX,-<span class="number">200f</span>);</div><div class="line"></div><div class="line">        <span class="keyword">float</span> rightCurrentX = ivRight.getTranslationX();</div><div class="line">        ObjectAnimator rightAnimator = ObjectAnimator.ofFloat(ivRight,<span class="string">"translationX"</span>,rightCurrentX,<span class="number">200f</span>);</div><div class="line"></div><div class="line">        <span class="keyword">float</span> topCurrentY = ivTop.getTranslationY();</div><div class="line">        ObjectAnimator topAnimator = ObjectAnimator.ofFloat(ivTop,<span class="string">"translationY"</span>,topCurrentY,-<span class="number">200f</span>);</div><div class="line"></div><div class="line">        <span class="keyword">float</span> bottomCurrentY = ivBottom.getTranslationY();</div><div class="line">        ObjectAnimator bottomAnimator = ObjectAnimator.ofFloat(ivBottom,<span class="string">"translationY"</span>,bottomCurrentY,<span class="number">200f</span>);</div><div class="line"></div><div class="line"></div><div class="line">        AnimatorSet animatorSet = <span class="keyword">new</span> AnimatorSet();</div><div class="line">        animatorSet.playTogether(mainAnimator,leftAnimator,rightAnimator,topAnimator,bottomAnimator);</div><div class="line">        animatorSet.setDuration(<span class="number">500</span>);</div><div class="line">        animatorSet.setInterpolator(<span class="keyword">new</span> BounceInterpolator());</div><div class="line">        animatorSet.start();</div><div class="line"></div><div class="line">        flag = <span class="keyword">false</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>关闭菜单:<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">closeMenu</span><span class="params">()</span></span>&#123;</div><div class="line">        ObjectAnimator mainAnimator = ObjectAnimator.ofFloat(ivMain,<span class="string">"alpha"</span>,<span class="number">0.5f</span>,<span class="number">1f</span>);</div><div class="line"></div><div class="line">        <span class="keyword">float</span> leftCurrentX = ivLeft.getTranslationX();</div><div class="line">        ObjectAnimator leftAnimator = ObjectAnimator.ofFloat(ivLeft,<span class="string">"translationX"</span>,leftCurrentX, <span class="number">0f</span>);</div><div class="line"></div><div class="line">        <span class="keyword">float</span> rightCurrentX = ivRight.getTranslationX();</div><div class="line">        ObjectAnimator rightAnimator = ObjectAnimator.ofFloat(ivRight,<span class="string">"translationX"</span>,rightCurrentX,<span class="number">0f</span>);</div><div class="line"></div><div class="line">        <span class="keyword">float</span> topCurrentY = ivTop.getTranslationY();</div><div class="line">        ObjectAnimator topAnimator = ObjectAnimator.ofFloat(ivTop,<span class="string">"translationY"</span>,topCurrentY,<span class="number">0f</span>);</div><div class="line"></div><div class="line">        <span class="keyword">float</span> bottomCurrentY = ivBottom.getTranslationY();</div><div class="line">        ObjectAnimator bottomAnimator = ObjectAnimator.ofFloat(ivBottom,<span class="string">"translationY"</span>,bottomCurrentY,<span class="number">0f</span>);</div><div class="line"></div><div class="line"></div><div class="line">        AnimatorSet animatorSet = <span class="keyword">new</span> AnimatorSet();</div><div class="line">        animatorSet.playTogether(mainAnimator,leftAnimator,rightAnimator,topAnimator,bottomAnimator);</div><div class="line">        animatorSet.setDuration(<span class="number">500</span>);</div><div class="line">        animatorSet.setInterpolator(<span class="keyword">new</span> BounceInterpolator());</div><div class="line">        animatorSet.start();</div><div class="line"></div><div class="line">        flag = <span class="keyword">true</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>对主菜单按钮监听<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">ivMain.setOnClickListener(<span class="keyword">new</span> View.OnClickListener() &#123;</div><div class="line">	<span class="meta">@Override</span></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onClick</span><span class="params">(View v)</span> </span>&#123;</div><div class="line">		<span class="keyword">if</span> (flag) startMenu();</div><div class="line">		<span class="keyword">else</span> closeMenu();</div><div class="line">	&#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
+<h1 id="下拉展开动画"><a href="#下拉展开动画" class="headerlink" title="下拉展开动画"></a>下拉展开动画</h1><h2 id="实现思路-1"><a href="#实现思路-1" class="headerlink" title="实现思路"></a>实现思路</h2><p>两个LinearLayout, 一个visibility为显示,另一个为gone. 当点击showVIew时,把隐藏的LinearLayout设置为visibility,对这个过程使用动画.</p>
+<h2 id="代码-1"><a href="#代码-1" class="headerlink" title="代码"></a>代码</h2><p>布局文件:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div></pre></td><td class="code"><pre><div class="line">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;</div><div class="line">&lt;LinearLayout xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;</div><div class="line">    android:orientation=&quot;vertical&quot; android:layout_width=&quot;match_parent&quot;</div><div class="line">    android:layout_height=&quot;match_parent&quot;&gt;</div><div class="line"></div><div class="line">    &lt;LinearLayout</div><div class="line">        android:id=&quot;@+id/id_show_hide_ll_show_view&quot;</div><div class="line">        android:layout_width=&quot;match_parent&quot;</div><div class="line">        android:layout_height=&quot;wrap_content&quot;</div><div class="line">        android:gravity=&quot;center_vertical&quot;</div><div class="line">        android:orientation=&quot;horizontal&quot;&gt;</div><div class="line">        &lt;ImageView</div><div class="line">            android:layout_width=&quot;wrap_content&quot;</div><div class="line">            android:layout_height=&quot;wrap_content&quot;</div><div class="line">            android:src=&quot;@mipmap/ic_launcher&quot;/&gt;</div><div class="line"></div><div class="line">        &lt;TextView</div><div class="line">            android:layout_width=&quot;wrap_content&quot;</div><div class="line">            android:layout_height=&quot;wrap_content&quot;</div><div class="line">            android:text=&quot;click me&quot;/&gt;</div><div class="line"></div><div class="line"></div><div class="line">    &lt;/LinearLayout&gt;</div><div class="line"></div><div class="line">    &lt;LinearLayout</div><div class="line">        android:id=&quot;@+id/id_show_hide_ll_hide_view&quot;</div><div class="line">        android:layout_width=&quot;match_parent&quot;</div><div class="line">        android:layout_height=&quot;40dp&quot;</div><div class="line">        android:gravity=&quot;center_vertical&quot;</div><div class="line">        android:visibility=&quot;gone&quot;</div><div class="line">        android:background=&quot;@color/colorPrimary&quot;&gt;</div><div class="line"></div><div class="line">        &lt;ImageView</div><div class="line">            android:layout_width=&quot;wrap_content&quot;</div><div class="line">            android:layout_height=&quot;wrap_content&quot;</div><div class="line">            android:src=&quot;@mipmap/ic_launcher&quot;/&gt;</div><div class="line"></div><div class="line">        &lt;TextView</div><div class="line">            android:layout_width=&quot;wrap_content&quot;</div><div class="line">            android:layout_height=&quot;wrap_content&quot;</div><div class="line">            android:text=&quot;I am hide&quot;/&gt;</div><div class="line"></div><div class="line">    &lt;/LinearLayout&gt;</div><div class="line"></div><div class="line">&lt;/LinearLayout&gt;</div></pre></td></tr></table></figure></p>
+<p>获取ValueAnimator:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">private ValueAnimator createValueAnimator(final View view, int start, int end)&#123;</div><div class="line">        final ValueAnimator animator = ValueAnimator.ofInt(start,end);</div><div class="line">        animator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() &#123;</div><div class="line">            @Override</div><div class="line">            public void onAnimationUpdate(ValueAnimator valueAnimator) &#123;</div><div class="line">                int value = (int)valueAnimator.getAnimatedValue();</div><div class="line">                ViewGroup.LayoutParams params = view.getLayoutParams();</div><div class="line">                params.height = value;</div><div class="line">                view.setLayoutParams(params);</div><div class="line">            &#125;</div><div class="line">        &#125;);</div><div class="line">        return animator;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>展开动画:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">private void openAnimation(View view)&#123;</div><div class="line">        view.setVisibility(View.VISIBLE);</div><div class="line">        ValueAnimator valueAnimator = createValueAnimator(view,0,measureHiddenViewHeight);</div><div class="line">        valueAnimator.start();</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>关闭动画:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">private void closeAnimation(final View view) &#123;</div><div class="line">	int origHeight = view.getHeight();</div><div class="line">	ValueAnimator valueAnimator = createValueAnimator(view,origHeight,0);</div><div class="line">	valueAnimator.addListener(new AnimatorListenerAdapter() &#123;</div><div class="line">		@Override</div><div class="line">		public void onAnimationEnd(Animator animation) &#123;</div><div class="line">			view.setVisibility(View.GONE);</div><div class="line">		&#125;</div><div class="line">	&#125;);</div><div class="line">	valueAnimator.start();</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    <div class="content">
+        
+<span class="post-time">
+    Last updated: <time datetime="2017-05-24T07:13:15.040Z" itemprop="dateUpdated">2017-05-24 15:13:15</time>
+</span><br>
+
+
+        这里写留言或版权声明：<a href="/2017/05/24/animation-demo-1/" target="_blank" rel="external">https://devallever.github.io/2017/05/24/animation-demo-1/</a>
+    </div>
+    <footer>
+        <a href="https://devallever.github.io">
+            <img src="/img/avatar.jpg" alt="Allever">
+            Allever
+        </a>
+    </footer>
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/动画/">动画</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://devallever.github.io/2017/05/24/animation-demo-1/&title=《Android动画实例》 — Allever Blog&pic=https://devallever.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://devallever.github.io/2017/05/24/animation-demo-1/&title=《Android动画实例》 — Allever Blog&source=Android Developer" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://devallever.github.io/2017/05/24/animation-demo-1/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Android动画实例》 — Allever Blog&url=https://devallever.github.io/2017/05/24/animation-demo-1/&via=https://devallever.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://devallever.github.io/2017/05/24/animation-demo-1/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2017/05/24/factory-method-patterns/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">设计模式(三) 工厂方法模式</h4>
+      </a>
+    </div>
+  
+
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+<section class="comments" id="comments">
+    <!-- UY BEGIN -->
+    <div id="uyan_frame"></div>
+    <script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid=2131486"></script>
+    <!-- UY END -->
+</section>
+
+
+
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        Thanks
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <ul class="reward-items">
+        
+
+        
+    </ul>
+</div>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>This blog is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.</span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p>
+            <span>Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a></span>
+            <span>Allever &copy; 2015 - 2017</span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://devallever.github.io/2017/05/24/animation-demo-1/&title=《Android动画实例》 — Allever Blog&pic=https://devallever.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://devallever.github.io/2017/05/24/animation-demo-1/&title=《Android动画实例》 — Allever Blog&source=Android Developer" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://devallever.github.io/2017/05/24/animation-demo-1/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Android动画实例》 — Allever Blog&url=https://devallever.github.io/2017/05/24/animation-demo-1/&via=https://devallever.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://devallever.github.io/2017/05/24/animation-demo-1/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="//api.qrserver.com/v1/create-qr-code/?data=https://devallever.github.io/2017/05/24/animation-demo-1/" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@1.6.1/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@1.6.1/js/search.min.js" async></script>
+
+
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+</body>
+</html>
