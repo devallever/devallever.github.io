@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    <title>设计模式(四) 抽象工厂模式 | Allever Blog | Android Developer</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="设计模式,抽象工厂">
+    <meta name="description" content="定义UML类图简单实现最基本的数据访问程序User表1234567891011121314151617181920public class User &amp;#123;    private int id;    private String name;    public int getId() &amp;#123;        return id;    &amp;#125;    public void set">
+<meta name="keywords" content="设计模式,抽象工厂">
+<meta property="og:type" content="article">
+<meta property="og:title" content="设计模式(四) 抽象工厂模式">
+<meta property="og:url" content="https://devallever.github.io/2017/05/25/abstract-factory-patterns/index.html">
+<meta property="og:site_name" content="Allever Blog">
+<meta property="og:description" content="定义UML类图简单实现最基本的数据访问程序User表1234567891011121314151617181920public class User &amp;#123;    private int id;    private String name;    public int getId() &amp;#123;        return id;    &amp;#125;    public void set">
+<meta property="og:updated_time" content="2017-05-25T01:55:13.783Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="设计模式(四) 抽象工厂模式">
+<meta name="twitter:description" content="定义UML类图简单实现最基本的数据访问程序User表1234567891011121314151617181920public class User &amp;#123;    private int id;    private String name;    public int getId() &amp;#123;        return id;    &amp;#125;    public void set">
+    
+        <link rel="alternate" type="application/atom+xml" title="Allever Blog" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@1.6.1/css/style.css">
+    <script>window.lazyScripts=[]</script>
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">Allever</h5>
+          <a href="mailto:devallever@163.com" title="devallever@163.com" class="mail">devallever@163.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                Home
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                Categories
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/devallever" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="http://blog.csdn.net/devallever"  >
+                <i class="icon icon-lg icon-link"></i>
+                CSDN
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">设计模式(四) 抽象工厂模式</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="Search">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">设计模式(四) 抽象工厂模式</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2017-05-25T01:03:48.000Z" itemprop="datePublished" class="page-time">
+  2017-05-25
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/设计模式/">设计模式</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#定义"><span class="post-toc-number">1.</span> <span class="post-toc-text">定义</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#UML类图"><span class="post-toc-number">2.</span> <span class="post-toc-text">UML类图</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#简单实现"><span class="post-toc-number">3.</span> <span class="post-toc-text">简单实现</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#最基本的数据访问程序"><span class="post-toc-number">3.1.</span> <span class="post-toc-text">最基本的数据访问程序</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#User表"><span class="post-toc-number">3.1.1.</span> <span class="post-toc-text">User表</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#SqlServerUser类"><span class="post-toc-number">3.1.2.</span> <span class="post-toc-text">SqlServerUser类</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#客户端调用"><span class="post-toc-number">3.1.3.</span> <span class="post-toc-text">客户端调用</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#使用工厂方法改进"><span class="post-toc-number">3.2.</span> <span class="post-toc-text">使用工厂方法改进</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#IUser接口"><span class="post-toc-number">3.2.1.</span> <span class="post-toc-text">IUser接口</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#SqlServerUser类-1"><span class="post-toc-number">3.2.2.</span> <span class="post-toc-text">SqlServerUser类</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#MySQLUser类"><span class="post-toc-number">3.2.3.</span> <span class="post-toc-text">MySQLUser类</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#IFactory抽象工厂接口"><span class="post-toc-number">3.2.4.</span> <span class="post-toc-text">IFactory抽象工厂接口</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#SqlServerFactory具体工厂类"><span class="post-toc-number">3.2.5.</span> <span class="post-toc-text">SqlServerFactory具体工厂类</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#MySQLServerFactory具体工厂"><span class="post-toc-number">3.2.6.</span> <span class="post-toc-text">MySQLServerFactory具体工厂</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#客户端调用-1"><span class="post-toc-number">3.2.7.</span> <span class="post-toc-text">客户端调用</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#使用抽象工厂"><span class="post-toc-number">3.3.</span> <span class="post-toc-text">使用抽象工厂</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#新增Department表"><span class="post-toc-number">3.3.1.</span> <span class="post-toc-text">新增Department表</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#新增IDepartment接口"><span class="post-toc-number">3.3.2.</span> <span class="post-toc-text">新增IDepartment接口</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#新增SqlServerDepartment类"><span class="post-toc-number">3.3.3.</span> <span class="post-toc-text">新增SqlServerDepartment类</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#新增MySQLDepartment类"><span class="post-toc-number">3.3.4.</span> <span class="post-toc-text">新增MySQLDepartment类</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#修改IFactory接口"><span class="post-toc-number">3.3.5.</span> <span class="post-toc-text">修改IFactory接口</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#修改SqlServerFactory类"><span class="post-toc-number">3.3.6.</span> <span class="post-toc-text">修改SqlServerFactory类</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#修改MySQLServerFactory类"><span class="post-toc-number">3.3.7.</span> <span class="post-toc-text">修改MySQLServerFactory类</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#客户端调用-2"><span class="post-toc-number">3.3.8.</span> <span class="post-toc-text">客户端调用</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#总结"><span class="post-toc-number">4.</span> <span class="post-toc-text">总结</span></a></li></ol>
+        </nav>
+    </aside>
+    
+<article id="post-abstract-factory-patterns"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">设计模式(四) 抽象工厂模式</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2017-05-25 09:03:48" datetime="2017-05-25T01:03:48.000Z"  itemprop="datePublished">2017-05-25</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/设计模式/">设计模式</a></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+            
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h1 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h1><h1 id="UML类图"><a href="#UML类图" class="headerlink" title="UML类图"></a>UML类图</h1><h1 id="简单实现"><a href="#简单实现" class="headerlink" title="简单实现"></a>简单实现</h1><h2 id="最基本的数据访问程序"><a href="#最基本的数据访问程序" class="headerlink" title="最基本的数据访问程序"></a>最基本的数据访问程序</h2><h3 id="User表"><a href="#User表" class="headerlink" title="User表"></a>User表</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">public class User &#123;</div><div class="line">    private int id;</div><div class="line">    private String name;</div><div class="line"></div><div class="line">    public int getId() &#123;</div><div class="line">        return id;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    public void setId(int id) &#123;</div><div class="line">        this.id = id;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    public String getName() &#123;</div><div class="line">        return name;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    public void setName(String name) &#123;</div><div class="line">        this.name = name;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="SqlServerUser类"><a href="#SqlServerUser类" class="headerlink" title="SqlServerUser类"></a>SqlServerUser类</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">public class SqlServerUser &#123;</div><div class="line">    private static final String TAG = &quot;SqlServerUser&quot;;</div><div class="line">    public void insertUser(User user)&#123;</div><div class="line">        Log.d(TAG, &quot;insert: 在SQL Server中录入一个用户记录&quot;);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    public User getUser(int id)&#123;</div><div class="line">        Log.d(TAG, &quot;getUser: 在SQL Server中获取一个用户记录&quot;);</div><div class="line">        return null;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="客户端调用"><a href="#客户端调用" class="headerlink" title="客户端调用"></a>客户端调用</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">User user = <span class="keyword">new</span> User();</div><div class="line">user.setId(<span class="number">1</span>);</div><div class="line">user.setName(<span class="string">"Allever"</span>);</div><div class="line">SqlServerUser sqlServerUser = <span class="keyword">new</span> SqlServerUser();</div><div class="line">sqlServerUser.insertUser(user);</div><div class="line">sqlServerUser.getUser(<span class="number">1</span>);</div></pre></td></tr></table></figure>
+<p>如果换为MySQL数据库改动就很多</p>
+<h2 id="使用工厂方法改进"><a href="#使用工厂方法改进" class="headerlink" title="使用工厂方法改进"></a>使用工厂方法改进</h2><h3 id="IUser接口"><a href="#IUser接口" class="headerlink" title="IUser接口"></a>IUser接口</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">public interface IUser &#123;</div><div class="line">    void insertUser(User user);</div><div class="line">    User getUser(int id);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="SqlServerUser类-1"><a href="#SqlServerUser类-1" class="headerlink" title="SqlServerUser类"></a>SqlServerUser类</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">public class SqlServerUser implements IUser &#123;</div><div class="line"></div><div class="line">    private static final String TAG = &quot;SqlServerUser&quot;;</div><div class="line">    @Override</div><div class="line">    public void insertUser(User user)&#123;</div><div class="line">        Log.d(TAG, &quot;insert: 在SQL Server中录入一个用户记录&quot;);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    @Override</div><div class="line">    public User getUser(int id)&#123;</div><div class="line">        Log.d(TAG, &quot;getUser: 在SQL Server中获取一个用户记录&quot;);</div><div class="line">        return null;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="MySQLUser类"><a href="#MySQLUser类" class="headerlink" title="MySQLUser类"></a>MySQLUser类</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">public class MySQLUser implements IUser &#123;</div><div class="line">    private static final String TAG = &quot;MySQLUser&quot;;</div><div class="line">    @Override</div><div class="line">    public void insertUser(User user)&#123;</div><div class="line">        Log.d(TAG, &quot;insert: 在MySQL Server中录入一个用户记录&quot;);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    @Override</div><div class="line">    public User getUser(int id)&#123;</div><div class="line">        Log.d(TAG, &quot;getUser: 在MySQL Server中获取一个用户记录&quot;);</div><div class="line">        return null;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="IFactory抽象工厂接口"><a href="#IFactory抽象工厂接口" class="headerlink" title="IFactory抽象工厂接口"></a>IFactory抽象工厂接口</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">public interface IFactory &#123;</div><div class="line">    IUser createUser();</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="SqlServerFactory具体工厂类"><a href="#SqlServerFactory具体工厂类" class="headerlink" title="SqlServerFactory具体工厂类"></a>SqlServerFactory具体工厂类</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">public class SqlServerFactory implements IFactory &#123;</div><div class="line">    @Override</div><div class="line">    public IUser createUser() &#123;</div><div class="line">        return new SqlServerUser();</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="MySQLServerFactory具体工厂"><a href="#MySQLServerFactory具体工厂" class="headerlink" title="MySQLServerFactory具体工厂"></a>MySQLServerFactory具体工厂</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">public class MySQLServerFactory implements IFactory &#123;</div><div class="line">    @Override</div><div class="line">    public IUser createUser() &#123;</div><div class="line">        return new MySQLUser();</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="客户端调用-1"><a href="#客户端调用-1" class="headerlink" title="客户端调用"></a>客户端调用</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">User user = new User();</div><div class="line">user.setId(1);</div><div class="line">user.setName(&quot;Allever&quot;);</div><div class="line"></div><div class="line">IFactory factory = new SqlServerFactory();</div><div class="line">IUser iUser = factory.createUser();</div><div class="line">iUser.insertUser(user);</div><div class="line">iUser.getUser(1);</div></pre></td></tr></table></figure>
+<p>如果改为MySQL数据库，这改动这里<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">IFactory factory = new MySQLServerFactory();</div></pre></td></tr></table></figure></p>
+<h2 id="使用抽象工厂"><a href="#使用抽象工厂" class="headerlink" title="使用抽象工厂"></a>使用抽象工厂</h2><h3 id="新增Department表"><a href="#新增Department表" class="headerlink" title="新增Department表"></a>新增Department表</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">public class Department &#123;</div><div class="line">    private int id;</div><div class="line">    private String deptName;</div><div class="line"></div><div class="line">    public int getId() &#123;</div><div class="line">        return id;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    public void setId(int id) &#123;</div><div class="line">        this.id = id;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    public String getDeptName() &#123;</div><div class="line">        return deptName;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    public void setDeptName(String deptName) &#123;</div><div class="line">        this.deptName = deptName;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="新增IDepartment接口"><a href="#新增IDepartment接口" class="headerlink" title="新增IDepartment接口"></a>新增IDepartment接口</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">public interface IDepartment &#123;</div><div class="line">    void insertDepartment(Department department);</div><div class="line">    Department getDepartment(int id);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="新增SqlServerDepartment类"><a href="#新增SqlServerDepartment类" class="headerlink" title="新增SqlServerDepartment类"></a>新增SqlServerDepartment类</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">public class SqlServerDepartment implements IDepartment &#123;</div><div class="line">    private static final String TAG = &quot;SqlServerDepartment&quot;;</div><div class="line">    @Override</div><div class="line">    public void insertDepartment(Department department) &#123;</div><div class="line">        Log.d(TAG, &quot;insertDepartment: 在Sql Server 中插入Department&quot;);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    @Override</div><div class="line">    public Department getDepartment(int id) &#123;</div><div class="line">        Log.d(TAG, &quot;insertDepartment: 在Sql Server 中获取Department&quot;);</div><div class="line">        return null;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="新增MySQLDepartment类"><a href="#新增MySQLDepartment类" class="headerlink" title="新增MySQLDepartment类"></a>新增MySQLDepartment类</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">public class MySQLDepartment implements IDepartment &#123;</div><div class="line">    private static final String TAG = &quot;MySQLDepartment&quot;;</div><div class="line">    @Override</div><div class="line">    public void insertDepartment(Department department) &#123;</div><div class="line">        Log.d(TAG, &quot;insertDepartment: 在MySQL 中插入Department&quot;);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    @Override</div><div class="line">    public Department getDepartment(int id) &#123;</div><div class="line">        Log.d(TAG, &quot;insertDepartment: 在MySQL 中获取Department&quot;);</div><div class="line">        return null;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="修改IFactory接口"><a href="#修改IFactory接口" class="headerlink" title="修改IFactory接口"></a>修改IFactory接口</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">public interface IFactory &#123;</div><div class="line">    IUser createUser();</div><div class="line">    IDepartment createDepartment();	//新增</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="修改SqlServerFactory类"><a href="#修改SqlServerFactory类" class="headerlink" title="修改SqlServerFactory类"></a>修改SqlServerFactory类</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">public class SqlServerFactory implements IFactory &#123;</div><div class="line">    @Override</div><div class="line">    public IUser createUser() &#123;</div><div class="line">        return new SqlServerUser();</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    @Override</div><div class="line">    public IDepartment createDepartment() &#123;</div><div class="line">        return new SqlServerDepartment();</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="修改MySQLServerFactory类"><a href="#修改MySQLServerFactory类" class="headerlink" title="修改MySQLServerFactory类"></a>修改MySQLServerFactory类</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">public class MySQLServerFactory implements IFactory &#123;</div><div class="line">    @Override</div><div class="line">    public IUser createUser() &#123;</div><div class="line">        return new MySQLUser();</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    @Override</div><div class="line">    public IDepartment createDepartment() &#123;</div><div class="line">        return new MySQLDepartment();</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="客户端调用-2"><a href="#客户端调用-2" class="headerlink" title="客户端调用"></a>客户端调用</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">User user = new User();</div><div class="line">user.setId(1);</div><div class="line">user.setName(&quot;Allever&quot;);</div><div class="line">Department department = new Department();</div><div class="line">department.setId(1);</div><div class="line">department.setDeptName(&quot;Computer&quot;);</div><div class="line"></div><div class="line">IFactory factory = new MySQLServerFactory();</div><div class="line">IUser iUser = factory.createUser();</div><div class="line">iUser.insertUser(user);</div><div class="line">iUser.getUser(1);</div><div class="line"></div><div class="line">IDepartment iDepartment = factory.createDepartment();</div><div class="line">iDepartment.insertDepartment(department);</div><div class="line">iDepartment.getDepartment(1);</div></pre></td></tr></table></figure>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>只有一个User类和User操作类的时候，只需要工厂方法模式， 但现在数据库中有很多表， 而SQL Server 和 MySQL 又是两大不同的分类， 所以解决这种涉及到多个产品系列的时候，就要用到抽象工厂模式。</p>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    <div class="content">
+        
+<span class="post-time">
+    Last updated: <time datetime="2017-05-25T01:55:13.783Z" itemprop="dateUpdated">2017-05-25 09:55:13</time>
+</span><br>
+
+
+        这里写留言或版权声明：<a href="/2017/05/25/abstract-factory-patterns/" target="_blank" rel="external">https://devallever.github.io/2017/05/25/abstract-factory-patterns/</a>
+    </div>
+    <footer>
+        <a href="https://devallever.github.io">
+            <img src="/img/avatar.jpg" alt="Allever">
+            Allever
+        </a>
+    </footer>
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/抽象工厂/">抽象工厂</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/设计模式/">设计模式</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://devallever.github.io/2017/05/25/abstract-factory-patterns/&title=《设计模式(四) 抽象工厂模式》 — Allever Blog&pic=https://devallever.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://devallever.github.io/2017/05/25/abstract-factory-patterns/&title=《设计模式(四) 抽象工厂模式》 — Allever Blog&source=Android Developer" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://devallever.github.io/2017/05/25/abstract-factory-patterns/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《设计模式(四) 抽象工厂模式》 — Allever Blog&url=https://devallever.github.io/2017/05/25/abstract-factory-patterns/&via=https://devallever.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://devallever.github.io/2017/05/25/abstract-factory-patterns/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2017/05/24/animation-demo-1/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">Android动画实例</h4>
+      </a>
+    </div>
+  
+
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+<section class="comments" id="comments">
+    <!-- UY BEGIN -->
+    <div id="uyan_frame"></div>
+    <script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid=2131486"></script>
+    <!-- UY END -->
+</section>
+
+
+
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        Thanks
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <ul class="reward-items">
+        
+
+        
+    </ul>
+</div>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>This blog is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.</span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p>
+            <span>Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a></span>
+            <span>Allever &copy; 2015 - 2017</span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://devallever.github.io/2017/05/25/abstract-factory-patterns/&title=《设计模式(四) 抽象工厂模式》 — Allever Blog&pic=https://devallever.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://devallever.github.io/2017/05/25/abstract-factory-patterns/&title=《设计模式(四) 抽象工厂模式》 — Allever Blog&source=Android Developer" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://devallever.github.io/2017/05/25/abstract-factory-patterns/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《设计模式(四) 抽象工厂模式》 — Allever Blog&url=https://devallever.github.io/2017/05/25/abstract-factory-patterns/&via=https://devallever.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://devallever.github.io/2017/05/25/abstract-factory-patterns/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="//api.qrserver.com/v1/create-qr-code/?data=https://devallever.github.io/2017/05/25/abstract-factory-patterns/" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@1.6.1/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@1.6.1/js/search.min.js" async></script>
+
+
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+</body>
+</html>
