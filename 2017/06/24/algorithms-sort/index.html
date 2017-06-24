@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    <title>排序算法 | Allever Blog | Android Developer</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="算法,排序,Java,C">
+    <meta name="description" content="冒泡排序思想比较两两相邻关键字，如果是逆序(a[i] &amp;gt; a(i+1)),则进行交换，从而是关键字小的记录如气泡一样往上“漂浮”(左移)，或者说是关键字大的如石块一样下沉(右移). 算法实现java实现原序列1int a[10] = &amp;#123;4,3,2,6,1,9,5,8,7,0&amp;#125;; 12345678910111213141516171819202122232425262728">
+<meta name="keywords" content="算法,排序,Java,C">
+<meta property="og:type" content="article">
+<meta property="og:title" content="排序算法">
+<meta property="og:url" content="https://devallever.github.io/2017/06/24/algorithms-sort/index.html">
+<meta property="og:site_name" content="Allever Blog">
+<meta property="og:description" content="冒泡排序思想比较两两相邻关键字，如果是逆序(a[i] &amp;gt; a(i+1)),则进行交换，从而是关键字小的记录如气泡一样往上“漂浮”(左移)，或者说是关键字大的如石块一样下沉(右移). 算法实现java实现原序列1int a[10] = &amp;#123;4,3,2,6,1,9,5,8,7,0&amp;#125;; 12345678910111213141516171819202122232425262728">
+<meta property="og:updated_time" content="2017-06-24T11:43:50.377Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="排序算法">
+<meta name="twitter:description" content="冒泡排序思想比较两两相邻关键字，如果是逆序(a[i] &amp;gt; a(i+1)),则进行交换，从而是关键字小的记录如气泡一样往上“漂浮”(左移)，或者说是关键字大的如石块一样下沉(右移). 算法实现java实现原序列1int a[10] = &amp;#123;4,3,2,6,1,9,5,8,7,0&amp;#125;; 12345678910111213141516171819202122232425262728">
+    
+        <link rel="alternate" type="application/atom+xml" title="Allever Blog" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@1.6.1/css/style.css">
+    <script>window.lazyScripts=[]</script>
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">Allever</h5>
+          <a href="mailto:devallever@163.com" title="devallever@163.com" class="mail">devallever@163.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                Home
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                Categories
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/devallever" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="http://blog.csdn.net/devallever"  >
+                <i class="icon icon-lg icon-link"></i>
+                CSDN
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">排序算法</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">排序算法</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2017-06-24T12:54:18.000Z" itemprop="datePublished" class="page-time">
+  2017-06-24
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/算法/">算法</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#冒泡排序"><span class="post-toc-number">1.</span> <span class="post-toc-text">冒泡排序</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#思想"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">思想</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#算法实现"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">算法实现</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#java实现"><span class="post-toc-number">1.2.1.</span> <span class="post-toc-text">java实现</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#选择排序"><span class="post-toc-number">2.</span> <span class="post-toc-text">选择排序</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#思想-1"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">思想</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#算法实现-1"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">算法实现</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#C语言"><span class="post-toc-number">2.2.1.</span> <span class="post-toc-text">C语言</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#java实现-1"><span class="post-toc-number">2.2.2.</span> <span class="post-toc-text">java实现</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#插入排序"><span class="post-toc-number">3.</span> <span class="post-toc-text">插入排序</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#思想-2"><span class="post-toc-number">3.1.</span> <span class="post-toc-text">思想</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#实现"><span class="post-toc-number">3.2.</span> <span class="post-toc-text">实现</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#C语言实现"><span class="post-toc-number">3.2.1.</span> <span class="post-toc-text">C语言实现</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Java实现"><span class="post-toc-number">3.2.2.</span> <span class="post-toc-text">Java实现</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#希尔排序"><span class="post-toc-number">4.</span> <span class="post-toc-text">希尔排序</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#思想-3"><span class="post-toc-number">4.1.</span> <span class="post-toc-text">思想</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#C语言实现-1"><span class="post-toc-number">4.1.1.</span> <span class="post-toc-text">C语言实现</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Java实现-1"><span class="post-toc-number">4.1.2.</span> <span class="post-toc-text">Java实现</span></a></li></ol></li></ol></li></ol>
+        </nav>
+    </aside>
+    
+<article id="post-algorithms-sort"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">排序算法</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2017-06-24 20:54:18" datetime="2017-06-24T12:54:18.000Z"  itemprop="datePublished">2017-06-24</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/算法/">算法</a></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+            
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h1 id="冒泡排序"><a href="#冒泡排序" class="headerlink" title="冒泡排序"></a>冒泡排序</h1><h2 id="思想"><a href="#思想" class="headerlink" title="思想"></a>思想</h2><p>比较两两相邻关键字，如果是逆序(a[i] &gt; a(i+1)),则进行交换，从而是关键字小的记录如气泡一样往上“漂浮”(左移)，或者说是关键字大的如石块一样下沉(右移).</p>
+<h2 id="算法实现"><a href="#算法实现" class="headerlink" title="算法实现"></a>算法实现</h2><h3 id="java实现"><a href="#java实现" class="headerlink" title="java实现"></a>java实现</h3><p>原序列<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">int</span> a[<span class="number">10</span>] = &#123;<span class="number">4</span>,<span class="number">3</span>,<span class="number">2</span>,<span class="number">6</span>,<span class="number">1</span>,<span class="number">9</span>,<span class="number">5</span>,<span class="number">8</span>,<span class="number">7</span>,<span class="number">0</span>&#125;;</div></pre></td></tr></table></figure></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">popSort</span><span class="params">(<span class="keyword">int</span>[] a)</span></span>&#123;</div><div class="line">        <span class="comment">//最基本的冒泡排序写法</span></div><div class="line">        <span class="comment">/*int i;</span></div><div class="line">        for (i=0;i&lt;a.length;i++)&#123;</div><div class="line">            for (int j=0;j&lt;a.length-1;j++)&#123;</div><div class="line">                if (a[j]&gt;a[j+1])&#123;</div><div class="line">                    int temp = a[j];</div><div class="line">                    a[j] = a[j+1];</div><div class="line">                    a[j+1] = temp;</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">        &#125;*/</div><div class="line"></div><div class="line">        <span class="comment">//改进的冒泡排序写法</span></div><div class="line">        <span class="keyword">int</span> len = a.length-<span class="number">1</span>;</div><div class="line">        <span class="keyword">boolean</span> flag = <span class="keyword">true</span>;<span class="comment">//用来标识是否发生交换操作</span></div><div class="line">        <span class="keyword">while</span> (len&gt;<span class="number">0</span> &amp;&amp; flag)&#123;</div><div class="line">            flag = <span class="keyword">false</span>;</div><div class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> j=<span class="number">0</span>;j&lt;len;j++)&#123;</div><div class="line">                <span class="keyword">if</span> (a[j] &gt; a[j+<span class="number">1</span>])&#123;</div><div class="line">                    <span class="comment">//交换</span></div><div class="line">                    <span class="keyword">int</span> temp = a[j];</div><div class="line">                    a[j] = a[j+<span class="number">1</span>];</div><div class="line">                    a[j+<span class="number">1</span>] = temp;</div><div class="line">                    flag = <span class="keyword">true</span>;</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">            show(a);</div><div class="line">            len--;</div><div class="line">        &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>运行结果<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">原序列: <span class="number">1</span> <span class="number">6</span> <span class="number">5</span> <span class="number">9</span> <span class="number">3</span> <span class="number">8</span> <span class="number">2</span> <span class="number">7</span> <span class="number">0</span> <span class="number">4</span> </div><div class="line"><span class="number">1</span> <span class="number">5</span> <span class="number">6</span> <span class="number">3</span> <span class="number">8</span> <span class="number">2</span> <span class="number">7</span> <span class="number">0</span> <span class="number">4</span> <span class="number">9</span> </div><div class="line"><span class="number">1</span> <span class="number">5</span> <span class="number">3</span> <span class="number">6</span> <span class="number">2</span> <span class="number">7</span> <span class="number">0</span> <span class="number">4</span> <span class="number">8</span> <span class="number">9</span> </div><div class="line"><span class="number">1</span> <span class="number">3</span> <span class="number">5</span> <span class="number">2</span> <span class="number">6</span> <span class="number">0</span> <span class="number">4</span> <span class="number">7</span> <span class="number">8</span> <span class="number">9</span> </div><div class="line"><span class="number">1</span> <span class="number">3</span> <span class="number">2</span> <span class="number">5</span> <span class="number">0</span> <span class="number">4</span> <span class="number">6</span> <span class="number">7</span> <span class="number">8</span> <span class="number">9</span> </div><div class="line"><span class="number">1</span> <span class="number">2</span> <span class="number">3</span> <span class="number">0</span> <span class="number">4</span> <span class="number">5</span> <span class="number">6</span> <span class="number">7</span> <span class="number">8</span> <span class="number">9</span> </div><div class="line"><span class="number">1</span> <span class="number">2</span> <span class="number">0</span> <span class="number">3</span> <span class="number">4</span> <span class="number">5</span> <span class="number">6</span> <span class="number">7</span> <span class="number">8</span> <span class="number">9</span> </div><div class="line"><span class="number">1</span> <span class="number">0</span> <span class="number">2</span> <span class="number">3</span> <span class="number">4</span> <span class="number">5</span> <span class="number">6</span> <span class="number">7</span> <span class="number">8</span> <span class="number">9</span> </div><div class="line"><span class="number">0</span> <span class="number">1</span> <span class="number">2</span> <span class="number">3</span> <span class="number">4</span> <span class="number">5</span> <span class="number">6</span> <span class="number">7</span> <span class="number">8</span> <span class="number">9</span> </div><div class="line"><span class="number">0</span> <span class="number">1</span> <span class="number">2</span> <span class="number">3</span> <span class="number">4</span> <span class="number">5</span> <span class="number">6</span> <span class="number">7</span> <span class="number">8</span> <span class="number">9</span> </div><div class="line">排序后: <span class="number">0</span> <span class="number">1</span> <span class="number">2</span> <span class="number">3</span> <span class="number">4</span> <span class="number">5</span> <span class="number">6</span> <span class="number">7</span> <span class="number">8</span> <span class="number">9</span></div></pre></td></tr></table></figure></p>
+<h1 id="选择排序"><a href="#选择排序" class="headerlink" title="选择排序"></a>选择排序</h1><h2 id="思想-1"><a href="#思想-1" class="headerlink" title="思想"></a>思想</h2><p>一个简单的选择排序算法是这样的:<br>首先, 找到数组中最小的一个元素<br>其次, 将它和数组的第一个元素交换位置,(如果第一个元素是最小的那么它就和自己交换).<br>再次, 在剩下元素中继续找到最小的元素,将它和数组中第二个元素交换位置.<br>如此反复操作,直到将整个数组排序<br>这种方法就是简单选择排序.</p>
+<h2 id="算法实现-1"><a href="#算法实现-1" class="headerlink" title="算法实现"></a>算法实现</h2><h3 id="C语言"><a href="#C语言" class="headerlink" title="C语言"></a>C语言</h3><p>原序列<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">int a[10] = &#123;4,3,2,6,1,9,5,8,7,0&#125;;</div></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">/**简单选择排序</div><div class="line"> * */</div><div class="line">void SelectSort(int a[], int length)&#123;</div><div class="line">    int i, j;</div><div class="line">    int min;</div><div class="line">    for (i = 0; i &lt; length; ++i) &#123;</div><div class="line">        min = i;</div><div class="line">        for (j = i+1; j &lt; length; ++j) &#123;</div><div class="line">            if (a[j] &lt; a[min])&#123;</div><div class="line">                min = j;</div><div class="line">            &#125;</div><div class="line">            //printf(&quot;min = %d\n&quot;, min);//调试加上,</div><div class="line">        &#125;</div><div class="line">        if (min != i)&#123;</div><div class="line">            int temp = a[i];</div><div class="line">            a[i] = a[min];</div><div class="line">            a[min] = temp;</div><div class="line">        &#125;</div><div class="line">        show(a,length);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>运行结果:<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">原序列: <span class="number">4</span> <span class="number">3</span> <span class="number">2</span> <span class="number">6</span> <span class="number">1</span> <span class="number">9</span> <span class="number">5</span> <span class="number">8</span> <span class="number">7</span> <span class="number">0</span> </div><div class="line"><span class="number">0</span> <span class="number">3</span> <span class="number">2</span> <span class="number">6</span> <span class="number">1</span> <span class="number">9</span> <span class="number">5</span> <span class="number">8</span> <span class="number">7</span> <span class="number">4</span> </div><div class="line"><span class="number">0</span> <span class="number">1</span> <span class="number">2</span> <span class="number">6</span> <span class="number">3</span> <span class="number">9</span> <span class="number">5</span> <span class="number">8</span> <span class="number">7</span> <span class="number">4</span> </div><div class="line"><span class="number">0</span> <span class="number">1</span> <span class="number">2</span> <span class="number">6</span> <span class="number">3</span> <span class="number">9</span> <span class="number">5</span> <span class="number">8</span> <span class="number">7</span> <span class="number">4</span> </div><div class="line"><span class="number">0</span> <span class="number">1</span> <span class="number">2</span> <span class="number">3</span> <span class="number">6</span> <span class="number">9</span> <span class="number">5</span> <span class="number">8</span> <span class="number">7</span> <span class="number">4</span> </div><div class="line"><span class="number">0</span> <span class="number">1</span> <span class="number">2</span> <span class="number">3</span> <span class="number">4</span> <span class="number">9</span> <span class="number">5</span> <span class="number">8</span> <span class="number">7</span> <span class="number">6</span> </div><div class="line"><span class="number">0</span> <span class="number">1</span> <span class="number">2</span> <span class="number">3</span> <span class="number">4</span> <span class="number">5</span> <span class="number">9</span> <span class="number">8</span> <span class="number">7</span> <span class="number">6</span> </div><div class="line"><span class="number">0</span> <span class="number">1</span> <span class="number">2</span> <span class="number">3</span> <span class="number">4</span> <span class="number">5</span> <span class="number">6</span> <span class="number">8</span> <span class="number">7</span> <span class="number">9</span> </div><div class="line"><span class="number">0</span> <span class="number">1</span> <span class="number">2</span> <span class="number">3</span> <span class="number">4</span> <span class="number">5</span> <span class="number">6</span> <span class="number">7</span> <span class="number">8</span> <span class="number">9</span> </div><div class="line"><span class="number">0</span> <span class="number">1</span> <span class="number">2</span> <span class="number">3</span> <span class="number">4</span> <span class="number">5</span> <span class="number">6</span> <span class="number">7</span> <span class="number">8</span> <span class="number">9</span> </div><div class="line"><span class="number">0</span> <span class="number">1</span> <span class="number">2</span> <span class="number">3</span> <span class="number">4</span> <span class="number">5</span> <span class="number">6</span> <span class="number">7</span> <span class="number">8</span> <span class="number">9</span> </div><div class="line">排序后: <span class="number">0</span> <span class="number">1</span> <span class="number">2</span> <span class="number">3</span> <span class="number">4</span> <span class="number">5</span> <span class="number">6</span> <span class="number">7</span> <span class="number">8</span> <span class="number">9</span></div></pre></td></tr></table></figure></p>
+<h3 id="java实现-1"><a href="#java实现-1" class="headerlink" title="java实现"></a>java实现</h3><p>原序列:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">int[] a = &#123;1,6,5,9,3,8,2,7,0, 4&#125;;</div></pre></td></tr></table></figure></p>
+<p>第一次从0-9中选择最小的与第0个交换<br>第二次从1-9中选择最小的与第1个交换<br>重复以上步骤<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">selectSort</span><span class="params">(<span class="keyword">int</span>[] a)</span></span>&#123;</div><div class="line">    System.out.println(<span class="string">"选择排序算法:"</span>);</div><div class="line">    <span class="keyword">int</span> min, i, j;</div><div class="line">    <span class="keyword">for</span> (i=<span class="number">0</span>; i&lt;a.length; i++)&#123;</div><div class="line">        min = i;</div><div class="line">        <span class="keyword">for</span> (j=i+<span class="number">1</span>; j&lt;a.length; j++)&#123;</div><div class="line">            <span class="keyword">if</span> (a[j] &lt; a[min])&#123;</div><div class="line">                min = j;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="comment">//System.out.println("min = " + min);</span></div><div class="line">        <span class="keyword">int</span> temp = a[i];</div><div class="line">        a[i] = a[min];</div><div class="line">        a[min] = temp;</div><div class="line">        System.out.print(<span class="string">"第"</span> + (i+<span class="number">1</span>) + <span class="string">"次排序后:"</span>);</div><div class="line">        show(a);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>运行结果:<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">原序列: <span class="number">1</span> <span class="number">6</span> <span class="number">5</span> <span class="number">9</span> <span class="number">3</span> <span class="number">8</span> <span class="number">2</span> <span class="number">7</span> <span class="number">0</span> <span class="number">4</span> </div><div class="line">选择排序算法:</div><div class="line">第<span class="number">1</span>次排序后:<span class="number">0</span> <span class="number">6</span> <span class="number">5</span> <span class="number">9</span> <span class="number">3</span> <span class="number">8</span> <span class="number">2</span> <span class="number">7</span> <span class="number">1</span> <span class="number">4</span> </div><div class="line">第<span class="number">2</span>次排序后:<span class="number">0</span> <span class="number">1</span> <span class="number">5</span> <span class="number">9</span> <span class="number">3</span> <span class="number">8</span> <span class="number">2</span> <span class="number">7</span> <span class="number">6</span> <span class="number">4</span> </div><div class="line">第<span class="number">3</span>次排序后:<span class="number">0</span> <span class="number">1</span> <span class="number">2</span> <span class="number">9</span> <span class="number">3</span> <span class="number">8</span> <span class="number">5</span> <span class="number">7</span> <span class="number">6</span> <span class="number">4</span> </div><div class="line">第<span class="number">4</span>次排序后:<span class="number">0</span> <span class="number">1</span> <span class="number">2</span> <span class="number">3</span> <span class="number">9</span> <span class="number">8</span> <span class="number">5</span> <span class="number">7</span> <span class="number">6</span> <span class="number">4</span> </div><div class="line">第<span class="number">5</span>次排序后:<span class="number">0</span> <span class="number">1</span> <span class="number">2</span> <span class="number">3</span> <span class="number">4</span> <span class="number">8</span> <span class="number">5</span> <span class="number">7</span> <span class="number">6</span> <span class="number">9</span> </div><div class="line">第<span class="number">6</span>次排序后:<span class="number">0</span> <span class="number">1</span> <span class="number">2</span> <span class="number">3</span> <span class="number">4</span> <span class="number">5</span> <span class="number">8</span> <span class="number">7</span> <span class="number">6</span> <span class="number">9</span> </div><div class="line">第<span class="number">7</span>次排序后:<span class="number">0</span> <span class="number">1</span> <span class="number">2</span> <span class="number">3</span> <span class="number">4</span> <span class="number">5</span> <span class="number">6</span> <span class="number">7</span> <span class="number">8</span> <span class="number">9</span> </div><div class="line">第<span class="number">8</span>次排序后:<span class="number">0</span> <span class="number">1</span> <span class="number">2</span> <span class="number">3</span> <span class="number">4</span> <span class="number">5</span> <span class="number">6</span> <span class="number">7</span> <span class="number">8</span> <span class="number">9</span> </div><div class="line">第<span class="number">9</span>次排序后:<span class="number">0</span> <span class="number">1</span> <span class="number">2</span> <span class="number">3</span> <span class="number">4</span> <span class="number">5</span> <span class="number">6</span> <span class="number">7</span> <span class="number">8</span> <span class="number">9</span> </div><div class="line">第<span class="number">10</span>次排序后:<span class="number">0</span> <span class="number">1</span> <span class="number">2</span> <span class="number">3</span> <span class="number">4</span> <span class="number">5</span> <span class="number">6</span> <span class="number">7</span> <span class="number">8</span> <span class="number">9</span> </div><div class="line">排序后: <span class="number">0</span> <span class="number">1</span> <span class="number">2</span> <span class="number">3</span> <span class="number">4</span> <span class="number">5</span> <span class="number">6</span> <span class="number">7</span> <span class="number">8</span> <span class="number">9</span></div></pre></td></tr></table></figure></p>
+<h1 id="插入排序"><a href="#插入排序" class="headerlink" title="插入排序"></a>插入排序</h1><h2 id="思想-2"><a href="#思想-2" class="headerlink" title="思想"></a>思想</h2><p>和整理扑克牌一样, 将每一张牌插入到其他已经有序的牌中的适当位置.在计算机实现中,为了要给插入的元素腾出空间, 我们需要将其余所有元素在插入之前都向右移动一位. 这种算法叫做插入排序.</p>
+<h2 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h2><h3 id="C语言实现"><a href="#C语言实现" class="headerlink" title="C语言实现"></a>C语言实现</h3><p>原序列<br><figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">int</span> a[<span class="number">10</span>] = &#123;<span class="number">4</span>,<span class="number">3</span>,<span class="number">2</span>,<span class="number">6</span>,<span class="number">1</span>,<span class="number">9</span>,<span class="number">5</span>,<span class="number">8</span>,<span class="number">7</span>,<span class="number">0</span>&#125;;</div></pre></td></tr></table></figure></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line"> * 直接插入排序*/</div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">InsertSort</span><span class="params">(<span class="keyword">int</span> a[], <span class="keyword">int</span> length)</span></span>&#123;</div><div class="line">    <span class="keyword">int</span> i,j;</div><div class="line">    <span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; length- <span class="number">1</span>; ++i) &#123;</div><div class="line">        <span class="keyword">for</span> (j = i+<span class="number">1</span>; j &gt; <span class="number">0</span> ; j--) &#123;</div><div class="line">            <span class="keyword">if</span> (a[j] &lt; a[j<span class="number">-1</span>])&#123;</div><div class="line">                <span class="comment">//交换</span></div><div class="line">                <span class="keyword">int</span> temp = a[j];</div><div class="line">                a[j] = a[j<span class="number">-1</span>];</div><div class="line">                a[j<span class="number">-1</span>] = temp;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        show(a,MAX_SIZE);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>运行结果:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">原序列: 4 3 2 6 1 9 5 8 7 0 </div><div class="line">3 4 2 6 1 9 5 8 7 0 </div><div class="line">2 3 4 6 1 9 5 8 7 0 </div><div class="line">2 3 4 6 1 9 5 8 7 0 </div><div class="line">1 2 3 4 6 9 5 8 7 0 </div><div class="line">1 2 3 4 6 9 5 8 7 0 </div><div class="line">1 2 3 4 5 6 9 8 7 0 </div><div class="line">1 2 3 4 5 6 8 9 7 0 </div><div class="line">1 2 3 4 5 6 7 8 9 0 </div><div class="line">0 1 2 3 4 5 6 7 8 9 </div><div class="line">排序后: 0 1 2 3 4 5 6 7 8 9</div></pre></td></tr></table></figure></p>
+<h3 id="Java实现"><a href="#Java实现" class="headerlink" title="Java实现"></a>Java实现</h3><p>原序列:<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">int</span>[] a = &#123;<span class="number">1</span>,<span class="number">6</span>,<span class="number">5</span>,<span class="number">9</span>,<span class="number">3</span>,<span class="number">8</span>,<span class="number">2</span>,<span class="number">7</span>,<span class="number">0</span>,<span class="number">4</span>&#125;;</div></pre></td></tr></table></figure></p>
+<p>第一次把第2个数依次从右往左和1个数比较<br>第二次把第3个数依次从右往左和2个数比较<br>重复以上步骤</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">insertSort</span><span class="params">(<span class="keyword">int</span>[] a)</span></span>&#123;</div><div class="line">    System.out.println(<span class="string">"插入排序算法:"</span>);</div><div class="line">    <span class="keyword">int</span> i, j;</div><div class="line">    <span class="keyword">for</span> (i=<span class="number">0</span>; i&lt;a.length; i++)&#123;</div><div class="line">        <span class="keyword">for</span> (j=i; j&gt;<span class="number">0</span>; j--)&#123;</div><div class="line">            <span class="keyword">if</span> (a[j] &lt; a[j-<span class="number">1</span>])&#123;</div><div class="line">                <span class="keyword">int</span> temp = a[j];</div><div class="line">                a[j] = a[j-<span class="number">1</span>];</div><div class="line">                a[j-<span class="number">1</span>] = temp;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        System.out.print(<span class="string">"第"</span> + (i+<span class="number">1</span>) + <span class="string">"次排序后:"</span>);</div><div class="line">        show(a);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>运行结果<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">原序列: <span class="number">1</span> <span class="number">6</span> <span class="number">5</span> <span class="number">9</span> <span class="number">3</span> <span class="number">8</span> <span class="number">2</span> <span class="number">7</span> <span class="number">0</span> <span class="number">4</span> </div><div class="line">插入排序算法:</div><div class="line">第<span class="number">1</span>次排序后:<span class="number">1</span> <span class="number">6</span> <span class="number">5</span> <span class="number">9</span> <span class="number">3</span> <span class="number">8</span> <span class="number">2</span> <span class="number">7</span> <span class="number">0</span> <span class="number">4</span> </div><div class="line">第<span class="number">2</span>次排序后:<span class="number">1</span> <span class="number">6</span> <span class="number">5</span> <span class="number">9</span> <span class="number">3</span> <span class="number">8</span> <span class="number">2</span> <span class="number">7</span> <span class="number">0</span> <span class="number">4</span> </div><div class="line">第<span class="number">3</span>次排序后:<span class="number">1</span> <span class="number">5</span> <span class="number">6</span> <span class="number">9</span> <span class="number">3</span> <span class="number">8</span> <span class="number">2</span> <span class="number">7</span> <span class="number">0</span> <span class="number">4</span> </div><div class="line">第<span class="number">4</span>次排序后:<span class="number">1</span> <span class="number">5</span> <span class="number">6</span> <span class="number">9</span> <span class="number">3</span> <span class="number">8</span> <span class="number">2</span> <span class="number">7</span> <span class="number">0</span> <span class="number">4</span> </div><div class="line">第<span class="number">5</span>次排序后:<span class="number">1</span> <span class="number">3</span> <span class="number">5</span> <span class="number">6</span> <span class="number">9</span> <span class="number">8</span> <span class="number">2</span> <span class="number">7</span> <span class="number">0</span> <span class="number">4</span> </div><div class="line">第<span class="number">6</span>次排序后:<span class="number">1</span> <span class="number">3</span> <span class="number">5</span> <span class="number">6</span> <span class="number">8</span> <span class="number">9</span> <span class="number">2</span> <span class="number">7</span> <span class="number">0</span> <span class="number">4</span> </div><div class="line">第<span class="number">7</span>次排序后:<span class="number">1</span> <span class="number">2</span> <span class="number">3</span> <span class="number">5</span> <span class="number">6</span> <span class="number">8</span> <span class="number">9</span> <span class="number">7</span> <span class="number">0</span> <span class="number">4</span> </div><div class="line">第<span class="number">8</span>次排序后:<span class="number">1</span> <span class="number">2</span> <span class="number">3</span> <span class="number">5</span> <span class="number">6</span> <span class="number">7</span> <span class="number">8</span> <span class="number">9</span> <span class="number">0</span> <span class="number">4</span> </div><div class="line">第<span class="number">9</span>次排序后:<span class="number">0</span> <span class="number">1</span> <span class="number">2</span> <span class="number">3</span> <span class="number">5</span> <span class="number">6</span> <span class="number">7</span> <span class="number">8</span> <span class="number">9</span> <span class="number">4</span> </div><div class="line">第<span class="number">10</span>次排序后:<span class="number">0</span> <span class="number">1</span> <span class="number">2</span> <span class="number">3</span> <span class="number">4</span> <span class="number">5</span> <span class="number">6</span> <span class="number">7</span> <span class="number">8</span> <span class="number">9</span> </div><div class="line">排序后: <span class="number">0</span> <span class="number">1</span> <span class="number">2</span> <span class="number">3</span> <span class="number">4</span> <span class="number">5</span> <span class="number">6</span> <span class="number">7</span> <span class="number">8</span> <span class="number">9</span></div></pre></td></tr></table></figure></p>
+<h1 id="希尔排序"><a href="#希尔排序" class="headerlink" title="希尔排序"></a>希尔排序</h1><h2 id="思想-3"><a href="#思想-3" class="headerlink" title="思想"></a>思想</h2><p>希尔排序的思想是使数组中任意间隔为h的元素都是有序的. 这样的数组成为h有序数组<br>简单地说, 一个h有序数组就是h个互相独立的有序数组编织在一起组成的一个数组.<br>在进行排序时, 如果h很大, 我们能将元素移动到很远的地方, 为实现更小的h有序数组创造方便, 用这种方式,对于任意以1结尾的h序列, 我们都能够将数组排序.<br>这就是希尔排序.</p>
+<p>##　实现</p>
+<h3 id="C语言实现-1"><a href="#C语言实现-1" class="headerlink" title="C语言实现"></a>C语言实现</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line"> * 希尔排序*/</div><div class="line"> <span class="function"><span class="keyword">void</span> <span class="title">ShellSort</span><span class="params">(<span class="keyword">int</span> a[], <span class="keyword">int</span> length)</span></span>&#123;</div><div class="line">    <span class="keyword">int</span> h = <span class="number">1</span>;  <span class="comment">//增量</span></div><div class="line">    <span class="comment">//while(h &lt;= length/3) h = 3*h + 1;   //增量初始值 我写的</span></div><div class="line">    <span class="keyword">while</span>(h &lt; length/<span class="number">3</span>) h = <span class="number">3</span>*h + <span class="number">1</span>;   <span class="comment">//增量初始值</span></div><div class="line"></div><div class="line">    <span class="keyword">while</span> (h &gt;= <span class="number">1</span>)&#123;     <span class="comment">//对每个增量都进行排序</span></div><div class="line">        <span class="keyword">int</span> i;</div><div class="line">        <span class="keyword">for</span> (i = h; i &lt; length; ++i) &#123;      <span class="comment">//对同一增量的每个分组进行排序</span></div><div class="line">            <span class="keyword">int</span> j;</div><div class="line">            <span class="comment">//for (j = i; j &lt; length; j= j-h) &#123;   //对每个分组进行插入排序     我写的</span></div><div class="line">            <span class="keyword">for</span> (j = i; j &gt;= h; j= j-h) &#123;   <span class="comment">//对每个分组进行插入排序</span></div><div class="line">                <span class="keyword">if</span>(a[j] &lt; a[j-h])&#123;</div><div class="line">                    <span class="keyword">int</span> temp = a[j];</div><div class="line">                    a[j] = a[j-h];</div><div class="line">                    a[j-h] = temp;</div><div class="line">                &#125;</div><div class="line"></div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        show(a,MAX_SIZE);</div><div class="line">        h = h/<span class="number">3</span>;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>运行结果<br><figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">原序列: <span class="number">4</span> <span class="number">3</span> <span class="number">2</span> <span class="number">6</span> <span class="number">1</span> <span class="number">9</span> <span class="number">5</span> <span class="number">8</span> <span class="number">7</span> <span class="number">0</span> </div><div class="line"><span class="number">1</span> <span class="number">0</span> <span class="number">2</span> <span class="number">6</span> <span class="number">4</span> <span class="number">3</span> <span class="number">5</span> <span class="number">8</span> <span class="number">7</span> <span class="number">9</span> </div><div class="line"><span class="number">0</span> <span class="number">1</span> <span class="number">2</span> <span class="number">3</span> <span class="number">4</span> <span class="number">5</span> <span class="number">6</span> <span class="number">7</span> <span class="number">8</span> <span class="number">9</span> </div><div class="line">排序后: <span class="number">0</span> <span class="number">1</span> <span class="number">2</span> <span class="number">3</span> <span class="number">4</span> <span class="number">5</span> <span class="number">6</span> <span class="number">7</span> <span class="number">8</span> <span class="number">9</span></div></pre></td></tr></table></figure></p>
+<h3 id="Java实现-1"><a href="#Java实现-1" class="headerlink" title="Java实现"></a>Java实现</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">shellSort</span><span class="params">(<span class="keyword">int</span>[] a)</span></span>&#123;</div><div class="line">    <span class="keyword">int</span> N = a.length;</div><div class="line">    <span class="keyword">int</span> h = <span class="number">1</span>;</div><div class="line">    <span class="keyword">while</span> (h &lt; (N/<span class="number">3</span>)) h = h * <span class="number">3</span> + <span class="number">1</span>;</div><div class="line">    <span class="keyword">while</span> (h &gt;= <span class="number">1</span>)&#123;</div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i=h; i&lt;N; i++)&#123;</div><div class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> j=i; j&gt;=h;j=j-h)&#123;</div><div class="line">                <span class="comment">//进行插入排序</span></div><div class="line">                <span class="keyword">if</span> (a[j] &lt; a[j-h])&#123;</div><div class="line">                    <span class="keyword">int</span> temp = a[j];</div><div class="line">                    a[j]= a[j-h];</div><div class="line">                    a[j-h] = temp;</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        System.out.print(<span class="string">"h = "</span> + h + <span class="string">": "</span>);</div><div class="line">        show(a);</div><div class="line">        h = h/<span class="number">3</span>;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>运行结果:<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">原序列: <span class="number">1</span> <span class="number">6</span> <span class="number">5</span> <span class="number">9</span> <span class="number">3</span> <span class="number">8</span> <span class="number">2</span> <span class="number">7</span> <span class="number">0</span> <span class="number">4</span> </div><div class="line">h = <span class="number">4</span>: <span class="number">0</span> <span class="number">4</span> <span class="number">2</span> <span class="number">7</span> <span class="number">1</span> <span class="number">6</span> <span class="number">5</span> <span class="number">9</span> <span class="number">3</span> <span class="number">8</span> </div><div class="line">h = <span class="number">1</span>: <span class="number">0</span> <span class="number">1</span> <span class="number">2</span> <span class="number">3</span> <span class="number">4</span> <span class="number">5</span> <span class="number">6</span> <span class="number">7</span> <span class="number">8</span> <span class="number">9</span> </div><div class="line">排序后: <span class="number">0</span> <span class="number">1</span> <span class="number">2</span> <span class="number">3</span> <span class="number">4</span> <span class="number">5</span> <span class="number">6</span> <span class="number">7</span> <span class="number">8</span> <span class="number">9</span></div></pre></td></tr></table></figure></p>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2017-06-24T11:43:50.377Z" itemprop="dateUpdated">2017-06-24 19:43:50</time>
+</span><br>
+
+
+        这里写留言或版权声明：<a href="/2017/06/24/algorithms-sort/" target="_blank" rel="external">https://devallever.github.io/2017/06/24/algorithms-sort/</a>
+    </div>
+    <footer>
+        <a href="https://devallever.github.io">
+            <img src="/img/avatar.jpg" alt="Allever">
+            Allever
+        </a>
+    </footer>
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C/">C</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/排序/">排序</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/算法/">算法</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://devallever.github.io/2017/06/24/algorithms-sort/&title=《排序算法》 — Allever Blog&pic=https://devallever.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://devallever.github.io/2017/06/24/algorithms-sort/&title=《排序算法》 — Allever Blog&source=Android Developer" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://devallever.github.io/2017/06/24/algorithms-sort/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《排序算法》 — Allever Blog&url=https://devallever.github.io/2017/06/24/algorithms-sort/&via=https://devallever.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://devallever.github.io/2017/06/24/algorithms-sort/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2017/06/21/social-app/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">社交圈</h4>
+      </a>
+    </div>
+  
+
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+<section class="comments" id="comments">
+    <!-- UY BEGIN -->
+    <div id="uyan_frame"></div>
+    <script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid=2131486"></script>
+    <!-- UY END -->
+</section>
+
+
+
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        Thanks
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <ul class="reward-items">
+        
+
+        
+    </ul>
+</div>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>博客内容遵循<a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p>
+            <span>Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a></span>
+            <span>Allever &copy; 2015 - 2017</span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://devallever.github.io/2017/06/24/algorithms-sort/&title=《排序算法》 — Allever Blog&pic=https://devallever.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://devallever.github.io/2017/06/24/algorithms-sort/&title=《排序算法》 — Allever Blog&source=Android Developer" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://devallever.github.io/2017/06/24/algorithms-sort/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《排序算法》 — Allever Blog&url=https://devallever.github.io/2017/06/24/algorithms-sort/&via=https://devallever.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://devallever.github.io/2017/06/24/algorithms-sort/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="//api.qrserver.com/v1/create-qr-code/?data=https://devallever.github.io/2017/06/24/algorithms-sort/" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@1.6.1/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@1.6.1/js/search.min.js" async></script>
+
+
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+</body>
+</html>

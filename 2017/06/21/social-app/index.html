@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    <title>社交圈 | Allever Blog | Android Developer</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="Android,Project,社交">
+    <meta name="description" content="项目简介一款社交 APP附近人模块:中可以关注,聊天,加好友,好友分组管理。查找,筛选用户动态模块:可以,点赞,评论。可以发布语音动态,和语音评论并且实时通知。聊天模块,集成环信 IM。文本,表情,图片,位置,语音通话,视频聊天。设置在线状态,离开自动回复。推荐模块包括热点(浏览量最多的动态)、圈子(好友的动态)、定位(查看好友登录地理位置)通知模块:使用极光推送。刷新,发布动态,评论,点赞,好友">
+<meta name="keywords" content="Android,Project,社交">
+<meta property="og:type" content="article">
+<meta property="og:title" content="社交圈">
+<meta property="og:url" content="https://devallever.github.io/2017/06/21/social-app/index.html">
+<meta property="og:site_name" content="Allever Blog">
+<meta property="og:description" content="项目简介一款社交 APP附近人模块:中可以关注,聊天,加好友,好友分组管理。查找,筛选用户动态模块:可以,点赞,评论。可以发布语音动态,和语音评论并且实时通知。聊天模块,集成环信 IM。文本,表情,图片,位置,语音通话,视频聊天。设置在线状态,离开自动回复。推荐模块包括热点(浏览量最多的动态)、圈子(好友的动态)、定位(查看好友登录地理位置)通知模块:使用极光推送。刷新,发布动态,评论,点赞,好友">
+<meta property="og:updated_time" content="2017-06-21T14:54:57.239Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="社交圈">
+<meta name="twitter:description" content="项目简介一款社交 APP附近人模块:中可以关注,聊天,加好友,好友分组管理。查找,筛选用户动态模块:可以,点赞,评论。可以发布语音动态,和语音评论并且实时通知。聊天模块,集成环信 IM。文本,表情,图片,位置,语音通话,视频聊天。设置在线状态,离开自动回复。推荐模块包括热点(浏览量最多的动态)、圈子(好友的动态)、定位(查看好友登录地理位置)通知模块:使用极光推送。刷新,发布动态,评论,点赞,好友">
+    
+        <link rel="alternate" type="application/atom+xml" title="Allever Blog" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@1.6.1/css/style.css">
+    <script>window.lazyScripts=[]</script>
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">Allever</h5>
+          <a href="mailto:devallever@163.com" title="devallever@163.com" class="mail">devallever@163.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                Home
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                Categories
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/devallever" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="http://blog.csdn.net/devallever"  >
+                <i class="icon icon-lg icon-link"></i>
+                CSDN
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">社交圈</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">社交圈</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2017-06-21T13:17:26.000Z" itemprop="datePublished" class="page-time">
+  2017-06-21
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Android/">Android</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#项目简介"><span class="post-toc-number">1.</span> <span class="post-toc-text">项目简介</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#项目架构"><span class="post-toc-number">2.</span> <span class="post-toc-text">项目架构</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#功能实现细节"><span class="post-toc-number">3.</span> <span class="post-toc-text">功能实现细节</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#欢迎界面"><span class="post-toc-number">4.</span> <span class="post-toc-text">欢迎界面</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#登录-注册"><span class="post-toc-number">5.</span> <span class="post-toc-text">登录-注册</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#刷刷"><span class="post-toc-number">6.</span> <span class="post-toc-text">刷刷</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#主界面"><span class="post-toc-number">7.</span> <span class="post-toc-text">主界面</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#发现"><span class="post-toc-number">7.1.</span> <span class="post-toc-text">发现</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#用户"><span class="post-toc-number">7.1.1.</span> <span class="post-toc-text">用户</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#用户列表"><span class="post-toc-number">7.1.1.1.</span> <span class="post-toc-text">用户列表</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#查找用户"><span class="post-toc-number">7.1.1.2.</span> <span class="post-toc-text">查找用户</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#用户资料"><span class="post-toc-number">7.1.1.3.</span> <span class="post-toc-text">用户资料</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#添加好友"><span class="post-toc-number">7.1.1.4.</span> <span class="post-toc-text">添加好友</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#删除好友"><span class="post-toc-number">7.1.1.5.</span> <span class="post-toc-text">删除好友</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#关注-粉丝数"><span class="post-toc-number">7.1.1.6.</span> <span class="post-toc-text">关注-粉丝数</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#动态"><span class="post-toc-number">7.1.2.</span> <span class="post-toc-text">动态</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#发布动态"><span class="post-toc-number">7.1.2.1.</span> <span class="post-toc-text">发布动态</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#查看动态"><span class="post-toc-number">7.1.2.2.</span> <span class="post-toc-text">查看动态</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#评论"><span class="post-toc-number">7.1.2.3.</span> <span class="post-toc-text">评论</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#点赞"><span class="post-toc-number">7.1.2.4.</span> <span class="post-toc-text">点赞</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#查看大图"><span class="post-toc-number">7.1.2.5.</span> <span class="post-toc-text">查看大图</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#聊天"><span class="post-toc-number">7.2.</span> <span class="post-toc-text">聊天</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#好友管理"><span class="post-toc-number">7.2.1.</span> <span class="post-toc-text">好友管理</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#好友列表"><span class="post-toc-number">7.2.1.1.</span> <span class="post-toc-text">好友列表</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#分组管理"><span class="post-toc-number">7.2.1.2.</span> <span class="post-toc-text">分组管理</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#添加分组"><span class="post-toc-number">7.2.1.3.</span> <span class="post-toc-text">添加分组</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#修改分组"><span class="post-toc-number">7.2.1.4.</span> <span class="post-toc-text">修改分组</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#删除分组"><span class="post-toc-number">7.2.1.5.</span> <span class="post-toc-text">删除分组</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#移动分组"><span class="post-toc-number">7.2.1.6.</span> <span class="post-toc-text">移动分组</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#修改备注"><span class="post-toc-number">7.2.1.7.</span> <span class="post-toc-text">修改备注</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#热点"><span class="post-toc-number">7.2.2.</span> <span class="post-toc-text">热点</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#圈子"><span class="post-toc-number">7.2.3.</span> <span class="post-toc-text">圈子</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#足迹-定位"><span class="post-toc-number">7.2.4.</span> <span class="post-toc-text">足迹(定位)</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#排行榜"><span class="post-toc-number">7.2.5.</span> <span class="post-toc-text">排行榜</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#我的"><span class="post-toc-number">7.3.</span> <span class="post-toc-text">我的</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#修改用户资料"><span class="post-toc-number">7.3.1.</span> <span class="post-toc-text">修改用户资料</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#修改在线状态"><span class="post-toc-number">7.3.2.</span> <span class="post-toc-text">修改在线状态</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#照片墙"><span class="post-toc-number">7.3.3.</span> <span class="post-toc-text">照片墙</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#访客"><span class="post-toc-number">7.3.4.</span> <span class="post-toc-text">访客</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#动态数-关注数-粉丝数"><span class="post-toc-number">7.3.5.</span> <span class="post-toc-text">动态数-关注数-粉丝数</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#设置"><span class="post-toc-number">7.3.6.</span> <span class="post-toc-text">设置</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#视频聊天"><span class="post-toc-number">7.3.6.1.</span> <span class="post-toc-text">视频聊天</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#清理缓存"><span class="post-toc-number">7.3.6.2.</span> <span class="post-toc-text">清理缓存</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#自动回复"><span class="post-toc-number">7.3.6.3.</span> <span class="post-toc-text">自动回复</span></a></li></ol></li></ol></li></ol></li></ol>
+        </nav>
+    </aside>
+    
+<article id="post-social-app"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">社交圈</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2017-06-21 21:17:26" datetime="2017-06-21T13:17:26.000Z"  itemprop="datePublished">2017-06-21</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Android/">Android</a></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+            
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h1 id="项目简介"><a href="#项目简介" class="headerlink" title="项目简介"></a>项目简介</h1><p>一款社交 APP<br>附近人模块:中可以关注,聊天,加好友,好友分组管理。查找,筛选用户<br>动态模块:可以,点赞,评论。可以发布语音动态,和语音评论并且实时通知。<br>聊天模块,集成环信 IM。文本,表情,图片,位置,语音通话,视频聊天。设置在<br>线状态,离开自动回复。<br>推荐模块包括热点(浏览量最多的动态)、圈子(好友的动态)、定位(查看好友登录地<br>理位置)<br>通知模块:使用极光推送。刷新,发布动态,评论,点赞,好友请求。<br>其他功能:查看关注用户,粉丝用户,谁看过我,照片墙。</p>
+<h1 id="项目架构"><a href="#项目架构" class="headerlink" title="项目架构"></a>项目架构</h1><ul>
+<li>发现<ul>
+<li>用户<ul>
+<li>查看用户资料</li>
+<li>查找用户</li>
+<li>添加好友 删除好友</li>
+<li>关注</li>
+<li>聊天</li>
+</ul>
+</li>
+<li>动态<ul>
+<li>查看动态详细信息</li>
+<li>发布动态</li>
+<li>评论</li>
+<li>点赞</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>聊天<ul>
+<li>消息列表</li>
+<li>好友管理<ul>
+<li>分组管理：添加分组，删除分组，修改分组</li>
+<li>修改好友备注，移动分组</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>推荐<ul>
+<li>热点：浏览量最多的动态</li>
+<li>圈子：好友的动态</li>
+<li>足迹(定位)：好友位置</li>
+</ul>
+</li>
+<li>我的<ul>
+<li>修改用户资料</li>
+<li>修改在线状态</li>
+<li>动态数，关注数，粉丝数</li>
+<li>照片墙：添加照片，删除照片</li>
+<li>访客：访问主页，访问动态</li>
+<li>设置：视频聊天，清理缓存，自动回复</li>
+</ul>
+</li>
+</ul>
+<h1 id="功能实现细节"><a href="#功能实现细节" class="headerlink" title="功能实现细节"></a>功能实现细节</h1><hr>
+<h1 id="欢迎界面"><a href="#欢迎界面" class="headerlink" title="欢迎界面"></a>欢迎界面</h1><h1 id="登录-注册"><a href="#登录-注册" class="headerlink" title="登录-注册"></a>登录-注册</h1><h1 id="刷刷"><a href="#刷刷" class="headerlink" title="刷刷"></a>刷刷</h1><h1 id="主界面"><a href="#主界面" class="headerlink" title="主界面"></a>主界面</h1><h2 id="发现"><a href="#发现" class="headerlink" title="发现"></a>发现</h2><h3 id="用户"><a href="#用户" class="headerlink" title="用户"></a>用户</h3><h4 id="用户列表"><a href="#用户列表" class="headerlink" title="用户列表"></a>用户列表</h4><h4 id="查找用户"><a href="#查找用户" class="headerlink" title="查找用户"></a>查找用户</h4><h4 id="用户资料"><a href="#用户资料" class="headerlink" title="用户资料"></a>用户资料</h4><h4 id="添加好友"><a href="#添加好友" class="headerlink" title="添加好友"></a>添加好友</h4><h4 id="删除好友"><a href="#删除好友" class="headerlink" title="删除好友"></a>删除好友</h4><h4 id="关注-粉丝数"><a href="#关注-粉丝数" class="headerlink" title="关注-粉丝数"></a>关注-粉丝数</h4><h3 id="动态"><a href="#动态" class="headerlink" title="动态"></a>动态</h3><h4 id="发布动态"><a href="#发布动态" class="headerlink" title="发布动态"></a>发布动态</h4><h4 id="查看动态"><a href="#查看动态" class="headerlink" title="查看动态"></a>查看动态</h4><h4 id="评论"><a href="#评论" class="headerlink" title="评论"></a>评论</h4><h4 id="点赞"><a href="#点赞" class="headerlink" title="点赞"></a>点赞</h4><h4 id="查看大图"><a href="#查看大图" class="headerlink" title="查看大图"></a>查看大图</h4><h2 id="聊天"><a href="#聊天" class="headerlink" title="聊天"></a>聊天</h2><h3 id="好友管理"><a href="#好友管理" class="headerlink" title="好友管理"></a>好友管理</h3><h4 id="好友列表"><a href="#好友列表" class="headerlink" title="好友列表"></a>好友列表</h4><h4 id="分组管理"><a href="#分组管理" class="headerlink" title="分组管理"></a>分组管理</h4><h4 id="添加分组"><a href="#添加分组" class="headerlink" title="添加分组"></a>添加分组</h4><h4 id="修改分组"><a href="#修改分组" class="headerlink" title="修改分组"></a>修改分组</h4><h4 id="删除分组"><a href="#删除分组" class="headerlink" title="删除分组"></a>删除分组</h4><h4 id="移动分组"><a href="#移动分组" class="headerlink" title="移动分组"></a>移动分组</h4><h4 id="修改备注"><a href="#修改备注" class="headerlink" title="修改备注"></a>修改备注</h4><p>##推荐</p>
+<h3 id="热点"><a href="#热点" class="headerlink" title="热点"></a>热点</h3><h3 id="圈子"><a href="#圈子" class="headerlink" title="圈子"></a>圈子</h3><h3 id="足迹-定位"><a href="#足迹-定位" class="headerlink" title="足迹(定位)"></a>足迹(定位)</h3><h3 id="排行榜"><a href="#排行榜" class="headerlink" title="排行榜"></a>排行榜</h3><h2 id="我的"><a href="#我的" class="headerlink" title="我的"></a>我的</h2><h3 id="修改用户资料"><a href="#修改用户资料" class="headerlink" title="修改用户资料"></a>修改用户资料</h3><h3 id="修改在线状态"><a href="#修改在线状态" class="headerlink" title="修改在线状态"></a>修改在线状态</h3><h3 id="照片墙"><a href="#照片墙" class="headerlink" title="照片墙"></a>照片墙</h3><h3 id="访客"><a href="#访客" class="headerlink" title="访客"></a>访客</h3><h3 id="动态数-关注数-粉丝数"><a href="#动态数-关注数-粉丝数" class="headerlink" title="动态数-关注数-粉丝数"></a>动态数-关注数-粉丝数</h3><h3 id="设置"><a href="#设置" class="headerlink" title="设置"></a>设置</h3><h4 id="视频聊天"><a href="#视频聊天" class="headerlink" title="视频聊天"></a>视频聊天</h4><h4 id="清理缓存"><a href="#清理缓存" class="headerlink" title="清理缓存"></a>清理缓存</h4><h4 id="自动回复"><a href="#自动回复" class="headerlink" title="自动回复"></a>自动回复</h4>
+        </div>
+
+        <blockquote class="post-copyright">
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2017-06-21T14:54:57.239Z" itemprop="dateUpdated">2017-06-21 22:54:57</time>
+</span><br>
+
+
+        这里写留言或版权声明：<a href="/2017/06/21/social-app/" target="_blank" rel="external">https://devallever.github.io/2017/06/21/social-app/</a>
+    </div>
+    <footer>
+        <a href="https://devallever.github.io">
+            <img src="/img/avatar.jpg" alt="Allever">
+            Allever
+        </a>
+    </footer>
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Project/">Project</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/社交/">社交</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://devallever.github.io/2017/06/21/social-app/&title=《社交圈》 — Allever Blog&pic=https://devallever.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://devallever.github.io/2017/06/21/social-app/&title=《社交圈》 — Allever Blog&source=Android Developer" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://devallever.github.io/2017/06/21/social-app/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《社交圈》 — Allever Blog&url=https://devallever.github.io/2017/06/21/social-app/&via=https://devallever.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://devallever.github.io/2017/06/21/social-app/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2017/06/11/java-gc/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">深入理解Java垃圾回收机制</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2017/06/24/algorithms-sort/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">排序算法</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+<section class="comments" id="comments">
+    <!-- UY BEGIN -->
+    <div id="uyan_frame"></div>
+    <script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid=2131486"></script>
+    <!-- UY END -->
+</section>
+
+
+
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        Thanks
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <ul class="reward-items">
+        
+
+        
+    </ul>
+</div>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>博客内容遵循<a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p>
+            <span>Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a></span>
+            <span>Allever &copy; 2015 - 2017</span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://devallever.github.io/2017/06/21/social-app/&title=《社交圈》 — Allever Blog&pic=https://devallever.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://devallever.github.io/2017/06/21/social-app/&title=《社交圈》 — Allever Blog&source=Android Developer" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://devallever.github.io/2017/06/21/social-app/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《社交圈》 — Allever Blog&url=https://devallever.github.io/2017/06/21/social-app/&via=https://devallever.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://devallever.github.io/2017/06/21/social-app/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="//api.qrserver.com/v1/create-qr-code/?data=https://devallever.github.io/2017/06/21/social-app/" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@1.6.1/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@1.6.1/js/search.min.js" async></script>
+
+
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+</body>
+</html>
