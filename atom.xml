@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://devallever.github.io/"/>
-  <updated>2017-06-30T12:46:53.374Z</updated>
+  <updated>2017-07-01T09:35:43.310Z</updated>
   <id>https://devallever.github.io/</id>
   
   <author>
@@ -14,6 +14,53 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>HandlerThread简单使用</title>
+    <link href="https://devallever.github.io/2017/07/01/handler-thread-basic/"/>
+    <id>https://devallever.github.io/2017/07/01/handler-thread-basic/</id>
+    <published>2017-07-01T08:59:50.000Z</published>
+    <updated>2017-07-01T09:35:43.310Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="HandlerThread简介"><a href="#HandlerThread简介" class="headerlink" title="HandlerThread简介"></a>HandlerThread简介</h1><p>HandlerThread继承了Thread，它是一种可以使用Handler的Thread，它的实现就是在run()方法中通过Looper.prepare()创建消息队列，并通过Looper.loop()开启消息循环。这样在实际使用中就允许在HandlerThread中创建Handler了。<br>由于HandlerThread的run()方法是一个无限循环，因此当明确不需要使用HandlerThread的时候可以通过Looper的quit()或quitSafely()来终止线程执行。</p>
+<h1 id="使用Handler"><a href="#使用Handler" class="headerlink" title="使用Handler"></a>使用Handler</h1><p>通常我们会在主线程中创建Handler，在子线程中调用handler.post(runnable)传递消息到主线程的消息队列中处理runnable的run方法.这样完成了子线程到主线的切换。<br>在onCreate()方法中<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">mainHandler = new Handler();</div></pre></td></tr></table></figure></p>
+<p>然后在子线程中post<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">btn_post_to_main_thread.setOnClickListener(new View.OnClickListener() &#123;</div><div class="line">	@Override</div><div class="line">	public void onClick(View v) &#123;</div><div class="line">		new Thread(new Runnable() &#123;</div><div class="line">			@Override</div><div class="line">			public void run() &#123;</div><div class="line">				Log.d(TAG, &quot;Thread id = &quot; + Thread.currentThread().getId());</div><div class="line">				mainHandler.post(runnable);</div><div class="line">			&#125;</div><div class="line">		&#125;).start();</div><div class="line">                </div><div class="line">	&#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
+<p>runnable<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">private Runnable runnable = new Runnable() &#123;</div><div class="line">    @Override</div><div class="line">    public void run() &#123;</div><div class="line">        Log.d(TAG, &quot;Thread id = &quot; + Thread.currentThread().getId());</div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure></p>
+<p>运行结果<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">HandlerThreadActivity: Thread id = 10383</div><div class="line">HandlerThreadActivity: Thread id = 1</div></pre></td></tr></table></figure></p>
+<h1 id="使用HandlerThread"><a href="#使用HandlerThread" class="headerlink" title="使用HandlerThread"></a>使用HandlerThread</h1><p>先创建HandlerThread实例，在onCreate()方法中<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">handlerThread = new HandlerThread(&quot;handlerThread&quot;);</div><div class="line">handlerThread.start();</div></pre></td></tr></table></figure></p>
+<p>这样就开启了一个带Looper的子线程，因为HandlerThread是继承自Thread，它的run方法是这样定义的<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">public void run() &#123;</div><div class="line">    mTid = Process.myTid();</div><div class="line">    Looper.prepare();</div><div class="line">    synchronized (this) &#123;</div><div class="line">        mLooper = Looper.myLooper();</div><div class="line">        notifyAll();</div><div class="line">    &#125;</div><div class="line">    Process.setThreadPriority(mPriority);</div><div class="line">    onLooperPrepared();</div><div class="line">    Looper.loop();</div><div class="line">    mTid = -1;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>关于Looper原理，可以参考《Android开发艺术探索》中的消息机制，我的理解是:</p>
+<ul>
+<li>Looper.prepare();创建Looper实例</li>
+<li>Looper.loop();进入一个无限循环中，不断监听消息队列中是否有消息，有则把他取出来分发给handler的handlerMessage()中处理。</li>
+</ul>
+<p>因为线程中需要有一个Looper，线程绑定的handler才可以发送消息到消息队列中，那么相应的线程才会得到处理。</p>
+<p>然后就是利用handlerThread获取到Looper用来创建Handler实例<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">handler = new Handler(handlerThread.getLooper());</div></pre></td></tr></table></figure></p>
+<p>此时这个handler即使实在主线程中创建，但是它与子线程的Looper关联了，所以处理消息时候也会在子线程中处理的<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">btn_post_to_sub_thread.setOnClickListener(new View.OnClickListener() &#123;</div><div class="line">	@Override</div><div class="line">	public void onClick(View v) &#123;</div><div class="line">		handler.post(runnable);</div><div class="line">	&#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
+<p>运行结果：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">HandlerThreadActivity: Thread id = 10382</div><div class="line">HandlerThreadActivity: Thread id = 10382</div><div class="line">HandlerThreadActivity: Thread id = 10382</div></pre></td></tr></table></figure></p>
+<p>可以知道是在子线程中处理的。</p>
+<h1 id="HandlerThread和Thread的区别"><a href="#HandlerThread和Thread的区别" class="headerlink" title="HandlerThread和Thread的区别"></a>HandlerThread和Thread的区别</h1><ul>
+<li>普通Thread主要用于在run()方法中执行一个耗时的任务</li>
+<li>HandlerThread内部创建消息队列，需要handler消息方式来通知HandlerThread去执行一个具体的任务。</li>
+</ul>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;HandlerThread简介&quot;&gt;&lt;a href=&quot;#HandlerThread简介&quot; class=&quot;headerlink&quot; title=&quot;HandlerThread简介&quot;&gt;&lt;/a&gt;HandlerThread简介&lt;/h1&gt;&lt;p&gt;HandlerThread继承了Th
+    
+    </summary>
+    
+      <category term="Android" scheme="https://devallever.github.io/categories/Android/"/>
+    
+    
+      <category term="Android" scheme="https://devallever.github.io/tags/Android/"/>
+    
+      <category term="Thread" scheme="https://devallever.github.io/tags/Thread/"/>
+    
+      <category term="HandlerThread" scheme="https://devallever.github.io/tags/HandlerThread/"/>
+    
+  </entry>
   
   <entry>
     <title>OkHttp的简单使用</title>
@@ -1336,37 +1383,6 @@
       <category term="Java" scheme="https://devallever.github.io/tags/Java/"/>
     
       <category term="内部类" scheme="https://devallever.github.io/tags/%E5%86%85%E9%83%A8%E7%B1%BB/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>滚动屏幕自动隐藏FloatingActionButton</title>
-    <link href="https://devallever.github.io/2017/04/24/fab-auto-hideshow/"/>
-    <id>https://devallever.github.io/2017/04/24/fab-auto-hideshow/</id>
-    <published>2017-04-24T01:56:01.000Z</published>
-    <updated>2017-04-24T03:50:43.817Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h1><p>FloatingActionButton可以说是Material Design 的标志之一了，但是却有很多人并不是很喜欢它，其中一条主要的原因就是FAB的存在挡住了要显示的内容，从而影响体验。<br>本文主要介绍对FAB两方面的优化，一方面是点击FAB弹出子菜单的特效，一方面是在滑动时自动隐藏FAB。最终的实现</p>
-<h1 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h1><p> 它的显示与隐藏是根据AppBarLayout的Y值来决定的，我们知道如果按照最上面的方式定义主界面布局，列表滚动的时候toolbar会显示和隐藏，而toolbar是AppBarLayout的一部分，因此可以让Behavior依赖于AppBarLayout，当AppBarLayout变化的时候会调用onDependentViewChanged，然后在这里获取AppBarLayout的高度移动的距离，然后根据这个距离来判定FloatingActionButton上下移动的距离，从而实现了FloatingActionButton的显示和隐藏。这个实现方式我是在这里找到的： <a href="http://stackoverflow.com/questions/31457099/android-fab-to-hide-when-navigating-between-different-fragments-in-a-viewpager" target="_blank" rel="external">http://stackoverflow.com/questions/31457099/android-fab-to-hide-when-navigating-between-different-fragments-in-a-viewpager</a> </p>
-<h1 id="实现代码"><a href="#实现代码" class="headerlink" title="实现代码"></a>实现代码</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div></pre></td><td class="code"><pre><div class="line">public class FABVerticalBehavior extends FloatingActionButton.Behavior &#123;</div><div class="line">    private static final Interpolator INTERPOLATOR = new FastOutSlowInInterpolator();</div><div class="line">    private boolean mIsAnimatingOut = false;</div><div class="line"></div><div class="line">    public FABVerticalBehavior(Context context, AttributeSet attrs) &#123;</div><div class="line">        super();</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    @Override</div><div class="line">    public boolean onStartNestedScroll(final CoordinatorLayout coordinatorLayout, final FloatingActionButton child,</div><div class="line">                                       final View directTargetChild, final View target, final int nestedScrollAxes) &#123;</div><div class="line">        // Ensure we react to vertical scrolling</div><div class="line">        return nestedScrollAxes == ViewCompat.SCROLL_AXIS_VERTICAL</div><div class="line">                || super.onStartNestedScroll(coordinatorLayout, child, directTargetChild, target, nestedScrollAxes);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    @Override</div><div class="line">    public void onNestedScroll(final CoordinatorLayout coordinatorLayout, final FloatingActionButton child,</div><div class="line">                               final View target, final int dxConsumed, final int dyConsumed,</div><div class="line">                               final int dxUnconsumed, final int dyUnconsumed) &#123;</div><div class="line">        super.onNestedScroll(coordinatorLayout, child, target, dxConsumed, dyConsumed, dxUnconsumed, dyUnconsumed);</div><div class="line">        if (dyConsumed &gt; 0 &amp;&amp; !this.mIsAnimatingOut &amp;&amp; child.getVisibility() == View.VISIBLE) &#123;</div><div class="line">            // User scrolled down and the FAB is currently visible -&gt; hide the FAB</div><div class="line">            animateOut(child);</div><div class="line">        &#125; else if (dyConsumed &lt; 0 &amp;&amp; child.getVisibility() != View.VISIBLE) &#123;</div><div class="line">            // User scrolled up and the FAB is currently not visible -&gt; show the FAB</div><div class="line">            animateIn(child);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    // Same animation that FloatingActionButton.Behavior uses to hide the FAB when the AppBarLayout exits</div><div class="line">    private void animateOut(final FloatingActionButton button) &#123;</div><div class="line">        if (Build.VERSION.SDK_INT &gt;= 14) &#123;</div><div class="line">            ViewCompat.animate(button).translationY(button.getHeight() + getMarginBottom(button)).setInterpolator(INTERPOLATOR).withLayer()</div><div class="line">                    .setListener(new ViewPropertyAnimatorListener() &#123;</div><div class="line">                        public void onAnimationStart(View view) &#123;</div><div class="line">                            FABVerticalBehavior.this.mIsAnimatingOut = true;</div><div class="line">                        &#125;</div><div class="line"></div><div class="line">                        public void onAnimationCancel(View view) &#123;</div><div class="line">                            FABVerticalBehavior.this.mIsAnimatingOut = false;</div><div class="line">                        &#125;</div><div class="line"></div><div class="line">                        public void onAnimationEnd(View view) &#123;</div><div class="line">                            FABVerticalBehavior.this.mIsAnimatingOut = false;</div><div class="line">                            view.setVisibility(View.GONE);</div><div class="line">                        &#125;</div><div class="line">                    &#125;).start();</div><div class="line">        &#125; else &#123;</div><div class="line"></div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    // Same animation that FloatingActionButton.Behavior uses to show the FAB when the AppBarLayout enters</div><div class="line">    private void animateIn(FloatingActionButton button) &#123;</div><div class="line">        button.setVisibility(View.VISIBLE);</div><div class="line">        if (Build.VERSION.SDK_INT &gt;= 14) &#123;</div><div class="line">            ViewCompat.animate(button).translationY(0)</div><div class="line">                    .setInterpolator(INTERPOLATOR).withLayer().setListener(null)</div><div class="line">                    .start();</div><div class="line">        &#125; else &#123;</div><div class="line"></div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    private int getMarginBottom(View v) &#123;</div><div class="line">        int marginBottom = 0;</div><div class="line">        final ViewGroup.LayoutParams layoutParams = v.getLayoutParams();</div><div class="line">        if (layoutParams instanceof ViewGroup.MarginLayoutParams) &#123;</div><div class="line">            marginBottom = ((ViewGroup.MarginLayoutParams) layoutParams).bottomMargin;</div><div class="line">        &#125;</div><div class="line">        return marginBottom;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h1 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h1><ul>
-<li>在25.0.1以上版本的design包中，会有隐藏后不显示的Bug</li>
-</ul>
-<blockquote>
-<p><a href="http://stackoverflow.com/questions/41142711/25-1-0-android-support-lib-is-breaking-fab-behavior" target="_blank" rel="external">参考这里</a></p>
-</blockquote>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;h1 id=&quot;概述&quot;&gt;&lt;a href=&quot;#概述&quot; class=&quot;headerlink&quot; title=&quot;概述&quot;&gt;&lt;/a&gt;概述&lt;/h1&gt;&lt;p&gt;FloatingActionButton可以说是Material Design 的标志之一了，但是却有很多人并不是很喜欢它，其中一条主要的原
-    
-    </summary>
-    
-      <category term="Android" scheme="https://devallever.github.io/categories/Android/"/>
-    
-    
-      <category term="Android" scheme="https://devallever.github.io/tags/Android/"/>
     
   </entry>
   
