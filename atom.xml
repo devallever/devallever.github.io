@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://devallever.github.io/"/>
-  <updated>2017-07-01T14:09:33.983Z</updated>
+  <updated>2017-07-01T14:11:19.507Z</updated>
   <id>https://devallever.github.io/</id>
   
   <author>
@@ -20,9 +20,9 @@
     <link href="https://devallever.github.io/2017/07/01/java-thread-pool-executor-basic/"/>
     <id>https://devallever.github.io/2017/07/01/java-thread-pool-executor-basic/</id>
     <published>2017-07-01T13:35:49.000Z</published>
-    <updated>2017-07-01T14:09:33.983Z</updated>
+    <updated>2017-07-01T14:11:19.507Z</updated>
     
-    <content type="html"><![CDATA[<h1 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h1><p>在前面的文章中，我们使用线程的时候就去创建一个线程，这样实现起来非常简便，但是就会有一个问题：<br>　　如果并发的线程数量很多，并且每个线程都是执行一个时间很短的任务就结束了，这样频繁创建线程就会大大降低系统的效率，因为频繁创建线程和销毁线程需要时间。<br>　　那么有没有一种办法使得线程可以复用，就是执行完一个任务，并不被销毁，而是可以继续执行其他的任务？<br>　　在Java中可以通过线程池来达到这样的效果。今天我们就来详细讲解一下Java的线程池。</p>
+    <content type="html"><![CDATA[<h1 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h1><p>当我们使用线程的时候就去创建一个线程，这样实现起来非常简便，但是就会有一个问题：<br>　　如果并发的线程数量很多，并且每个线程都是执行一个时间很短的任务就结束了，这样频繁创建线程就会大大降低系统的效率，因为频繁创建线程和销毁线程需要时间。<br>　　那么有没有一种办法使得线程可以复用，就是执行完一个任务，并不被销毁，而是可以继续执行其他的任务？<br>　　在Java中可以通过线程池来达到这样的效果。今天我们就来详细讲解一下Java的线程池。</p>
 <h1 id="ThreadPoolEXecutor"><a href="#ThreadPoolEXecutor" class="headerlink" title="ThreadPoolEXecutor"></a>ThreadPoolEXecutor</h1><p>合理利用线程池能够带来三个好处。</p>
 <ul>
 <li>降低资源消耗。通过重复利用已创建的线程降低线程创建和销毁造成的消耗。</li>
@@ -61,7 +61,7 @@
     
     <summary type="html">
     
-      &lt;h1 id=&quot;引言&quot;&gt;&lt;a href=&quot;#引言&quot; class=&quot;headerlink&quot; title=&quot;引言&quot;&gt;&lt;/a&gt;引言&lt;/h1&gt;&lt;p&gt;在前面的文章中，我们使用线程的时候就去创建一个线程，这样实现起来非常简便，但是就会有一个问题：&lt;br&gt;　　如果并发的线程数量很多，并且每个线
+      &lt;h1 id=&quot;引言&quot;&gt;&lt;a href=&quot;#引言&quot; class=&quot;headerlink&quot; title=&quot;引言&quot;&gt;&lt;/a&gt;引言&lt;/h1&gt;&lt;p&gt;当我们使用线程的时候就去创建一个线程，这样实现起来非常简便，但是就会有一个问题：&lt;br&gt;　　如果并发的线程数量很多，并且每个线程都是执行一个
     
     </summary>
     
