@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://devallever.github.io/"/>
-  <updated>2017-07-01T14:11:19.507Z</updated>
+  <updated>2017-07-02T01:49:45.962Z</updated>
   <id>https://devallever.github.io/</id>
   
   <author>
@@ -14,6 +14,38 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>IntentService 工作原理</title>
+    <link href="https://devallever.github.io/2017/07/02/android-intent-service/"/>
+    <id>https://devallever.github.io/2017/07/02/android-intent-service/</id>
+    <published>2017-07-02T01:22:13.000Z</published>
+    <updated>2017-07-02T01:49:45.962Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="IntentService简介"><a href="#IntentService简介" class="headerlink" title="IntentService简介"></a>IntentService简介</h1><p>是一种特殊的Service，继承了Service并且是个抽象类，可用于执行后台耗时任务，当任务结束后自动停止，同时由于是服务的原因，它的优先级比普通线程高很多，因此不容易被系统杀死。在实现上，IntentService封装了HandlerThread和Handler。</p>
+<h1 id="基本流程"><a href="#基本流程" class="headerlink" title="基本流程"></a>基本流程</h1><p>startService(intentService):<br>onCreate()-&gt;<br>onStartCommand()-&gt;<br>onStart()-&gt;<br>sendMessage()-&gt;<br>handlerMessage()-&gt;<br>onHandlerIntent()-&gt;<br>stopSelf(startId)-&gt;<br>onDestroy-&gt;</p>
+<h1 id="详细解剖"><a href="#详细解剖" class="headerlink" title="详细解剖"></a>详细解剖</h1><h2 id="onCreate"><a href="#onCreate" class="headerlink" title="onCreate()"></a>onCreate()</h2><p>当服务第一次创建的时候调用onCreate()<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">@Override</div><div class="line">public void onCreate() &#123;</div><div class="line">    // TODO: It would be nice to have an option to hold a partial wakelock</div><div class="line">    // during processing, and to have a static startService(Context, Intent)</div><div class="line">    // method that would launch the service &amp; hand off a wakelock.</div><div class="line"></div><div class="line">    super.onCreate();</div><div class="line">    HandlerThread thread = new HandlerThread(&quot;IntentService[&quot; + mName + &quot;]&quot;);</div><div class="line">    thread.start();</div><div class="line"></div><div class="line">    mServiceLooper = thread.getLooper();</div><div class="line">    mServiceHandler = new ServiceHandler(mServiceLooper);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>该方法封装了HandlerThread 和 Handler</p>
+<h2 id="onStartCommand"><a href="#onStartCommand" class="headerlink" title="onStartCommand()"></a>onStartCommand()</h2><p>每一次启动服务的时候调用onStartCommand()<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">@Override</div><div class="line">public int onStartCommand(@Nullable Intent intent, int flags, int startId) &#123;</div><div class="line">    onStart(intent, startId);</div><div class="line">    return mRedelivery ? START_REDELIVER_INTENT : START_NOT_STICKY;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>该方法仅仅调用了onStart()方法</p>
+<h2 id="onStart"><a href="#onStart" class="headerlink" title="onStart()"></a>onStart()</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">@Override</div><div class="line">public void onStart(@Nullable Intent intent, int startId) &#123;</div><div class="line">    Message msg = mServiceHandler.obtainMessage();</div><div class="line">    msg.arg1 = startId;</div><div class="line">    msg.obj = intent;</div><div class="line">    mServiceHandler.sendMessage(msg);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>该方法把startService传来的Intent和startId封装成Message消息，然后通过handler发送消息，接着执行mServiceHandler.handleMessage()<br>其中ServiceHandler是IntentService的一个内部类，它的定义如下<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">private final class ServiceHandler extends Handler &#123;</div><div class="line">    public ServiceHandler(Looper looper) &#123;</div><div class="line">        super(looper);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    @Override</div><div class="line">    public void handleMessage(Message msg) &#123;</div><div class="line">        onHandleIntent((Intent)msg.obj);</div><div class="line">        stopSelf(msg.arg1);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h2 id="handleMessage"><a href="#handleMessage" class="headerlink" title="handleMessage()"></a>handleMessage()</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">@Override</div><div class="line">public void handleMessage(Message msg) &#123;</div><div class="line">	onHandleIntent((Intent)msg.obj);</div><div class="line">	stopSelf(msg.arg1);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>该方法会执行onHandleIntent()方法，它是个抽象方法，因此我们自定义IntentService的时候必须重写onHandleIntent()方法。因为发送消息那那个handler是HandlerThread所关联的，所以处理信息的时候是在子线程进行的。不会的可以看看HandlerThread原理。</p>
+<h2 id="stopSelf"><a href="#stopSelf" class="headerlink" title="stopSelf()"></a>stopSelf()</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">@Override</div><div class="line">public void handleMessage(Message msg) &#123;</div><div class="line">	onHandleIntent((Intent)msg.obj);</div><div class="line">	stopSelf(msg.arg1);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>当onHandleIntent()方法执行完毕之后，会调用stopSelf(int)方法结束服务</p>
+<h2 id="onDestroy"><a href="#onDestroy" class="headerlink" title="onDestroy()"></a>onDestroy()</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">@Override</div><div class="line">public void onDestroy() &#123;</div><div class="line">    mServiceLooper.quit();</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>最后销毁服务的时候，终止线程执行</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;IntentService简介&quot;&gt;&lt;a href=&quot;#IntentService简介&quot; class=&quot;headerlink&quot; title=&quot;IntentService简介&quot;&gt;&lt;/a&gt;IntentService简介&lt;/h1&gt;&lt;p&gt;是一种特殊的Service，继承了S
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>Java 线程池</title>
@@ -1308,37 +1340,6 @@
       <category term="设计模式" scheme="https://devallever.github.io/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"/>
     
       <category term="单例模式" scheme="https://devallever.github.io/tags/%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>设计模式之六大原则</title>
-    <link href="https://devallever.github.io/2017/05/11/the-six-principle/"/>
-    <id>https://devallever.github.io/2017/05/11/the-six-principle/</id>
-    <published>2017-05-11T00:50:16.000Z</published>
-    <updated>2017-05-11T04:20:58.905Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="单一职责原则SRP-Single-Responsibility-Principle"><a href="#单一职责原则SRP-Single-Responsibility-Principle" class="headerlink" title="单一职责原则SRP(Single Responsibility Principle)"></a>单一职责原则SRP(Single Responsibility Principle)</h1><p>定义: 就一个类而言，应该仅有一个引起它变化的原因。  </p>
-<p>简单地说：  </p>
-<ul>
-<li>一个类中应该是一组相关性很高的函数，数据的封装。这满足高内聚的要求</li>
-<li>两个完全不一样的功能就不应该放在同一个类中。</li>
-<li></li>
-</ul>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;h1 id=&quot;单一职责原则SRP-Single-Responsibility-Principle&quot;&gt;&lt;a href=&quot;#单一职责原则SRP-Single-Responsibility-Principle&quot; class=&quot;headerlink&quot; title=&quot;单一职责原则SRP(
-    
-    </summary>
-    
-      <category term="设计模式" scheme="https://devallever.github.io/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"/>
-    
-    
-      <category term="设计模式" scheme="https://devallever.github.io/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"/>
-    
-      <category term="六大原则" scheme="https://devallever.github.io/tags/%E5%85%AD%E5%A4%A7%E5%8E%9F%E5%88%99/"/>
     
   </entry>
   
