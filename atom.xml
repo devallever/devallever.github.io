@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://devallever.github.io/"/>
-  <updated>2017-07-02T01:49:45.962Z</updated>
+  <updated>2017-07-02T01:50:58.132Z</updated>
   <id>https://devallever.github.io/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="https://devallever.github.io/2017/07/02/android-intent-service/"/>
     <id>https://devallever.github.io/2017/07/02/android-intent-service/</id>
     <published>2017-07-02T01:22:13.000Z</published>
-    <updated>2017-07-02T01:49:45.962Z</updated>
+    <updated>2017-07-02T01:50:58.132Z</updated>
     
     <content type="html"><![CDATA[<h1 id="IntentService简介"><a href="#IntentService简介" class="headerlink" title="IntentService简介"></a>IntentService简介</h1><p>是一种特殊的Service，继承了Service并且是个抽象类，可用于执行后台耗时任务，当任务结束后自动停止，同时由于是服务的原因，它的优先级比普通线程高很多，因此不容易被系统杀死。在实现上，IntentService封装了HandlerThread和Handler。</p>
 <h1 id="基本流程"><a href="#基本流程" class="headerlink" title="基本流程"></a>基本流程</h1><p>startService(intentService):<br>onCreate()-&gt;<br>onStartCommand()-&gt;<br>onStart()-&gt;<br>sendMessage()-&gt;<br>handlerMessage()-&gt;<br>onHandlerIntent()-&gt;<br>stopSelf(startId)-&gt;<br>onDestroy-&gt;</p>
@@ -44,6 +44,16 @@
     
     </summary>
     
+      <category term="Android" scheme="https://devallever.github.io/categories/Android/"/>
+    
+    
+      <category term="Android" scheme="https://devallever.github.io/tags/Android/"/>
+    
+      <category term="Thread" scheme="https://devallever.github.io/tags/Thread/"/>
+    
+      <category term="IntentService" scheme="https://devallever.github.io/tags/IntentService/"/>
+    
+      <category term="Service" scheme="https://devallever.github.io/tags/Service/"/>
     
   </entry>
   
