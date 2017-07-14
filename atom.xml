@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://devallever.github.io/"/>
-  <updated>2017-07-14T13:59:22.378Z</updated>
+  <updated>2017-07-14T14:00:17.050Z</updated>
   <id>https://devallever.github.io/</id>
   
   <author>
@@ -20,12 +20,19 @@
     <link href="https://devallever.github.io/2017/07/14/102-mvc-in-android/"/>
     <id>https://devallever.github.io/2017/07/14/102-mvc-in-android/</id>
     <published>2017-07-14T13:56:38.000Z</published>
-    <updated>2017-07-14T13:59:22.378Z</updated>
+    <updated>2017-07-14T14:00:17.050Z</updated>
     
     <content type="html"><![CDATA[<figure class="image-bubble">
                 <div class="img-lightbox">
                     <div class="overlay"></div>
                     <img src="https://github.com/devallever/DataProject/blob/master/data/notebook1img/102-mvc-in-android.jpg?raw=true" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://github.com/devallever/DataProject/blob/master/data/notebook1img/103-mvc-in-android.jpg?raw=true" alt="" title="">
                 </div>
                 <div class="image-caption"></div>
             </figure>]]></content>
