@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://devallever.github.io/"/>
-  <updated>2017-07-14T13:53:53.594Z</updated>
+  <updated>2017-07-14T13:59:22.378Z</updated>
   <id>https://devallever.github.io/</id>
   
   <author>
@@ -16,11 +16,44 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>MVC在Android中的应用</title>
+    <link href="https://devallever.github.io/2017/07/14/102-mvc-in-android/"/>
+    <id>https://devallever.github.io/2017/07/14/102-mvc-in-android/</id>
+    <published>2017-07-14T13:56:38.000Z</published>
+    <updated>2017-07-14T13:59:22.378Z</updated>
+    
+    <content type="html"><![CDATA[<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://github.com/devallever/DataProject/blob/master/data/notebook1img/102-mvc-in-android.jpg?raw=true" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>]]></content>
+    
+    <summary type="html">
+    
+      &lt;figure class=&quot;image-bubble&quot;&gt;
+                &lt;div class=&quot;img-lightbox&quot;&gt;
+                    &lt;div class=&quot;overlay&quot;&gt;&lt;/div&gt;
+                   
+    
+    </summary>
+    
+      <category term="Android" scheme="https://devallever.github.io/categories/Android/"/>
+    
+    
+      <category term="Android" scheme="https://devallever.github.io/tags/Android/"/>
+    
+      <category term="MVC" scheme="https://devallever.github.io/tags/MVC/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Android 选择适当的网络请求框架</title>
     <link href="https://devallever.github.io/2017/07/14/101-choose-network-framework/"/>
     <id>https://devallever.github.io/2017/07/14/101-choose-network-framework/</id>
     <published>2017-07-14T13:52:12.000Z</published>
-    <updated>2017-07-14T13:53:53.594Z</updated>
+    <updated>2017-07-14T13:55:42.367Z</updated>
     
     <content type="html"><![CDATA[<figure class="image-bubble">
                 <div class="img-lightbox">
@@ -43,6 +76,8 @@
     
     
       <category term="Android" scheme="https://devallever.github.io/tags/Android/"/>
+    
+      <category term="Note" scheme="https://devallever.github.io/tags/Note/"/>
     
       <category term="Network" scheme="https://devallever.github.io/tags/Network/"/>
     
@@ -1349,30 +1384,6 @@
       <category term="MySQL" scheme="https://devallever.github.io/tags/MySQL/"/>
     
       <category term="Ubuntu" scheme="https://devallever.github.io/tags/Ubuntu/"/>
-    
-  </entry>
-  
-  <entry>
-    <title></title>
-    <link href="https://devallever.github.io/2017/05/15/ScrollMethods/"/>
-    <id>https://devallever.github.io/2017/05/15/ScrollMethods/</id>
-    <published>2017-05-15T09:07:15.891Z</published>
-    <updated>2017-05-15T09:07:15.891Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="滑动的方式"><a href="#滑动的方式" class="headerlink" title="滑动的方式"></a>滑动的方式</h1><h2 id="layout"><a href="#layout" class="headerlink" title="layout()"></a>layout()</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line">@Override</div><div class="line">public boolean onTouchEvent(MotionEvent event) &#123;</div><div class="line">        //getX()是获取View的坐标</div><div class="line">        //获取触摸点的坐标</div><div class="line">        float x = event.getX();</div><div class="line">        float y = event.getY();</div><div class="line">        Log.d(TAG, &quot;onTouchEvent: x = &quot; + x);</div><div class="line">        int action = event.getAction();</div><div class="line">        switch (action)&#123;</div><div class="line">            case MotionEvent.ACTION_DOWN:</div><div class="line">                lastX = x;</div><div class="line">                lastY = y;</div><div class="line">                break;</div><div class="line">            case MotionEvent.ACTION_MOVE:</div><div class="line">                float movedX = x - lastX;</div><div class="line">                float movedY = y - lastY;</div><div class="line">                Log.d(TAG, &quot;onTouchEvent: lastX = &quot; + lastX);</div><div class="line">                Log.d(TAG, &quot;onTouchEvent: movedX = &quot; + movedX);</div><div class="line">                layout((int)(getLeft()+movedX),(int)(getTop()+movedY),(int)(getRight()+movedX),(int)(getBottom()+movedY));</div><div class="line">                break;</div><div class="line">            case MotionEvent.ACTION_UP:</div><div class="line">                break;</div><div class="line">        &#125;</div><div class="line">        return true;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h2 id="Params方式"><a href="#Params方式" class="headerlink" title="Params方式"></a>Params方式</h2><p>###使用Layout的LayoutParams方式<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">LinearLayout.LayoutParams layoutParams = (LinearLayout.LayoutParams)getLayoutParams();</div><div class="line">layoutParams.leftMargin = (int)(getLeft()+movedX);</div><div class="line">layoutParams.topMargin = (int)(getTop()+movedY);</div><div class="line">setLayoutParams(layoutParams);</div></pre></td></tr></table></figure></p>
-<h3 id="使用MarginLayoutParams的方式"><a href="#使用MarginLayoutParams的方式" class="headerlink" title="使用MarginLayoutParams的方式"></a>使用MarginLayoutParams的方式</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">ViewGroup.MarginLayoutParams marginLayoutParams = (ViewGroup.MarginLayoutParams)getLayoutParams();</div><div class="line">marginLayoutParams.leftMargin = (int)(getLeft()+movedX);</div><div class="line">marginLayoutParams.topMargin = (int)(getTop()+movedY);</div><div class="line">setLayoutParams(marginLayoutParams);</div></pre></td></tr></table></figure>
-<h2 id="使用ScrollBy方式"><a href="#使用ScrollBy方式" class="headerlink" title="使用ScrollBy方式"></a>使用ScrollBy方式</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">//ScrollBy方式移动的是View里面的内容，如果要移动View则在它的父布局使用scrollBy</div><div class="line">((View)getParent()).scrollBy(-(int)movedX,-(int)movedY);</div></pre></td></tr></table></figure>
-<h2 id="使用Scroller平滑移动"><a href="#使用Scroller平滑移动" class="headerlink" title="使用Scroller平滑移动"></a>使用Scroller平滑移动</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">case MotionEvent.ACTION_UP:</div><div class="line">	//使用Scroller平滑移动,手指离开屏幕是View返回原位</div><div class="line">	int scrollX = ((View)getParent()).getScrollX();</div><div class="line">	int scrollY = ((View)getParent()).getScrollY();</div><div class="line">	scroller.startScroll(</div><div class="line">		scrollX,</div><div class="line">		scrollY,</div><div class="line">		-scrollX,</div><div class="line">		-scrollY</div><div class="line">	);</div><div class="line">	invalidate();</div><div class="line">	break;</div></pre></td></tr></table></figure>
-<p>重写computeScroll()方法<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">@Override</div><div class="line">public void computeScroll() &#123;</div><div class="line">    super.computeScroll();</div><div class="line">    if (scroller.computeScrollOffset())&#123;</div><div class="line">        ((View)getParent()).scrollTo(</div><div class="line">                scroller.getCurrX(),</div><div class="line">                scroller.getCurrY()</div><div class="line">        );</div><div class="line">        invalidate();</div><div class="line">    &#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;h1 id=&quot;滑动的方式&quot;&gt;&lt;a href=&quot;#滑动的方式&quot; class=&quot;headerlink&quot; title=&quot;滑动的方式&quot;&gt;&lt;/a&gt;滑动的方式&lt;/h1&gt;&lt;h2 id=&quot;layout&quot;&gt;&lt;a href=&quot;#layout&quot; class=&quot;headerlink&quot; title=&quot;l
-    
-    </summary>
-    
     
   </entry>
   
