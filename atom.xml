@@ -134,11 +134,11 @@
     
       <category term="Android" scheme="https://devallever.github.io/tags/Android/"/>
     
+      <category term="Thread" scheme="https://devallever.github.io/tags/Thread/"/>
+    
       <category term="IntentService" scheme="https://devallever.github.io/tags/IntentService/"/>
     
       <category term="Service" scheme="https://devallever.github.io/tags/Service/"/>
-    
-      <category term="Thread" scheme="https://devallever.github.io/tags/Thread/"/>
     
   </entry>
   
@@ -896,11 +896,11 @@
       <category term="算法" scheme="https://devallever.github.io/categories/%E7%AE%97%E6%B3%95/"/>
     
     
+      <category term="Java" scheme="https://devallever.github.io/tags/Java/"/>
+    
       <category term="算法" scheme="https://devallever.github.io/tags/%E7%AE%97%E6%B3%95/"/>
     
       <category term="排序" scheme="https://devallever.github.io/tags/%E6%8E%92%E5%BA%8F/"/>
-    
-      <category term="Java" scheme="https://devallever.github.io/tags/Java/"/>
     
       <category term="C" scheme="https://devallever.github.io/tags/C/"/>
     
