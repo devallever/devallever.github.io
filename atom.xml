@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://devallever.github.io/"/>
-  <updated>2017-07-30T08:41:10.045Z</updated>
+  <updated>2017-07-30T08:42:13.151Z</updated>
   <id>https://devallever.github.io/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="https://devallever.github.io/2017/07/30/selected-demo/"/>
     <id>https://devallever.github.io/2017/07/30/selected-demo/</id>
     <published>2017-07-30T06:13:16.000Z</published>
-    <updated>2017-07-30T08:41:10.045Z</updated>
+    <updated>2017-07-30T08:42:13.151Z</updated>
     
     <content type="html"><![CDATA[<h1 id="功能概述："><a href="#功能概述：" class="headerlink" title="功能概述："></a>功能概述：</h1><p>选中状态：选中时候变为蓝色，并有个减号，里面也是蓝色，<br>未选中状态：未选中时候为空白，并有个加号，<br>点中选中的状态变为未选中状态，点击未选中状态变为选中状态，当仅剩下一个选中时候，减号消失，表示不允许改变当前状态，即最少有一个选中状态</p>
 <p>效果图1：<br><figure class="image-bubble">
@@ -123,6 +123,8 @@
       &lt;h1 id=&quot;功能概述：&quot;&gt;&lt;a href=&quot;#功能概述：&quot; class=&quot;headerlink&quot; title=&quot;功能概述：&quot;&gt;&lt;/a&gt;功能概述：&lt;/h1&gt;&lt;p&gt;选中状态：选中时候变为蓝色，并有个减号，里面也是蓝色，&lt;br&gt;未选中状态：未选中时候为空白，并有个加号，&lt;br&gt;点中
     
     </summary>
+    
+      <category term="Android" scheme="https://devallever.github.io/categories/Android/"/>
     
     
       <category term="Android" scheme="https://devallever.github.io/tags/Android/"/>
