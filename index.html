@@ -118,7 +118,7 @@
             <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
                 <i class="icon icon-lg icon-chevron-left"></i>
             </a>
-            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="Search">
             <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
                 <i class="icon icon-lg icon-search"></i>
             </a>
@@ -150,6 +150,57 @@
 <div class="container body-wrap">
 
     <ul class="post-list">
+    
+        <li class="post-list-item fade">
+            <article id="post-android-seekbar-and-volume"
+  class="article-card article-type-post" itemprop="blogPost">
+
+    <div class="post-meta">
+        <time class="post-time" title="2017-08-09 17:28:01" datetime="2017-08-09T09:28:01.000Z"  itemprop="datePublished">2017-08-09</time>
+
+        
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Android/">Android</a></li></ul>
+
+
+
+        
+
+    </div>
+
+    
+
+
+  
+    <h3 class="post-title" itemprop="name">
+      <a class="post-title-link" href="/2017/08/09/android-seekbar-and-volume/">Android Seekbar调节系统音量</a>
+    </h3>
+  
+
+
+
+
+    <div class="post-content" id="post-content" itemprop="postContent">
+
+    
+        SeekBar简介就是拖动的进度条, 可以用来调节音量
+基本使用需要两张图片,一张是背景,一张是选中的]时候的样式,还有一张图片,用来显示当前进度的指示图标这些可用用图片,亦可以永drawable绘图
+背景图片volume_control_bg.xml12345678910&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?...
+    
+
+        <a href="/2017/08/09/android-seekbar-and-volume/" class="post-more waves-effect waves-button">
+            Continue reading...
+        </a>
+    </div>
+    
+    <div class="post-footer">
+        
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SeekBar/">SeekBar</a></li></ul>
+
+    </div>
+    
+</article>
+
+        </li>
     
         <li class="post-list-item fade">
             <article id="post-android-expandablelistview-basic-use"
@@ -188,7 +239,7 @@
     
 
         <a href="/2017/08/09/android-expandablelistview-basic-use/" class="post-more waves-effect waves-button">
-            阅读全文…
+            Continue reading...
         </a>
     </div>
     
@@ -233,11 +284,12 @@
     <div class="post-content" id="post-content" itemprop="postContent">
 
     
-        EditText相关光标颜色TextView相关设置行距修改语言全屏显示强制横屏透明状态栏
+        ListView(RecyclerView)的单选效果在Adapter中公开一个方法,传入选中的position,然后刷新1234public void setSelected(int selectedPosition)&#123;	mSelectedPosition = selectedPosition;	notifyDataSetChanged();&#125;
+listView设置选项...
     
 
         <a href="/2017/08/06/android-piece-knowledge/" class="post-more waves-effect waves-button">
-            阅读全文…
+            Continue reading...
         </a>
     </div>
     
@@ -293,7 +345,7 @@
     
 
         <a href="/2017/07/30/custom-bezier-line/" class="post-more waves-effect waves-button">
-            阅读全文…
+            Continue reading...
         </a>
     </div>
     
@@ -347,7 +399,7 @@
     
 
         <a href="/2017/07/30/selected-demo/" class="post-more waves-effect waves-button">
-            阅读全文…
+            Continue reading...
         </a>
     </div>
     
@@ -406,7 +458,7 @@
     
 
         <a href="/2017/07/15/notebook-1/" class="post-more waves-effect waves-button">
-            阅读全文…
+            Continue reading...
         </a>
     </div>
     
@@ -455,7 +507,7 @@
     
 
         <a href="/2017/07/02/java-thread-pool-executor-basic/" class="post-more waves-effect waves-button">
-            阅读全文…
+            Continue reading...
         </a>
     </div>
     
@@ -505,7 +557,7 @@
     
 
         <a href="/2017/07/02/android-intent-service/" class="post-more waves-effect waves-button">
-            阅读全文…
+            Continue reading...
         </a>
     </div>
     
@@ -554,7 +606,7 @@
     
 
         <a href="/2017/07/01/handler-thread-basic/" class="post-more waves-effect waves-button">
-            阅读全文…
+            Continue reading...
         </a>
     </div>
     
@@ -604,62 +656,13 @@
     
 
         <a href="/2017/06/30/okhttp-sample/" class="post-more waves-effect waves-button">
-            阅读全文…
+            Continue reading...
         </a>
     </div>
     
     <div class="post-footer">
         
 	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Network/">Network</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/OkHttp/">OkHttp</a></li></ul>
-
-    </div>
-    
-</article>
-
-        </li>
-    
-        <li class="post-list-item fade">
-            <article id="post-social-app"
-  class="article-card article-type-post" itemprop="blogPost">
-
-    <div class="post-meta">
-        <time class="post-time" title="2017-06-21 21:17:26" datetime="2017-06-21T13:17:26.000Z"  itemprop="datePublished">2017-06-21</time>
-
-        
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Android/">Android</a></li></ul>
-
-
-
-        
-
-    </div>
-
-    
-
-
-  
-    <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/2017/06/21/social-app/">社交圈</a>
-    </h3>
-  
-
-
-
-
-    <div class="post-content" id="post-content" itemprop="postContent">
-
-    
-        项目简介一款社交 APP附近人模块:中可以关注,聊天,加好友,好友分组管理。查找,筛选用户动态模块:可以,点赞,评论。可以发布语音动态,和语音评论并且实时通知。聊天模块,集成环信 IM。文本,表情,图片,位置,语音通话,视频聊天。设置在线状态,离开自动回复。推荐模块包括热点(浏览量最多的动态)、圈子(好友的动态)、定位(查看好友登录地理位置)通知模块:使用极光推送。刷新,发布动态,评论,点赞...
-    
-
-        <a href="/2017/06/21/social-app/" class="post-more waves-effect waves-button">
-            阅读全文…
-        </a>
-    </div>
-    
-    <div class="post-footer">
-        
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Project/">Project</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/社交/">社交</a></li></ul>
 
     </div>
     
@@ -696,7 +699,7 @@
             
                 <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
             
-            <span>博客内容遵循<a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+            <span>This blog is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.</span>
         </p>
     </div>
     <div class="bottom">
