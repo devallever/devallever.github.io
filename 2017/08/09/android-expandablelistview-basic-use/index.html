@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    <title>Android ExpandableListView基础用法 | Allever Blog | Android Developer</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="Android,ExpandableListView">
+    <meta name="description" content="ExpandableListView简介可以折叠的ListView 基本使用使用方法和ListView大同小异,都是需要item的布局,需要adapterBut:ExpandableListView需要父Item布局,需要子Item布局.Adapter需要的是BaseExpandableListAdapter下面以一个好友分组的例子总结一下用法 布局分组Item布局1234567891011121">
+<meta name="keywords" content="Android,ExpandableListView">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Android ExpandableListView基础用法">
+<meta property="og:url" content="https://devallever.github.io/2017/08/09/android-expandablelistview-basic-use/index.html">
+<meta property="og:site_name" content="Allever Blog">
+<meta property="og:description" content="ExpandableListView简介可以折叠的ListView 基本使用使用方法和ListView大同小异,都是需要item的布局,需要adapterBut:ExpandableListView需要父Item布局,需要子Item布局.Adapter需要的是BaseExpandableListAdapter下面以一个好友分组的例子总结一下用法 布局分组Item布局1234567891011121">
+<meta property="og:image" content="https://github.com/devallever/DataProject/blob/master/data/expandablelistview/group_item.png?raw=true">
+<meta property="og:image" content="https://github.com/devallever/DataProject/blob/master/data/expandablelistview/user_item.png?raw=true">
+<meta property="og:image" content="https://github.com/devallever/DataProject/blob/master/data/expandablelistview/review.png?raw=true">
+<meta property="og:updated_time" content="2017-08-09T09:13:33.946Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Android ExpandableListView基础用法">
+<meta name="twitter:description" content="ExpandableListView简介可以折叠的ListView 基本使用使用方法和ListView大同小异,都是需要item的布局,需要adapterBut:ExpandableListView需要父Item布局,需要子Item布局.Adapter需要的是BaseExpandableListAdapter下面以一个好友分组的例子总结一下用法 布局分组Item布局1234567891011121">
+<meta name="twitter:image" content="https://github.com/devallever/DataProject/blob/master/data/expandablelistview/group_item.png?raw=true">
+    
+        <link rel="alternate" type="application/atom+xml" title="Allever Blog" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@1.6.1/css/style.css">
+    <script>window.lazyScripts=[]</script>
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">Allever</h5>
+          <a href="mailto:devallever@163.com" title="devallever@163.com" class="mail">devallever@163.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                Home
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                Categories
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/devallever" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="http://blog.csdn.net/devallever"  >
+                <i class="icon icon-lg icon-link"></i>
+                CSDN
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">Android ExpandableListView基础用法</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">Android ExpandableListView基础用法</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2017-08-09T08:28:24.000Z" itemprop="datePublished" class="page-time">
+  2017-08-09
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Android/">Android</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#ExpandableListView简介"><span class="post-toc-number">1.</span> <span class="post-toc-text">ExpandableListView简介</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#基本使用"><span class="post-toc-number">2.</span> <span class="post-toc-text">基本使用</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#布局"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">布局</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#封装数据"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">封装数据</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Adapter适配器"><span class="post-toc-number">2.3.</span> <span class="post-toc-text">Adapter适配器</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#使用ExpandableListView"><span class="post-toc-number">2.4.</span> <span class="post-toc-text">使用ExpandableListView</span></a></li></ol></li></ol>
+        </nav>
+    </aside>
+    
+<article id="post-android-expandablelistview-basic-use"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">Android ExpandableListView基础用法</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2017-08-09 16:28:24" datetime="2017-08-09T08:28:24.000Z"  itemprop="datePublished">2017-08-09</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Android/">Android</a></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+            
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h1 id="ExpandableListView简介"><a href="#ExpandableListView简介" class="headerlink" title="ExpandableListView简介"></a>ExpandableListView简介</h1><p>可以折叠的ListView</p>
+<h1 id="基本使用"><a href="#基本使用" class="headerlink" title="基本使用"></a>基本使用</h1><p>使用方法和ListView大同小异,都是需要item的布局,需要adapter<br>But:<br>ExpandableListView需要父Item布局,需要子Item布局.Adapter需要的是BaseExpandableListAdapter<br>下面以一个好友分组的例子总结一下用法</p>
+<h2 id="布局"><a href="#布局" class="headerlink" title="布局"></a>布局</h2><p>分组Item布局<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div></pre></td><td class="code"><pre><div class="line">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;</div><div class="line">&lt;LinearLayout xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;</div><div class="line">     android:layout_width=&quot;match_parent&quot;</div><div class="line">    android:layout_height=&quot;wrap_content&quot;</div><div class="line">    android:padding=&quot;10dp&quot;</div><div class="line">    android:background=&quot;@color/color_green_50&quot;&gt;</div><div class="line">    &lt;RelativeLayout</div><div class="line">        android:layout_width=&quot;match_parent&quot;</div><div class="line">        android:layout_height=&quot;wrap_content&quot;&gt;</div><div class="line">        &lt;ImageView</div><div class="line">            android:id=&quot;@+id/id_friendgroup_item_parent_iv_expand&quot;</div><div class="line">            android:layout_width=&quot;wrap_content&quot;</div><div class="line">            android:layout_height=&quot;wrap_content&quot;</div><div class="line">            android:src=&quot;@mipmap/ic_unexpanded&quot;/&gt;</div><div class="line">        &lt;TextView</div><div class="line">            android:id=&quot;@+id/id_friendgroup_item_parent_tv_friendgroup_name&quot;</div><div class="line">            android:layout_width=&quot;wrap_content&quot;</div><div class="line">            android:layout_height=&quot;wrap_content&quot;</div><div class="line">            android:layout_marginLeft=&quot;10dp&quot;</div><div class="line">            android:layout_toRightOf=&quot;@id/id_friendgroup_item_parent_iv_expand&quot;</div><div class="line">            android:text=&quot;我的好友&quot;</div><div class="line">            android:layout_centerVertical=&quot;true&quot;</div><div class="line">            android:textSize=&quot;18sp&quot;</div><div class="line">            android:textColor=&quot;@color/colorPrimary&quot;/&gt;</div><div class="line">        &lt;TextView</div><div class="line">            android:id=&quot;@+id/id_friendgroup_item_parent_tv_friend_count&quot;</div><div class="line">            android:layout_width=&quot;wrap_content&quot;</div><div class="line">            android:layout_height=&quot;wrap_content&quot;</div><div class="line">            android:text=&quot;0&quot;</div><div class="line">            android:layout_marginRight=&quot;5dp&quot;</div><div class="line">            android:textSize=&quot;18sp&quot;</div><div class="line">            android:textColor=&quot;@color/colorGray_500&quot;</div><div class="line">            android:layout_centerVertical=&quot;true&quot;</div><div class="line">            android:layout_alignParentRight=&quot;true&quot;/&gt;</div><div class="line">    &lt;/RelativeLayout&gt;</div><div class="line">&lt;/LinearLayout&gt;</div></pre></td></tr></table></figure></p>
+<p>效果图:<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://github.com/devallever/DataProject/blob/master/data/expandablelistview/group_item.png?raw=true" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure></p>
+<p>好友Item布局<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div></pre></td><td class="code"><pre><div class="line">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;</div><div class="line">&lt;LinearLayout xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;</div><div class="line">    android:orientation=&quot;vertical&quot; android:layout_width=&quot;match_parent&quot;</div><div class="line">    android:layout_height=&quot;wrap_content&quot;</div><div class="line">    xmlns:app=&quot;http://schemas.android.com/apk/res-auto&quot;</div><div class="line">    &gt;</div><div class="line"></div><div class="line">    &lt;RelativeLayout</div><div class="line">        android:layout_width=&quot;match_parent&quot;</div><div class="line">        android:layout_height=&quot;wrap_content&quot;</div><div class="line">        android:padding=&quot;10dp&quot;&gt;</div><div class="line"></div><div class="line">        &lt;de.hdodenhof.circleimageview.CircleImageView</div><div class="line">            android:id=&quot;@+id/id_friendgroup_item_child_iv_head&quot;</div><div class="line">            android:layout_width=&quot;56dp&quot;</div><div class="line">            android:layout_height=&quot;56dp&quot;</div><div class="line">            app:civ_border_width=&quot;0.5dp&quot;</div><div class="line">            app:civ_border_color=&quot;#fff&quot;</div><div class="line">            android:src=&quot;@mipmap/winchen&quot;/&gt;</div><div class="line"></div><div class="line">        &lt;TextView</div><div class="line">            android:id=&quot;@+id/id_friendgroup_item_child_tv_nickname&quot;</div><div class="line">            android:layout_width=&quot;wrap_content&quot;</div><div class="line">            android:layout_height=&quot;wrap_content&quot;</div><div class="line">            android:text=&quot;Nickname&quot;</div><div class="line">            android:layout_marginLeft=&quot;10dp&quot;</div><div class="line">            android:textColor=&quot;@color/black_deep&quot;</div><div class="line">            android:textSize=&quot;18sp&quot;</div><div class="line">            android:layout_toRightOf=&quot;@id/id_friendgroup_item_child_iv_head&quot;/&gt;</div><div class="line">        &lt;TextView</div><div class="line">            android:id=&quot;@+id/id_friendgroup_item_child_tv_signature&quot;</div><div class="line">            android:layout_width=&quot;wrap_content&quot;</div><div class="line">            android:layout_height=&quot;wrap_content&quot;</div><div class="line">            android:text=&quot;Signature&quot;</div><div class="line">            android:layout_marginLeft=&quot;10dp&quot;</div><div class="line">            android:layout_marginTop=&quot;4dp&quot;</div><div class="line">            android:maxLines=&quot;1&quot;</div><div class="line">            android:ellipsize=&quot;end&quot;</div><div class="line">            android:layout_below=&quot;@id/id_friendgroup_item_child_tv_nickname&quot;</div><div class="line">            android:layout_toRightOf=&quot;@id/id_friendgroup_item_child_iv_head&quot;/&gt;</div><div class="line"></div><div class="line">    &lt;/RelativeLayout&gt;</div><div class="line"></div><div class="line">&lt;/LinearLayout&gt;</div></pre></td></tr></table></figure></p>
+<p>效果图:<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://github.com/devallever/DataProject/blob/master/data/expandablelistview/user_item.png?raw=true" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure></p>
+<h2 id="封装数据"><a href="#封装数据" class="headerlink" title="封装数据"></a>封装数据</h2><p>FriendGroupItem<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line">public class FriendGroupItem &#123;</div><div class="line">    private String id;</div><div class="line">    private String friendgroup_name;</div><div class="line">    private List&lt;FriendItem&gt; list_friend;</div><div class="line">    public String getId() &#123;</div><div class="line">        return id;</div><div class="line">    &#125;</div><div class="line">    public void setId(String id) &#123;</div><div class="line">        this.id = id;</div><div class="line">    &#125;</div><div class="line">    public String getFriendgroup_name() &#123;</div><div class="line">        return friendgroup_name;</div><div class="line">    &#125;</div><div class="line">    public void setFriendgroup_name(String friendgroup_name) &#123;</div><div class="line">        this.friendgroup_name = friendgroup_name;</div><div class="line">    &#125;</div><div class="line">    public List&lt;FriendItem&gt; getList_friend() &#123;</div><div class="line">        return list_friend;</div><div class="line">    &#125;</div><div class="line">    public void setList_friend(List&lt;FriendItem&gt; list_friend) &#123;</div><div class="line">        this.list_friend = list_friend;</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>FriendGroupItem<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div></pre></td><td class="code"><pre><div class="line">public class FriendItem  &#123;</div><div class="line">    private String sortLetters;  //显示数据拼音的首字母</div><div class="line">    private String user_id;</div><div class="line">    private String nickname;</div><div class="line">    private String username;</div><div class="line">    private String user_head_path;</div><div class="line">    private String signature;</div><div class="line">    public String getUser_id() &#123;</div><div class="line">        return user_id;</div><div class="line">    &#125;</div><div class="line">    public void setUser_id(String user_id) &#123;</div><div class="line">        this.user_id = user_id;</div><div class="line">    &#125;</div><div class="line">    public String getNickname() &#123;</div><div class="line">        return nickname;</div><div class="line">    &#125;</div><div class="line">    public void setNickname(String nickname) &#123;</div><div class="line">        this.nickname = nickname;</div><div class="line">    &#125;</div><div class="line">    public String getUser_head_path() &#123;</div><div class="line">        return user_head_path;</div><div class="line">    &#125;</div><div class="line">    public void setUser_head_path(String user_head_path) &#123;</div><div class="line">        this.user_head_path = user_head_path;</div><div class="line">    &#125;</div><div class="line">    public String getSignature() &#123;</div><div class="line">        return signature;</div><div class="line">    &#125;</div><div class="line">    public void setSignature(String signature) &#123;</div><div class="line">        this.signature = signature;</div><div class="line">    &#125;</div><div class="line">    public void setUsername(String username)&#123;</div><div class="line">        this.username = username;</div><div class="line">    &#125;</div><div class="line">    public String getUsername()&#123;</div><div class="line">        return this.username;</div><div class="line">    &#125;</div><div class="line">    public String getSortLetters() &#123;</div><div class="line">        return sortLetters;</div><div class="line">    &#125;</div><div class="line">    public void setSortLetters(String sortLetters) &#123;</div><div class="line">        this.sortLetters = sortLetters;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h2 id="Adapter适配器"><a href="#Adapter适配器" class="headerlink" title="Adapter适配器"></a>Adapter适配器</h2><p>FriendGroupItemExpandableBaseAdapter<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div><div class="line">112</div><div class="line">113</div><div class="line">114</div><div class="line">115</div><div class="line">116</div><div class="line">117</div><div class="line">118</div><div class="line">119</div><div class="line">120</div><div class="line">121</div><div class="line">122</div><div class="line">123</div></pre></td><td class="code"><pre><div class="line">/**</div><div class="line"> * Created by Allever on 2016/6/14.</div><div class="line"> * 好友分组项适配器</div><div class="line"> */</div><div class="line">public class FriendGroupItemExpandableBaseAdapter extends BaseExpandableListAdapter &#123;</div><div class="line"></div><div class="line">    private Context context;</div><div class="line">    private LayoutInflater inflater;</div><div class="line">    private List&lt;FriendGroupItem&gt; list_friendgroupItem;</div><div class="line"></div><div class="line">    public FriendGroupItemExpandableBaseAdapter(Context context, List&lt;FriendGroupItem&gt; list_friendgroupItem)&#123;</div><div class="line">        this.context = context;</div><div class="line">        this.list_friendgroupItem = list_friendgroupItem;</div><div class="line">        inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);</div><div class="line">    &#125;</div><div class="line"></div><div class="line"></div><div class="line">    @Override</div><div class="line">    public View getGroupView(int parentPosition, boolean isExpanded, View convertView, ViewGroup parent) &#123;</div><div class="line">        FriendGroupItem friendGroupItem = list_friendgroupItem.get(parentPosition);</div><div class="line">        View view;</div><div class="line">        ParentViewHolder parentViewHolder;</div><div class="line">        if (convertView == null)&#123;</div><div class="line">            view = inflater.inflate(R.layout.friendgroup_item_parent,parent,false);</div><div class="line">            parentViewHolder = new ParentViewHolder();</div><div class="line">            parentViewHolder.tv_friendgroup_name = (TextView)view.findViewById(R.id.id_friendgroup_item_parent_tv_friendgroup_name);</div><div class="line">            parentViewHolder.iv_expand = (ImageView)view.findViewById(R.id.id_friendgroup_item_parent_iv_expand);</div><div class="line">            parentViewHolder.tv_friend_count = (TextView)view.findViewById(R.id.id_friendgroup_item_parent_tv_friend_count);</div><div class="line">            view.setTag(parentViewHolder);</div><div class="line">        &#125;else&#123;</div><div class="line">            view  = convertView;</div><div class="line">            parentViewHolder = (ParentViewHolder)view.getTag();</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        //判断isExpanded就可以控制是按下还是关闭，同时更换图片</div><div class="line">        if (isExpanded)&#123;</div><div class="line">            parentViewHolder.iv_expand.setImageDrawable(context.getResources().getDrawable(R.mipmap.ic_expanded));</div><div class="line">        &#125;else&#123;</div><div class="line">            parentViewHolder.iv_expand.setImageDrawable(context.getResources().getDrawable(R.mipmap.ic_unexpanded));</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        parentViewHolder.tv_friend_count.setText(friendGroupItem.getList_friend().size()+&quot;&quot;);</div><div class="line">        parentViewHolder.tv_friendgroup_name.setText(friendGroupItem.getFriendgroup_name());</div><div class="line">        return view;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    @Override</div><div class="line">    public View getChildView(int parentPosition, int childPosition, boolean b, View convertView, ViewGroup parent) &#123;</div><div class="line">        FriendItem friendItem = list_friendgroupItem.get(parentPosition).getList_friend().get(childPosition);</div><div class="line">        View view;</div><div class="line">        ChildViewHolder childViewHolder;</div><div class="line">        if(convertView == null)&#123;</div><div class="line">            view = inflater.inflate(R.layout.friendgroup_item_child,parent,false);</div><div class="line">            childViewHolder = new ChildViewHolder();</div><div class="line">            childViewHolder.iv_head = (CircleImageView)view.findViewById(R.id.id_friendgroup_item_child_iv_head);</div><div class="line">            childViewHolder.tv_nickname = (TextView)view.findViewById(R.id.id_friendgroup_item_child_tv_nickname);</div><div class="line">            childViewHolder.tv_signature = (TextView)view.findViewById(R.id.id_friendgroup_item_child_tv_signature);</div><div class="line">            view.setTag(childViewHolder);</div><div class="line">        &#125;else&#123;</div><div class="line">            view = convertView;</div><div class="line">            childViewHolder = (ChildViewHolder)view.getTag();</div><div class="line">        &#125;</div><div class="line">        Glide.with(context)</div><div class="line">                .load(WebUtil.HTTP_ADDRESS + friendItem.getUser_head_path())</div><div class="line">                .into(childViewHolder.iv_head);</div><div class="line">        childViewHolder.tv_nickname.setText(friendItem.getNickname());</div><div class="line">        childViewHolder.tv_signature.setText(friendItem.getSignature());</div><div class="line">        return view;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    private class ParentViewHolder&#123;</div><div class="line">        ImageView iv_expand;</div><div class="line">        TextView tv_friendgroup_name;</div><div class="line">        TextView tv_friend_count;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    private class ChildViewHolder&#123;</div><div class="line">        CircleImageView iv_head;</div><div class="line">        TextView tv_nickname;</div><div class="line">        TextView tv_signature;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    @Override</div><div class="line">    public int getGroupCount() &#123;</div><div class="line">        return list_friendgroupItem.size();</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    @Override</div><div class="line">    public int getChildrenCount(int parentPosition) &#123;</div><div class="line">        return list_friendgroupItem.get(parentPosition).getList_friend().size();</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    @Override</div><div class="line">    public Object getGroup(int parengPosition) &#123;</div><div class="line">        return list_friendgroupItem.get(parengPosition);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    @Override</div><div class="line">    public Object getChild(int parentPosition, int childPosition) &#123;</div><div class="line">        return list_friendgroupItem.get(parentPosition).getList_friend().get(childPosition);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    @Override</div><div class="line">    public long getGroupId(int parentPosition) &#123;</div><div class="line">        return parentPosition;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    @Override</div><div class="line">    public long getChildId(int parentPosition, int childPosition) &#123;</div><div class="line">        return childPosition;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    @Override</div><div class="line">    public boolean hasStableIds() &#123;</div><div class="line">        return false;</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    @Override</div><div class="line">    public boolean isChildSelectable(int i, int i1) &#123;</div><div class="line">        return true;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>继承自BaseExpandableListAdapter,重写里面几个方法, 看方法名就知道该方法是干什么的了,如果你熟悉ListView的话. 方法中很多都是成对存在的.根据方法名返回相应的值.重点就是getChildView()方法和getGroupView()方法;<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">@Override</div><div class="line">public View getGroupView(int parentPosition, boolean isExpanded, View convertView, ViewGroup parent) &#123;</div><div class="line">&#125;</div><div class="line"></div><div class="line">@Override</div><div class="line">public View getChildView(int parentPosition, int childPosition, boolean b, View convertView, ViewGroup parent) &#123;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>参数含义在上面已经标明了.</p>
+<h2 id="使用ExpandableListView"><a href="#使用ExpandableListView" class="headerlink" title="使用ExpandableListView"></a>使用ExpandableListView</h2><p>在布局文件中使用该控件<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&lt;ExpandableListView</div><div class="line">	android:id=&quot;@+id/id_contact_fg2_expandable_listview&quot;</div><div class="line">	android:layout_width=&quot;match_parent&quot;</div><div class="line">	android:layout_height=&quot;match_parent&quot;&gt;</div><div class="line">&lt;/ExpandableListView&gt;</div></pre></td></tr></table></figure></p>
+<p>在代码中<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">expandableListView = (ExpandableListView)view.findViewById(R.id.id_contact_fg2_expandable_listview);</div><div class="line">expandableListView.setGroupIndicator(null); //设置指示器隐藏</div><div class="line"></div><div class="line">friendGroupItemExpandableBaseAdapter = new FriendGroupItemExpandableBaseAdapter(getActivity(),list_friendgroupItem);</div><div class="line">expandableListView.setAdapter(friendGroupItemExpandableBaseAdapter);</div><div class="line"></div><div class="line">//设置监听器</div><div class="line">expandableListView.setOnChildClickListener(new ExpandableListView.OnChildClickListener() &#123;</div><div class="line">	@Override</div><div class="line">	public boolean onChildClick(ExpandableListView expandableListView, View view, int parentPosition, int childPosition, long l) &#123;</div><div class="line">		Intent intent = new Intent(getActivity(), UserDataDetailActivity.class);</div><div class="line">		intent.putExtra(&quot;username&quot;, list_friendgroupItem.get(parentPosition).getList_friend().get(childPosition).getUsername());</div><div class="line">		startActivity(intent);</div><div class="line">		return false;</div><div class="line">	&#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
+<p>效果图:<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://github.com/devallever/DataProject/blob/master/data/expandablelistview/review.png?raw=true" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure></p>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2017-08-09T09:13:33.946Z" itemprop="dateUpdated">2017-08-09 17:13:33</time>
+</span><br>
+
+
+        这里写留言或版权声明：<a href="/2017/08/09/android-expandablelistview-basic-use/" target="_blank" rel="external">https://devallever.github.io/2017/08/09/android-expandablelistview-basic-use/</a>
+    </div>
+    <footer>
+        <a href="https://devallever.github.io">
+            <img src="/img/avatar.jpg" alt="Allever">
+            Allever
+        </a>
+    </footer>
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ExpandableListView/">ExpandableListView</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://devallever.github.io/2017/08/09/android-expandablelistview-basic-use/&title=《Android ExpandableListView基础用法》 — Allever Blog&pic=https://devallever.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://devallever.github.io/2017/08/09/android-expandablelistview-basic-use/&title=《Android ExpandableListView基础用法》 — Allever Blog&source=Android Developer" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://devallever.github.io/2017/08/09/android-expandablelistview-basic-use/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Android ExpandableListView基础用法》 — Allever Blog&url=https://devallever.github.io/2017/08/09/android-expandablelistview-basic-use/&via=https://devallever.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://devallever.github.io/2017/08/09/android-expandablelistview-basic-use/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2017/08/06/android-piece-knowledge/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">Android 零碎知识点和技巧</h4>
+      </a>
+    </div>
+  
+
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+<section class="comments" id="comments">
+    <!-- UY BEGIN -->
+    <div id="uyan_frame"></div>
+    <script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid=2131486"></script>
+    <!-- UY END -->
+</section>
+
+
+
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        Thanks
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <ul class="reward-items">
+        
+
+        
+    </ul>
+</div>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>博客内容遵循<a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p>
+            <span>Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a></span>
+            <span>Allever &copy; 2015 - 2017</span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://devallever.github.io/2017/08/09/android-expandablelistview-basic-use/&title=《Android ExpandableListView基础用法》 — Allever Blog&pic=https://devallever.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://devallever.github.io/2017/08/09/android-expandablelistview-basic-use/&title=《Android ExpandableListView基础用法》 — Allever Blog&source=Android Developer" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://devallever.github.io/2017/08/09/android-expandablelistview-basic-use/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Android ExpandableListView基础用法》 — Allever Blog&url=https://devallever.github.io/2017/08/09/android-expandablelistview-basic-use/&via=https://devallever.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://devallever.github.io/2017/08/09/android-expandablelistview-basic-use/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="//api.qrserver.com/v1/create-qr-code/?data=https://devallever.github.io/2017/08/09/android-expandablelistview-basic-use/" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@1.6.1/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@1.6.1/js/search.min.js" async></script>
+
+
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+</body>
+</html>
