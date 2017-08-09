@@ -13,24 +13,24 @@
     
     
     
-    <title>Android 零碎知识点和技巧 | Allever Blog | Android Developer</title>
+    <title>SwipeMenuListView 基本使用 | Allever Blog | Android Developer</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
     <meta name="theme-color" content="#3F51B5">
     
     
-    <meta name="keywords" content="Android">
-    <meta name="description" content="ListView(RecyclerView)的单选效果在Adapter中公开一个方法,传入选中的position,然后刷新1234public void setSelected(int selectedPosition)&amp;#123;	mSelectedPosition = selectedPosition;	notifyDataSetChanged();&amp;#125; listView设置选项监听,">
-<meta name="keywords" content="Android">
+    <meta name="keywords" content="Android,SwipeMenuListView">
+    <meta name="description" content="SwipeMenuListView简介一个带侧滑删除的ListView 基本使用添加依赖android studio中1compile &amp;apos;com.baoyz.swipemenulistview:library:1.3.0&amp;apos; eclipse中下载相应jar包 使用方式和ListView是一样的,在listView的基础上有更多设置在布局中引用控件1234&amp;lt;com.baoyz">
+<meta name="keywords" content="Android,SwipeMenuListView">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Android 零碎知识点和技巧">
-<meta property="og:url" content="https://devallever.github.io/2017/08/06/android-piece-knowledge/index.html">
+<meta property="og:title" content="SwipeMenuListView 基本使用">
+<meta property="og:url" content="https://devallever.github.io/2017/08/09/android-swipemenulistview-basic-use/index.html">
 <meta property="og:site_name" content="Allever Blog">
-<meta property="og:description" content="ListView(RecyclerView)的单选效果在Adapter中公开一个方法,传入选中的position,然后刷新1234public void setSelected(int selectedPosition)&amp;#123;	mSelectedPosition = selectedPosition;	notifyDataSetChanged();&amp;#125; listView设置选项监听,">
-<meta property="og:updated_time" content="2017-08-09T09:27:03.666Z">
+<meta property="og:description" content="SwipeMenuListView简介一个带侧滑删除的ListView 基本使用添加依赖android studio中1compile &amp;apos;com.baoyz.swipemenulistview:library:1.3.0&amp;apos; eclipse中下载相应jar包 使用方式和ListView是一样的,在listView的基础上有更多设置在布局中引用控件1234&amp;lt;com.baoyz">
+<meta property="og:updated_time" content="2017-08-09T13:02:13.905Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Android 零碎知识点和技巧">
-<meta name="twitter:description" content="ListView(RecyclerView)的单选效果在Adapter中公开一个方法,传入选中的position,然后刷新1234public void setSelected(int selectedPosition)&amp;#123;	mSelectedPosition = selectedPosition;	notifyDataSetChanged();&amp;#125; listView设置选项监听,">
+<meta name="twitter:title" content="SwipeMenuListView 基本使用">
+<meta name="twitter:description" content="SwipeMenuListView简介一个带侧滑删除的ListView 基本使用添加依赖android studio中1compile &amp;apos;com.baoyz.swipemenulistview:library:1.3.0&amp;apos; eclipse中下载相应jar包 使用方式和ListView是一样的,在listView的基础上有更多设置在布局中引用控件1234&amp;lt;com.baoyz">
     
         <link rel="alternate" type="application/atom+xml" title="Allever Blog" href="/atom.xml">
     
@@ -114,7 +114,7 @@
         <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
           <i class="icon icon-lg icon-navicon"></i>
         </a>
-        <div class="flex-col header-title ellipsis">Android 零碎知识点和技巧</div>
+        <div class="flex-col header-title ellipsis">SwipeMenuListView 基本使用</div>
         
         <div class="search-wrap" id="search-wrap">
             <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
@@ -136,11 +136,11 @@
 <header class="content-header post-header">
 
     <div class="container fade-scale">
-        <h1 class="title">Android 零碎知识点和技巧</h1>
+        <h1 class="title">SwipeMenuListView 基本使用</h1>
         <h5 class="subtitle">
             
-                <time datetime="2017-08-06T04:24:45.000Z" itemprop="datePublished" class="page-time">
-  2017-08-06
+                <time datetime="2017-08-09T12:47:15.000Z" itemprop="datePublished" class="page-time">
+  2017-08-09
 </time>
 
 
@@ -161,17 +161,17 @@
     <aside class="post-widget">
         <nav class="post-toc-wrap" id="post-toc">
             <h4>TOC</h4>
-            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#ListView-RecyclerView-的单选效果"><span class="post-toc-number">1.</span> <span class="post-toc-text">ListView(RecyclerView)的单选效果</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#EditText相关"><span class="post-toc-number">2.</span> <span class="post-toc-text">EditText相关</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#光标颜色"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">光标颜色</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#TextView相关"><span class="post-toc-number">3.</span> <span class="post-toc-text">TextView相关</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#设置行距"><span class="post-toc-number">3.1.</span> <span class="post-toc-text">设置行距</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#修改语言"><span class="post-toc-number">4.</span> <span class="post-toc-text">修改语言</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#全屏显示"><span class="post-toc-number">5.</span> <span class="post-toc-text">全屏显示</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#强制横屏"><span class="post-toc-number">6.</span> <span class="post-toc-text">强制横屏</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#透明状态栏"><span class="post-toc-number">7.</span> <span class="post-toc-text">透明状态栏</span></a></li></ol>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#SwipeMenuListView简介"><span class="post-toc-number">1.</span> <span class="post-toc-text">SwipeMenuListView简介</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#基本使用"><span class="post-toc-number">2.</span> <span class="post-toc-text">基本使用</span></a></li></ol>
         </nav>
     </aside>
     
-<article id="post-android-piece-knowledge"
+<article id="post-android-swipemenulistview-basic-use"
   class="post-article article-type-post fade" itemprop="blogPost">
 
     <div class="post-card">
-        <h1 class="post-card-title">Android 零碎知识点和技巧</h1>
+        <h1 class="post-card-title">SwipeMenuListView 基本使用</h1>
         <div class="post-meta">
-            <time class="post-time" title="2017-08-06 12:24:45" datetime="2017-08-06T04:24:45.000Z"  itemprop="datePublished">2017-08-06</time>
+            <time class="post-time" title="2017-08-09 20:47:15" datetime="2017-08-09T12:47:15.000Z"  itemprop="datePublished">2017-08-09</time>
 
             
 	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Android/">Android</a></li></ul>
@@ -188,21 +188,26 @@
 
         </div>
         <div class="post-content" id="post-content" itemprop="postContent">
-            <h1 id="ListView-RecyclerView-的单选效果"><a href="#ListView-RecyclerView-的单选效果" class="headerlink" title="ListView(RecyclerView)的单选效果"></a>ListView(RecyclerView)的单选效果</h1><p>在Adapter中公开一个方法,传入选中的position,然后刷新<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">public void setSelected(int selectedPosition)&#123;</div><div class="line">	mSelectedPosition = selectedPosition;</div><div class="line">	notifyDataSetChanged();</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>listView设置选项监听,在监听回调方法中,记录选中的position,调用上面方法setSelected()</p>
-<p>在getView方法中判断position是否为mSelectedPosition,然后进行相应操作<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">if (mSelectedPosition == position)&#123;</div><div class="line">	deviceListViewHolder.iv_select.setVisibility(View.VISIBLE);</div><div class="line">	deviceListViewHolder.tv_device_name.setTextColor(context.getResources().getColor(R.color.code_blue));</div><div class="line">&#125;else &#123;</div><div class="line">	deviceListViewHolder.iv_select.setVisibility(View.INVISIBLE);</div><div class="line">	deviceListViewHolder.tv_device_name.setTextColor(context.getResources().getColor(R.color.gray));</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<h1 id="EditText相关"><a href="#EditText相关" class="headerlink" title="EditText相关"></a>EditText相关</h1><h2 id="光标颜色"><a href="#光标颜色" class="headerlink" title="光标颜色"></a>光标颜色</h2><h1 id="TextView相关"><a href="#TextView相关" class="headerlink" title="TextView相关"></a>TextView相关</h1><h2 id="设置行距"><a href="#设置行距" class="headerlink" title="设置行距"></a>设置行距</h2><h1 id="修改语言"><a href="#修改语言" class="headerlink" title="修改语言"></a>修改语言</h1><h1 id="全屏显示"><a href="#全屏显示" class="headerlink" title="全屏显示"></a>全屏显示</h1><h1 id="强制横屏"><a href="#强制横屏" class="headerlink" title="强制横屏"></a>强制横屏</h1><h1 id="透明状态栏"><a href="#透明状态栏" class="headerlink" title="透明状态栏"></a>透明状态栏</h1>
+            <h1 id="SwipeMenuListView简介"><a href="#SwipeMenuListView简介" class="headerlink" title="SwipeMenuListView简介"></a>SwipeMenuListView简介</h1><p>一个带侧滑删除的ListView</p>
+<h1 id="基本使用"><a href="#基本使用" class="headerlink" title="基本使用"></a>基本使用</h1><p>添加依赖<br>android studio中<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">compile &apos;com.baoyz.swipemenulistview:library:1.3.0&apos;</div></pre></td></tr></table></figure></p>
+<p>eclipse中下载相应jar包</p>
+<p>使用方式和ListView是一样的,在listView的基础上有更多设置<br>在布局中引用控件<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&lt;com.baoyz.swipemenulistview.SwipeMenuListView</div><div class="line">	android:id=&quot;@+id/share_manage_user_ls&quot;</div><div class="line">	android:layout_width=&quot;match_parent&quot;</div><div class="line">	android:layout_height=&quot;wrap_content&quot;/&gt;</div></pre></td></tr></table></figure></p>
+<p>Adapter跟普通ListView的adapter是一样的,不多说了<br>然后就是在代码中设置菜单<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">SwipeMenuCreator swipeMenuCreator = new SwipeMenuCreator() &#123;</div><div class="line">	@Override</div><div class="line">	public void create(SwipeMenu menu) &#123;</div><div class="line">		SwipeMenuItem swipeMenuItem = new SwipeMenuItem(getApplicationContext());</div><div class="line">		swipeMenuItem.setBackground(R.color.app_red);</div><div class="line">		//swipeMenuItem.setTitleColor(R.color.white);</div><div class="line">		swipeMenuItem.setTitleColor(Color.WHITE);</div><div class="line">		swipeMenuItem.setWidth(DisplayUtil.dip2px(ShareManageActivity.this,90));</div><div class="line">		swipeMenuItem.setTitle(R.string.delete);</div><div class="line">		swipeMenuItem.setTitleSize(18);</div><div class="line">		menu.addMenuItem(swipeMenuItem);</div><div class="line">	&#125;</div><div class="line">&#125;;</div><div class="line">mSwipeMenuListView.setMenuCreator(swipeMenuCreator);</div></pre></td></tr></table></figure></p>
+<p>创建SwipeMenuCreator对象,在方法体中创建SwipeMenuItem对象,然后把这个对象添加到Menu对象中,有多少个菜单就添加多少个SwipeMenuItem.比如这个菜单中就仅有一个删除菜单项.SwipeMenu对象方法根据名字就知道干什么用的了.</p>
+<p>设置菜单项的监听<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">//设置监听</div><div class="line">mSwipeMenuListView.setOnMenuItemClickListener(new SwipeMenuListView.OnMenuItemClickListener() &#123;</div><div class="line">	@Override</div><div class="line">	public boolean onMenuItemClick(final int position, SwipeMenu menu, int index) &#123;</div><div class="line">		switch (index)&#123;</div><div class="line">			case 0:</div><div class="line">				break;</div><div class="line">		&#125;</div><div class="line">		return false;</div><div class="line">	&#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
+<p>根据position判断选择的是哪一项,从左到右为: 0 1 2….<br>好了,这个最简单的使用就这么多了.</p>
+
         </div>
 
         <blockquote class="post-copyright">
     <div class="content">
         
 <span class="post-time">
-    最后更新时间：<time datetime="2017-08-09T09:27:03.666Z" itemprop="dateUpdated">2017-08-09 17:27:03</time>
+    最后更新时间：<time datetime="2017-08-09T13:02:13.905Z" itemprop="dateUpdated">2017-08-09 21:02:13</time>
 </span><br>
 
 
-        这里写留言或版权声明：<a href="/2017/08/06/android-piece-knowledge/" target="_blank" rel="external">https://devallever.github.io/2017/08/06/android-piece-knowledge/</a>
+        这里写留言或版权声明：<a href="/2017/08/09/android-swipemenulistview-basic-use/" target="_blank" rel="external">https://devallever.github.io/2017/08/09/android-swipemenulistview-basic-use/</a>
     </div>
     <footer>
         <a href="https://devallever.github.io">
@@ -221,7 +226,7 @@
 
         <div class="post-footer">
             
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li></ul>
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SwipeMenuListView/">SwipeMenuListView</a></li></ul>
 
 
             
@@ -231,7 +236,7 @@
 <div class="page-share" id="pageShare">
     <ul class="reset share-icons">
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://devallever.github.io/2017/08/06/android-piece-knowledge/&title=《Android 零碎知识点和技巧》 — Allever Blog&pic=https://devallever.github.io/img/avatar.jpg" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://devallever.github.io/2017/08/09/android-swipemenulistview-basic-use/&title=《SwipeMenuListView 基本使用》 — Allever Blog&pic=https://devallever.github.io/img/avatar.jpg" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -241,22 +246,22 @@
         </a>
       </li>
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://devallever.github.io/2017/08/06/android-piece-knowledge/&title=《Android 零碎知识点和技巧》 — Allever Blog&source=Android Developer" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://devallever.github.io/2017/08/09/android-swipemenulistview-basic-use/&title=《SwipeMenuListView 基本使用》 — Allever Blog&source=Android Developer" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
       <li>
-        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://devallever.github.io/2017/08/06/android-piece-knowledge/" data-title=" Facebook">
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://devallever.github.io/2017/08/09/android-swipemenulistview-basic-use/" data-title=" Facebook">
           <i class="icon icon-facebook"></i>
         </a>
       </li>
       <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Android 零碎知识点和技巧》 — Allever Blog&url=https://devallever.github.io/2017/08/06/android-piece-knowledge/&via=https://devallever.github.io" data-title=" Twitter">
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《SwipeMenuListView 基本使用》 — Allever Blog&url=https://devallever.github.io/2017/08/09/android-swipemenulistview-basic-use/&via=https://devallever.github.io" data-title=" Twitter">
           <i class="icon icon-twitter"></i>
         </a>
       </li>
       <li>
-        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://devallever.github.io/2017/08/06/android-piece-knowledge/" data-title=" Google+">
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://devallever.github.io/2017/08/09/android-swipemenulistview-basic-use/" data-title=" Google+">
           <i class="icon icon-google-plus"></i>
         </a>
       </li>
@@ -279,20 +284,13 @@
 <nav class="post-nav flex-row flex-justify-between">
   
     <div class="waves-block waves-effect prev">
-      <a href="/2017/07/30/custom-bezier-line/" id="post-prev" class="post-nav-link">
+      <a href="/2017/08/09/android-seekbar-and-volume/" id="post-prev" class="post-nav-link">
         <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
-        <h4 class="title">Android 根据一系列坐标点绘制贝塞尔曲线</h4>
+        <h4 class="title">Android Seekbar调节系统音量</h4>
       </a>
     </div>
   
 
-  
-    <div class="waves-block waves-effect next">
-      <a href="/2017/08/09/android-expandablelistview-basic-use/" id="post-next" class="post-nav-link">
-        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
-        <h4 class="title">Android ExpandableListView基础用法</h4>
-      </a>
-    </div>
   
 </nav>
 
@@ -373,7 +371,7 @@
 <div class="global-share" id="globalShare">
     <ul class="reset share-icons">
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://devallever.github.io/2017/08/06/android-piece-knowledge/&title=《Android 零碎知识点和技巧》 — Allever Blog&pic=https://devallever.github.io/img/avatar.jpg" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://devallever.github.io/2017/08/09/android-swipemenulistview-basic-use/&title=《SwipeMenuListView 基本使用》 — Allever Blog&pic=https://devallever.github.io/img/avatar.jpg" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -383,22 +381,22 @@
         </a>
       </li>
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://devallever.github.io/2017/08/06/android-piece-knowledge/&title=《Android 零碎知识点和技巧》 — Allever Blog&source=Android Developer" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://devallever.github.io/2017/08/09/android-swipemenulistview-basic-use/&title=《SwipeMenuListView 基本使用》 — Allever Blog&source=Android Developer" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
       <li>
-        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://devallever.github.io/2017/08/06/android-piece-knowledge/" data-title=" Facebook">
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://devallever.github.io/2017/08/09/android-swipemenulistview-basic-use/" data-title=" Facebook">
           <i class="icon icon-facebook"></i>
         </a>
       </li>
       <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Android 零碎知识点和技巧》 — Allever Blog&url=https://devallever.github.io/2017/08/06/android-piece-knowledge/&via=https://devallever.github.io" data-title=" Twitter">
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《SwipeMenuListView 基本使用》 — Allever Blog&url=https://devallever.github.io/2017/08/09/android-swipemenulistview-basic-use/&via=https://devallever.github.io" data-title=" Twitter">
           <i class="icon icon-twitter"></i>
         </a>
       </li>
       <li>
-        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://devallever.github.io/2017/08/06/android-piece-knowledge/" data-title=" Google+">
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://devallever.github.io/2017/08/09/android-swipemenulistview-basic-use/" data-title=" Google+">
           <i class="icon icon-google-plus"></i>
         </a>
       </li>
@@ -409,7 +407,7 @@
 <div class="page-modal wx-share" id="wxShare">
     <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
-    <img src="//api.qrserver.com/v1/create-qr-code/?data=https://devallever.github.io/2017/08/06/android-piece-knowledge/" alt="微信分享二维码">
+    <img src="//api.qrserver.com/v1/create-qr-code/?data=https://devallever.github.io/2017/08/09/android-swipemenulistview-basic-use/" alt="微信分享二维码">
 </div>
 
 
