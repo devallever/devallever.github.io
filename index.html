@@ -388,8 +388,7 @@ eclipse中下载相应j...
     <div class="post-content" id="post-content" itemprop="postContent">
 
     
-        ListView(RecyclerView)的单选效果在Adapter中公开一个方法,传入选中的position,然后刷新1234public void setSelected(int selectedPosition)&#123;	mSelectedPosition = selectedPosition;	notifyDataSetChanged();&#125;
-listView设置选项...
+        使用较高API的方法例如canvas.drawRoundRect()是minSDK21以上的方法要使用的话在方法上添加标注，然后在代码中判断当前sdk版本，进行不同的处理12345678910@TargetApi(Build.VERSION_CODES.LOLLIPOP)@Overrideprotected void onDraw(Canvas canvas) &#123;	super.on...
     
 
         <a href="/2017/08/06/android-piece-knowledge/" class="post-more waves-effect waves-button">
