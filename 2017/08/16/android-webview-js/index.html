@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    <title>Android WebView使用及与JavaScript互调 | Allever Blog | Android Developer</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="Android,WebView,JavaScript">
+    <meta name="description" content="WebView基本使用在布局中使用控件1234&amp;lt;WebView	android:id=&amp;quot;@+id/id_web_test_2_wb&amp;quot;	android:layout_width=&amp;quot;match_parent&amp;quot;	android:layout_height=&amp;quot;match_parent&amp;quot;/&amp;gt; 在代码中123456789101112131">
+<meta name="keywords" content="Android,WebView,JavaScript">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Android WebView使用及与JavaScript互调">
+<meta property="og:url" content="https://devallever.github.io/2017/08/16/android-webview-js/index.html">
+<meta property="og:site_name" content="Allever Blog">
+<meta property="og:description" content="WebView基本使用在布局中使用控件1234&amp;lt;WebView	android:id=&amp;quot;@+id/id_web_test_2_wb&amp;quot;	android:layout_width=&amp;quot;match_parent&amp;quot;	android:layout_height=&amp;quot;match_parent&amp;quot;/&amp;gt; 在代码中123456789101112131">
+<meta property="og:updated_time" content="2017-08-16T13:18:39.697Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Android WebView使用及与JavaScript互调">
+<meta name="twitter:description" content="WebView基本使用在布局中使用控件1234&amp;lt;WebView	android:id=&amp;quot;@+id/id_web_test_2_wb&amp;quot;	android:layout_width=&amp;quot;match_parent&amp;quot;	android:layout_height=&amp;quot;match_parent&amp;quot;/&amp;gt; 在代码中123456789101112131">
+    
+        <link rel="alternate" type="application/atom+xml" title="Allever Blog" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@1.6.1/css/style.css">
+    <script>window.lazyScripts=[]</script>
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">Allever</h5>
+          <a href="mailto:devallever@163.com" title="devallever@163.com" class="mail">devallever@163.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                Home
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                Categories
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/devallever" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="http://blog.csdn.net/devallever"  >
+                <i class="icon icon-lg icon-link"></i>
+                CSDN
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">Android WebView使用及与JavaScript互调</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">Android WebView使用及与JavaScript互调</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2017-08-16T12:33:40.000Z" itemprop="datePublished" class="page-time">
+  2017-08-16
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Android/">Android</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#WebView基本使用"><span class="post-toc-number">1.</span> <span class="post-toc-text">WebView基本使用</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#在布局中使用控件"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">在布局中使用控件</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#在代码中"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">在代码中</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#原生-Java-与JavaScript互调"><span class="post-toc-number">2.</span> <span class="post-toc-text">原生(Java)与JavaScript互调</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#html页面"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">html页面</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#原生布局"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">原生布局</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#加载本地html"><span class="post-toc-number">2.3.</span> <span class="post-toc-text">加载本地html</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#调用JavaScript方法"><span class="post-toc-number">2.4.</span> <span class="post-toc-text">调用JavaScript方法</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#JavaScript调用原生方法"><span class="post-toc-number">2.5.</span> <span class="post-toc-text">JavaScript调用原生方法</span></a></li></ol></li></ol>
+        </nav>
+    </aside>
+    
+<article id="post-android-webview-js"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">Android WebView使用及与JavaScript互调</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2017-08-16 20:33:40" datetime="2017-08-16T12:33:40.000Z"  itemprop="datePublished">2017-08-16</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Android/">Android</a></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+            
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h1 id="WebView基本使用"><a href="#WebView基本使用" class="headerlink" title="WebView基本使用"></a>WebView基本使用</h1><h2 id="在布局中使用控件"><a href="#在布局中使用控件" class="headerlink" title="在布局中使用控件"></a>在布局中使用控件</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&lt;WebView</div><div class="line">	android:id=&quot;@+id/id_web_test_2_wb&quot;</div><div class="line">	android:layout_width=&quot;match_parent&quot;</div><div class="line">	android:layout_height=&quot;match_parent&quot;/&gt;</div></pre></td></tr></table></figure>
+<h2 id="在代码中"><a href="#在代码中" class="headerlink" title="在代码中"></a>在代码中</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">private void initWebView() &#123;</div><div class="line">	webView = (WebView)findViewById(R.id.id_web_test_2_wb);</div><div class="line">	//不跳转到其他浏览器</div><div class="line">	webView.setWebViewClient(new WebViewClient() &#123;</div><div class="line">		@Override</div><div class="line">		public boolean shouldOverrideUrlLoading(WebView view, String url) &#123;</div><div class="line">			view.loadUrl(url);</div><div class="line">			return true;</div><div class="line">		&#125;</div><div class="line">	&#125;);</div><div class="line">	WebSettings settings = webView.getSettings();</div><div class="line">	//支持JS</div><div class="line">	settings.setJavaScriptEnabled(true);</div><div class="line">	//加载本地html文件</div><div class="line">	webView.loadUrl(&quot;file:///android_asset/JavaAndJavaScriptCall.html&quot;);</div><div class="line">	//加载网页</div><div class="line">	//webView.loadUrl(&quot;https://www.baidu.com/&quot;);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>监听返回键<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">@Override</div><div class="line">public boolean onKeyDown(int keyCode, KeyEvent event) &#123;</div><div class="line">	// TODO Auto-generated method stub</div><div class="line">	if ((keyCode == KeyEvent.KEYCODE_BACK) &amp;&amp;   webView.canGoBack()) &#123;</div><div class="line">		webView.goBack();</div><div class="line">		return true;</div><div class="line">	&#125;</div><div class="line">	return super.onKeyDown(keyCode, event);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h1 id="原生-Java-与JavaScript互调"><a href="#原生-Java-与JavaScript互调" class="headerlink" title="原生(Java)与JavaScript互调"></a>原生(Java)与JavaScript互调</h1><p>例如加载这个本地html<br>在输入框中随便输入东西，然后点击确定，调用js方法，下面显示欢迎xxxx<br>点击网页中的按钮，调用原生方法。toast一个。<br><img src="" alt=""></p>
+<h2 id="html页面"><a href="#html页面" class="headerlink" title="html页面"></a>html页面</h2><p>在main目录下新建assets文件夹，在assets目录下新建JavaAndJavaScriptCall.html<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">&lt;html&gt;</div><div class="line">&lt;head&gt;</div><div class="line">    &lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html;charset=UTF-8&quot;&gt;</div><div class="line">    &lt;script type=&quot;text/javascript&quot;&gt;</div><div class="line"></div><div class="line">    function javaCallJs(arg)&#123;</div><div class="line">         document.getElementById(&quot;content&quot;).innerHTML =</div><div class="line">             (&quot;欢迎：&quot;+arg );</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    &lt;/script&gt;</div><div class="line">&lt;/head&gt;</div><div class="line">&lt;body&gt;</div><div class="line">&lt;div id=&quot;content&quot;&gt; 请在上方输入您的用户名&lt;/div&gt;</div><div class="line">&lt;input type=&quot;button&quot; value=&quot;点击Android被调用&quot; onclick=&quot;window.Android.showToast(&apos;JS中传来的参数&apos;)&quot;/&gt;</div><div class="line">&lt;/body&gt;</div><div class="line">&lt;/html&gt;</div></pre></td></tr></table></figure></p>
+<h2 id="原生布局"><a href="#原生布局" class="headerlink" title="原生布局"></a>原生布局</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div></pre></td><td class="code"><pre><div class="line">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;</div><div class="line">&lt;LinearLayout xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;</div><div class="line">    xmlns:tools=&quot;http://schemas.android.com/tools&quot;</div><div class="line">    android:id=&quot;@+id/ll_root&quot;</div><div class="line">    android:layout_width=&quot;match_parent&quot;</div><div class="line">    android:layout_height=&quot;match_parent&quot;</div><div class="line">    android:orientation=&quot;vertical&quot;&gt;</div><div class="line">    &lt;LinearLayout</div><div class="line">        android:layout_width=&quot;match_parent&quot;</div><div class="line">        android:layout_height=&quot;wrap_content&quot;</div><div class="line">        android:orientation=&quot;horizontal&quot;</div><div class="line">        android:padding=&quot;20dp&quot;</div><div class="line">        android:background=&quot;#000088&quot;&gt;</div><div class="line">        &lt;EditText</div><div class="line">            android:id=&quot;@+id/et_user&quot;</div><div class="line">            android:layout_width=&quot;0dp&quot;</div><div class="line">            android:layout_height=&quot;wrap_content&quot;</div><div class="line">            android:hint=&quot;输入WebView中要显示的用户名&quot;</div><div class="line">            android:background=&quot;#008800&quot;</div><div class="line">            android:textSize=&quot;16sp&quot;</div><div class="line">            android:layout_weight=&quot;1&quot;/&gt;</div><div class="line">        &lt;Button</div><div class="line">            android:layout_width=&quot;wrap_content&quot;</div><div class="line">            android:layout_height=&quot;wrap_content&quot;</div><div class="line">            android:layout_marginLeft=&quot;40dp&quot;</div><div class="line">            android:layout_marginRight=&quot;20dp&quot;</div><div class="line">            android:textSize=&quot;16sp&quot;</div><div class="line">            android:text=&quot;确定&quot;</div><div class="line">            android:onClick=&quot;click&quot;/&gt;</div><div class="line">    &lt;/LinearLayout&gt;</div><div class="line"></div><div class="line">    &lt;WebView</div><div class="line">        android:id=&quot;@+id/id_web_test_2_wb&quot;</div><div class="line">        android:layout_width=&quot;match_parent&quot;</div><div class="line">        android:layout_height=&quot;match_parent&quot;/&gt;</div><div class="line"></div><div class="line">&lt;/LinearLayout&gt;</div></pre></td></tr></table></figure>
+<p>一看就懂，不解释。</p>
+<h2 id="加载本地html"><a href="#加载本地html" class="headerlink" title="加载本地html"></a>加载本地html</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">webView.loadUrl(&quot;file:///android_asset/JavaAndJavaScriptCall.html&quot;);</div></pre></td></tr></table></figure>
+<h2 id="调用JavaScript方法"><a href="#调用JavaScript方法" class="headerlink" title="调用JavaScript方法"></a>调用JavaScript方法</h2><p>在点击确定之后触发调用<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">//java调用JS方法</div><div class="line">webView.loadUrl(&quot;javascript:javaCallJs(&quot; + &quot;&apos;&quot; + et_user.getText().toString()+&quot;&apos;&quot;+&quot;)&quot;);</div></pre></td></tr></table></figure></p>
+<p>这里比较难看，log出来的url是这样的<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">javascript:javaCallJs(&apos;inputValue&apos;)</div></pre></td></tr></table></figure></p>
+<p>javaCallJs()就是JavaScript代码中的方法名，里面是参数<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">&lt;script type=&quot;text/javascript&quot;&gt;</div><div class="line">function javaCallJs(arg)&#123;</div><div class="line">	document.getElementById(&quot;content&quot;).innerHTML =</div><div class="line">	(&quot;欢迎：&quot;+arg );</div><div class="line">&#125;</div><div class="line">&lt;/script&gt;</div></pre></td></tr></table></figure></p>
+<h2 id="JavaScript调用原生方法"><a href="#JavaScript调用原生方法" class="headerlink" title="JavaScript调用原生方法"></a>JavaScript调用原生方法</h2><p>通常会建一个类用来封装被JavaScript调用的方法<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">private class JSInterface &#123;</div><div class="line">//JS需要调用的方法</div><div class="line">	@JavascriptInterface</div><div class="line">	public void showToast(String arg)&#123;</div><div class="line">		Toast.makeText(WebTest2Activity.this,arg,Toast.LENGTH_SHORT).show();</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>使用 @JavascriptInterface标注的方法就是被JavaScript调用的方法</p>
+<p>然后设置<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">webView.addJavascriptInterface(new JSInterface(),&quot;Android&quot;);</div></pre></td></tr></table></figure></p>
+<p>Android是随便起的，是JavaScript中的对象名，<br>源码如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">/**</div><div class="line">    * @param object the Java object to inject into this WebView&apos;s JavaScript</div><div class="line">    *               context. Null values are ignored.</div><div class="line">    * @param name the name used to expose the object in JavaScript</div><div class="line">    */</div><div class="line">public void addJavascriptInterface(Object object, String name) &#123;</div><div class="line">	checkThread();</div><div class="line">	mProvider.addJavascriptInterface(object, name);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>再看一下html中的代码<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;input type=&quot;button&quot; value=&quot;点击Android被调用&quot; onclick=&quot;window.Android.showToast(&apos;JS中传来的参数&apos;)&quot;/&gt;</div></pre></td></tr></table></figure></p>
+<p>其中Android就是webview添加JavaScript接口时指定的JavaScript对象名<br>当点击html中按钮时，就会调用showToast()方法弹出Toast</p>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2017-08-16T13:18:39.697Z" itemprop="dateUpdated">2017-08-16 21:18:39</time>
+</span><br>
+
+
+        这里写留言或版权声明：<a href="/2017/08/16/android-webview-js/" target="_blank" rel="external">https://devallever.github.io/2017/08/16/android-webview-js/</a>
+    </div>
+    <footer>
+        <a href="https://devallever.github.io">
+            <img src="/img/avatar.jpg" alt="Allever">
+            Allever
+        </a>
+    </footer>
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/">JavaScript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/WebView/">WebView</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://devallever.github.io/2017/08/16/android-webview-js/&title=《Android WebView使用及与JavaScript互调》 — Allever Blog&pic=https://devallever.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://devallever.github.io/2017/08/16/android-webview-js/&title=《Android WebView使用及与JavaScript互调》 — Allever Blog&source=Android Developer" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://devallever.github.io/2017/08/16/android-webview-js/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Android WebView使用及与JavaScript互调》 — Allever Blog&url=https://devallever.github.io/2017/08/16/android-webview-js/&via=https://devallever.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://devallever.github.io/2017/08/16/android-webview-js/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2017/08/15/android-drag-basic-use/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">Android 拖拽基本使用</h4>
+      </a>
+    </div>
+  
+
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+<section class="comments" id="comments">
+    <!-- UY BEGIN -->
+    <div id="uyan_frame"></div>
+    <script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid=2131486"></script>
+    <!-- UY END -->
+</section>
+
+
+
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        Thanks
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <ul class="reward-items">
+        
+
+        
+    </ul>
+</div>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>博客内容遵循<a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p>
+            <span>Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a></span>
+            <span>Allever &copy; 2015 - 2017</span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://devallever.github.io/2017/08/16/android-webview-js/&title=《Android WebView使用及与JavaScript互调》 — Allever Blog&pic=https://devallever.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://devallever.github.io/2017/08/16/android-webview-js/&title=《Android WebView使用及与JavaScript互调》 — Allever Blog&source=Android Developer" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://devallever.github.io/2017/08/16/android-webview-js/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Android WebView使用及与JavaScript互调》 — Allever Blog&url=https://devallever.github.io/2017/08/16/android-webview-js/&via=https://devallever.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://devallever.github.io/2017/08/16/android-webview-js/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="//api.qrserver.com/v1/create-qr-code/?data=https://devallever.github.io/2017/08/16/android-webview-js/" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@1.6.1/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@1.6.1/js/search.min.js" async></script>
+
+
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+</body>
+</html>

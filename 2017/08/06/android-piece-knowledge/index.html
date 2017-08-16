@@ -20,17 +20,17 @@
     
     
     <meta name="keywords" content="Android">
-    <meta name="description" content="使用较高API的方法例如canvas.drawRoundRect()是minSDK21以上的方法要使用的话在方法上添加标注，然后在代码中判断当前sdk版本，进行不同的处理12345678910@TargetApi(Build.VERSION_CODES.LOLLIPOP)@Overrideprotected void onDraw(Canvas canvas) &amp;#123;	super.onDra">
+    <meta name="description" content="LinearLayout从右到左排列1android:gravity=&amp;quot;right&amp;quot; 使用较高API的方法例如canvas.drawRoundRect()是minSDK21以上的方法要使用的话在方法上添加标注，然后在代码中判断当前sdk版本，进行不同的处理12345678910@TargetApi(Build.VERSION_CODES.LOLLIPOP)@Overridepr">
 <meta name="keywords" content="Android">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Android 零碎知识点和技巧">
 <meta property="og:url" content="https://devallever.github.io/2017/08/06/android-piece-knowledge/index.html">
 <meta property="og:site_name" content="Allever Blog">
-<meta property="og:description" content="使用较高API的方法例如canvas.drawRoundRect()是minSDK21以上的方法要使用的话在方法上添加标注，然后在代码中判断当前sdk版本，进行不同的处理12345678910@TargetApi(Build.VERSION_CODES.LOLLIPOP)@Overrideprotected void onDraw(Canvas canvas) &amp;#123;	super.onDra">
-<meta property="og:updated_time" content="2017-08-13T14:26:05.518Z">
+<meta property="og:description" content="LinearLayout从右到左排列1android:gravity=&amp;quot;right&amp;quot; 使用较高API的方法例如canvas.drawRoundRect()是minSDK21以上的方法要使用的话在方法上添加标注，然后在代码中判断当前sdk版本，进行不同的处理12345678910@TargetApi(Build.VERSION_CODES.LOLLIPOP)@Overridepr">
+<meta property="og:updated_time" content="2017-08-15T13:58:53.043Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Android 零碎知识点和技巧">
-<meta name="twitter:description" content="使用较高API的方法例如canvas.drawRoundRect()是minSDK21以上的方法要使用的话在方法上添加标注，然后在代码中判断当前sdk版本，进行不同的处理12345678910@TargetApi(Build.VERSION_CODES.LOLLIPOP)@Overrideprotected void onDraw(Canvas canvas) &amp;#123;	super.onDra">
+<meta name="twitter:description" content="LinearLayout从右到左排列1android:gravity=&amp;quot;right&amp;quot; 使用较高API的方法例如canvas.drawRoundRect()是minSDK21以上的方法要使用的话在方法上添加标注，然后在代码中判断当前sdk版本，进行不同的处理12345678910@TargetApi(Build.VERSION_CODES.LOLLIPOP)@Overridepr">
     
         <link rel="alternate" type="application/atom+xml" title="Allever Blog" href="/atom.xml">
     
@@ -120,7 +120,7 @@
             <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
                 <i class="icon icon-lg icon-chevron-left"></i>
             </a>
-            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="Search">
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
             <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
                 <i class="icon icon-lg icon-search"></i>
             </a>
@@ -161,7 +161,7 @@
     <aside class="post-widget">
         <nav class="post-toc-wrap" id="post-toc">
             <h4>TOC</h4>
-            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#使用较高API的方法"><span class="post-toc-number">1.</span> <span class="post-toc-text">使用较高API的方法</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#ListView-RecyclerView-的单选效果"><span class="post-toc-number">2.</span> <span class="post-toc-text">ListView(RecyclerView)的单选效果</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#EditText相关"><span class="post-toc-number">3.</span> <span class="post-toc-text">EditText相关</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#光标颜色"><span class="post-toc-number">3.1.</span> <span class="post-toc-text">光标颜色</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#TextView相关"><span class="post-toc-number">4.</span> <span class="post-toc-text">TextView相关</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#设置行距"><span class="post-toc-number">4.1.</span> <span class="post-toc-text">设置行距</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#修改语言"><span class="post-toc-number">5.</span> <span class="post-toc-text">修改语言</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#全屏显示"><span class="post-toc-number">6.</span> <span class="post-toc-text">全屏显示</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#强制横屏"><span class="post-toc-number">7.</span> <span class="post-toc-text">强制横屏</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#透明状态栏"><span class="post-toc-number">8.</span> <span class="post-toc-text">透明状态栏</span></a></li></ol>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#LinearLayout从右到左排列"><span class="post-toc-number">1.</span> <span class="post-toc-text">LinearLayout从右到左排列</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#使用较高API的方法"><span class="post-toc-number">2.</span> <span class="post-toc-text">使用较高API的方法</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#ListView-RecyclerView-的单选效果"><span class="post-toc-number">3.</span> <span class="post-toc-text">ListView(RecyclerView)的单选效果</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#EditText相关"><span class="post-toc-number">4.</span> <span class="post-toc-text">EditText相关</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#光标颜色"><span class="post-toc-number">4.1.</span> <span class="post-toc-text">光标颜色</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#TextView相关"><span class="post-toc-number">5.</span> <span class="post-toc-text">TextView相关</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#设置行距"><span class="post-toc-number">5.1.</span> <span class="post-toc-text">设置行距</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#斜体加粗"><span class="post-toc-number">5.2.</span> <span class="post-toc-text">斜体加粗</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#修改语言"><span class="post-toc-number">6.</span> <span class="post-toc-text">修改语言</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#全屏显示"><span class="post-toc-number">7.</span> <span class="post-toc-text">全屏显示</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#强制横屏"><span class="post-toc-number">8.</span> <span class="post-toc-text">强制横屏</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#透明状态栏"><span class="post-toc-number">9.</span> <span class="post-toc-text">透明状态栏</span></a></li></ol>
         </nav>
     </aside>
     
@@ -188,7 +188,8 @@
 
         </div>
         <div class="post-content" id="post-content" itemprop="postContent">
-            <h1 id="使用较高API的方法"><a href="#使用较高API的方法" class="headerlink" title="使用较高API的方法"></a>使用较高API的方法</h1><p>例如canvas.drawRoundRect()是minSDK21以上的方法要使用的话在方法上添加标注，然后在代码中判断当前sdk版本，进行不同的处理<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">@TargetApi(Build.VERSION_CODES.LOLLIPOP)</div><div class="line">@Override</div><div class="line">protected void onDraw(Canvas canvas) &#123;</div><div class="line">	super.onDraw(canvas);</div><div class="line">	if (Build.VERSION.SDK_INT &gt;= Build.VERSION_CODES.LOLLIPOP) &#123;</div><div class="line">		canvas.drawRoundRect();</div><div class="line">	&#125;else&#123;</div><div class="line">		canvas.drawRect();</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+            <h1 id="LinearLayout从右到左排列"><a href="#LinearLayout从右到左排列" class="headerlink" title="LinearLayout从右到左排列"></a>LinearLayout从右到左排列</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">android:gravity=&quot;right&quot;</div></pre></td></tr></table></figure>
+<h1 id="使用较高API的方法"><a href="#使用较高API的方法" class="headerlink" title="使用较高API的方法"></a>使用较高API的方法</h1><p>例如canvas.drawRoundRect()是minSDK21以上的方法要使用的话在方法上添加标注，然后在代码中判断当前sdk版本，进行不同的处理<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">@TargetApi(Build.VERSION_CODES.LOLLIPOP)</div><div class="line">@Override</div><div class="line">protected void onDraw(Canvas canvas) &#123;</div><div class="line">	super.onDraw(canvas);</div><div class="line">	if (Build.VERSION.SDK_INT &gt;= Build.VERSION_CODES.LOLLIPOP) &#123;</div><div class="line">		canvas.drawRoundRect();</div><div class="line">	&#125;else&#123;</div><div class="line">		canvas.drawRect();</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 <h1 id="ListView-RecyclerView-的单选效果"><a href="#ListView-RecyclerView-的单选效果" class="headerlink" title="ListView(RecyclerView)的单选效果"></a>ListView(RecyclerView)的单选效果</h1><p>在Adapter中公开一个方法,传入选中的position,然后刷新<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">public void setSelected(int selectedPosition)&#123;</div><div class="line">	mSelectedPosition = selectedPosition;</div><div class="line">	notifyDataSetChanged();</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 <p>listView设置选项监听,在监听回调方法中,记录选中的position,调用上面方法setSelected()</p>
 <p>在getView方法中判断position是否为mSelectedPosition,然后进行相应操作<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">if (mSelectedPosition == position)&#123;</div><div class="line">	deviceListViewHolder.iv_select.setVisibility(View.VISIBLE);</div><div class="line">	deviceListViewHolder.tv_device_name.setTextColor(context.getResources().getColor(R.color.code_blue));</div><div class="line">&#125;else &#123;</div><div class="line">	deviceListViewHolder.iv_select.setVisibility(View.INVISIBLE);</div><div class="line">	deviceListViewHolder.tv_device_name.setTextColor(context.getResources().getColor(R.color.gray));</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
@@ -196,6 +197,7 @@
 <p>android:textCursorDrawable   这个属性是用来控制光标颜色的，”@null”   是作用是让光标颜色和text color一样<br>比如<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">android:textCursorDrawable=&quot;@color/black_color&quot;</div></pre></td></tr></table></figure></p>
 <p>就可以设置成黑色。pad上面很多光标颜色和背景色一样。    </p>
 <h1 id="TextView相关"><a href="#TextView相关" class="headerlink" title="TextView相关"></a>TextView相关</h1><h2 id="设置行距"><a href="#设置行距" class="headerlink" title="设置行距"></a>设置行距</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">android:lineSpacingExtra=&quot;4dp&quot;</div></pre></td></tr></table></figure>
+<h2 id="斜体加粗"><a href="#斜体加粗" class="headerlink" title="斜体加粗"></a>斜体加粗</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">android:textStyle=&quot;bold|italic&quot;</div></pre></td></tr></table></figure>
 <h1 id="修改语言"><a href="#修改语言" class="headerlink" title="修改语言"></a>修改语言</h1><h1 id="全屏显示"><a href="#全屏显示" class="headerlink" title="全屏显示"></a>全屏显示</h1><h1 id="强制横屏"><a href="#强制横屏" class="headerlink" title="强制横屏"></a>强制横屏</h1><p>在AndroidManifest.xml中设置,在Activity节点中添加<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">android:screenOrientation=&quot;landscape&quot; //锁定横屏</div><div class="line">android:screenOrientation=&quot;portrait&quot;	//锁定竖屏</div><div class="line"></div><div class="line">//例如</div><div class="line">&lt;activity android:name=&quot;.BaseActivity&quot;</div><div class="line">	android:screenOrientation=&quot;landscape&quot;&gt;</div><div class="line">&lt;/activity&gt;</div></pre></td></tr></table></figure></p>
 <p>或者在代码中添加<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);</div><div class="line">setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);</div></pre></td></tr></table></figure></p>
 <p>在setContentView()方法之前</p>
@@ -206,7 +208,7 @@
     <div class="content">
         
 <span class="post-time">
-    Last updated: <time datetime="2017-08-13T14:26:05.518Z" itemprop="dateUpdated">2017-08-13 22:26:05</time>
+    最后更新时间：<time datetime="2017-08-15T13:58:53.043Z" itemprop="dateUpdated">2017-08-15 21:58:53</time>
 </span><br>
 
 
@@ -361,7 +363,7 @@
             
                 <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
             
-            <span>This blog is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.</span>
+            <span>博客内容遵循<a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
         </p>
     </div>
     <div class="bottom">
