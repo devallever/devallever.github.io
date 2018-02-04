@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    <title>Android 自定义竞赛进度条 | Allever Blog | Android Developer</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="Android,View">
+    <meta name="description" content="需求 能显示用户当前进度,能显示其他4位用户的位置, 用户进度实时变化 当用户超越进度条最后一位(最右边),时,进度条向左滚动,并显示距离用户最近的用户位置  实现方案 绘制贝塞尔曲线 在贝塞尔曲线上绘制圆点和图片 使用坐标值循环实现波浪滚动  具体实现绘制贝塞尔曲线定义曲线的固定值1234567891011121314151617181920212223242526272829303132333">
+<meta name="keywords" content="Android,View">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Android 自定义竞赛进度条">
+<meta property="og:url" content="https://devallever.github.io/2017/08/09/android-custom-view-compelition-progress-line/index.html">
+<meta property="og:site_name" content="Allever Blog">
+<meta property="og:description" content="需求 能显示用户当前进度,能显示其他4位用户的位置, 用户进度实时变化 当用户超越进度条最后一位(最右边),时,进度条向左滚动,并显示距离用户最近的用户位置  实现方案 绘制贝塞尔曲线 在贝塞尔曲线上绘制圆点和图片 使用坐标值循环实现波浪滚动  具体实现绘制贝塞尔曲线定义曲线的固定值1234567891011121314151617181920212223242526272829303132333">
+<meta property="og:updated_time" content="2018-02-04T01:53:24.692Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Android 自定义竞赛进度条">
+<meta name="twitter:description" content="需求 能显示用户当前进度,能显示其他4位用户的位置, 用户进度实时变化 当用户超越进度条最后一位(最右边),时,进度条向左滚动,并显示距离用户最近的用户位置  实现方案 绘制贝塞尔曲线 在贝塞尔曲线上绘制圆点和图片 使用坐标值循环实现波浪滚动  具体实现绘制贝塞尔曲线定义曲线的固定值1234567891011121314151617181920212223242526272829303132333">
+    
+        <link rel="alternate" type="application/atom+xml" title="Allever Blog" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@1.6.1/css/style.css">
+    <script>window.lazyScripts=[]</script>
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">Allever</h5>
+          <a href="mailto:devallever@163.com" title="devallever@163.com" class="mail">devallever@163.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                Home
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                Categories
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/devallever" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="http://blog.csdn.net/devallever"  >
+                <i class="icon icon-lg icon-link"></i>
+                CSDN
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">Android 自定义竞赛进度条</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="Search">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">Android 自定义竞赛进度条</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2017-08-09T13:38:09.000Z" itemprop="datePublished" class="page-time">
+  2017-08-09
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Android/">Android</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#需求"><span class="post-toc-number">1.</span> <span class="post-toc-text">需求</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#实现方案"><span class="post-toc-number">2.</span> <span class="post-toc-text">实现方案</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#具体实现"><span class="post-toc-number">3.</span> <span class="post-toc-text">具体实现</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#绘制贝塞尔曲线"><span class="post-toc-number">3.1.</span> <span class="post-toc-text">绘制贝塞尔曲线</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#定义曲线的固定值"><span class="post-toc-number">3.1.1.</span> <span class="post-toc-text">定义曲线的固定值</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#把原始点转化为Android坐标的点"><span class="post-toc-number">3.1.2.</span> <span class="post-toc-text">把原始点转化为Android坐标的点</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#绘制贝塞尔曲线-1"><span class="post-toc-number">3.1.3.</span> <span class="post-toc-text">绘制贝塞尔曲线</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#获取控制点的方法"><span class="post-toc-number">3.1.4.</span> <span class="post-toc-text">获取控制点的方法</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#在曲线上绘制图片或圆点"><span class="post-toc-number">3.1.5.</span> <span class="post-toc-text">在曲线上绘制图片或圆点</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#获取列表中的特定用户"><span class="post-toc-number">3.1.6.</span> <span class="post-toc-text">获取列表中的特定用户</span></a></li></ol></li></ol></li></ol>
+        </nav>
+    </aside>
+    
+<article id="post-android-custom-view-compelition-progress-line"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">Android 自定义竞赛进度条</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2017-08-09 21:38:09" datetime="2017-08-09T13:38:09.000Z"  itemprop="datePublished">2017-08-09</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Android/">Android</a></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+            
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h1 id="需求"><a href="#需求" class="headerlink" title="需求"></a>需求</h1><ol>
+<li>能显示用户当前进度,能显示其他4位用户的位置,</li>
+<li>用户进度实时变化</li>
+<li>当用户超越进度条最后一位(最右边),时,进度条向左滚动,并显示距离用户最近的用户位置</li>
+</ol>
+<h1 id="实现方案"><a href="#实现方案" class="headerlink" title="实现方案"></a>实现方案</h1><ol>
+<li>绘制贝塞尔曲线</li>
+<li>在贝塞尔曲线上绘制圆点和图片</li>
+<li>使用坐标值循环实现波浪滚动</li>
+</ol>
+<h1 id="具体实现"><a href="#具体实现" class="headerlink" title="具体实现"></a>具体实现</h1><h2 id="绘制贝塞尔曲线"><a href="#绘制贝塞尔曲线" class="headerlink" title="绘制贝塞尔曲线"></a>绘制贝塞尔曲线</h2><h3 id="定义曲线的固定值"><a href="#定义曲线的固定值" class="headerlink" title="定义曲线的固定值"></a>定义曲线的固定值</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div></pre></td><td class="code"><pre><div class="line">mPointFList.add(new PointF(1,4.15f));</div><div class="line">mPointFList.add(new PointF(2,4.6f));</div><div class="line">mPointFList.add(new PointF(3,5.1f));</div><div class="line">mPointFList.add(new PointF(4,5.5f));</div><div class="line">mPointFList.add(new PointF(5,5.8f));</div><div class="line">mPointFList.add(new PointF(6,6.0f));</div><div class="line">mPointFList.add(new PointF(7,6.1f));</div><div class="line">mPointFList.add(new PointF(8,6.0f));</div><div class="line">mPointFList.add(new PointF(9,5.8f));</div><div class="line">mPointFList.add(new PointF(10,5.5f));</div><div class="line">mPointFList.add(new PointF(11,5.1f));</div><div class="line">mPointFList.add(new PointF(12,4.6f));</div><div class="line"></div><div class="line">mPointFList.add(new PointF(13,4.15f));</div><div class="line">mPointFList.add(new PointF(14,3.8f));</div><div class="line">mPointFList.add(new PointF(15,3.55f));</div><div class="line">mPointFList.add(new PointF(16,3.4f));</div><div class="line">mPointFList.add(new PointF(17,3.3f));</div><div class="line">mPointFList.add(new PointF(18,3.25f));</div><div class="line">mPointFList.add(new PointF(19,3.3f));</div><div class="line">mPointFList.add(new PointF(20,3.4f));</div><div class="line">mPointFList.add(new PointF(21,3.55f));</div><div class="line">mPointFList.add(new PointF(22,3.8f));</div><div class="line"></div><div class="line">mPointFList.add(new PointF(23,4.15f));</div><div class="line">mPointFList.add(new PointF(24,4.6f));</div><div class="line">mPointFList.add(new PointF(25,5.1f));</div><div class="line">mPointFList.add(new PointF(26,5.5f));</div><div class="line">mPointFList.add(new PointF(27,5.8f));</div><div class="line">mPointFList.add(new PointF(28,6.0f));</div><div class="line">mPointFList.add(new PointF(29,6.1f));</div><div class="line">mPointFList.add(new PointF(30,6.0f));</div><div class="line">mPointFList.add(new PointF(31,5.8f));</div><div class="line">mPointFList.add(new PointF(32,5.5f));</div><div class="line">mPointFList.add(new PointF(33,5.1f));</div><div class="line">mPointFList.add(new PointF(34,4.6f));</div><div class="line"></div><div class="line">mPointFList.add(new PointF(35,4.15f));</div><div class="line">mPointFList.add(new PointF(36,3.8f));</div><div class="line">mPointFList.add(new PointF(37,3.55f));</div><div class="line">mPointFList.add(new PointF(38,3.4f));</div><div class="line">mPointFList.add(new PointF(39,3.3f));</div><div class="line">mPointFList.add(new PointF(40,3.25f));</div><div class="line">mPointFList.add(new PointF(41,3.3f));</div><div class="line">mPointFList.add(new PointF(42,3.4f));</div><div class="line">mPointFList.add(new PointF(43,3.55f));</div><div class="line">mPointFList.add(new PointF(44,3.8f));</div><div class="line"></div><div class="line">mPointFList.add(new PointF(45,4.15f));</div></pre></td></tr></table></figure>
+<p>这里我定义了两个周期的点,每个周期的点越多,曲线就越精细</p>
+<h3 id="把原始点转化为Android坐标的点"><a href="#把原始点转化为Android坐标的点" class="headerlink" title="把原始点转化为Android坐标的点"></a>把原始点转化为Android坐标的点</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div></pre></td><td class="code"><pre><div class="line">/**</div><div class="line"> * 把一般坐标转为 Android中的视图坐标**/</div><div class="line">private List&lt;PointF&gt; changePoint(List&lt;PointF&gt; oldPointFs)&#123;</div><div class="line">    List&lt;PointF&gt; pointFs = new ArrayList&lt;&gt;();</div><div class="line">    float maxValueY = 0;</div><div class="line">    float yValue = 0;</div><div class="line">    for (int i = 0; i &lt; oldPointFs.size(); i++)&#123;</div><div class="line">        yValue = oldPointFs.get(i).y;</div><div class="line">        if (maxValueY &lt; yValue) maxValueY = yValue+ (yValue*0.1f);//最大值加上10</div><div class="line">    &#125;</div><div class="line">    Log.d(TAG, &quot;changePoint: maxValueY = &quot; + maxValueY);</div><div class="line">    //间隔，减去某个值是为了空出多余空间，为了画线以外，还要写坐标轴的值，除以坐标轴最大值</div><div class="line">    //相当于缩小图像</div><div class="line">    //int blockCount = oldPointFs.size() - 1;</div><div class="line">    int blockCount = oldPointFs.size()-1;</div><div class="line">    float intervalX = (getMeasuredWidth() - mMarginLeftRight * 2f)/blockCount;</div><div class="line">    //float intervalY = (getMeasuredHeight() - mMarginTopBottom * 2f)/200f; 原始</div><div class="line">    float intervalY = (getMeasuredHeight() - mMarginTopBottom * 2f)/maxValueY-0f;</div><div class="line">    Log.d(TAG, &quot;intervalX = &quot; + intervalX);</div><div class="line">    Log.d(TAG, &quot;intervalY = &quot; + intervalY);</div><div class="line">    int height = getMeasuredHeight();</div><div class="line">    Log.d(TAG, &quot;width = &quot; + getMeasuredWidth());</div><div class="line">    Log.d(TAG, &quot;height = &quot; +getMeasuredHeight());</div><div class="line">    PointF p;</div><div class="line">    float x;</div><div class="line">    float y;</div><div class="line">    for (int i = 0; i&lt; oldPointFs.size(); i++)&#123;</div><div class="line">        PointF pointF = oldPointFs.get(i);</div><div class="line">        //最后的正负值是左移右移</div><div class="line">        x = (pointF.x-1) * intervalX + mMarginLeftRight;</div><div class="line">        //y = height - mMarginTopBottom - intervalY*pointF.y; 原始</div><div class="line">        y = height - mMarginTopBottom - intervalY*pointF.y - DensityUtil.dip2px(mContext,5f) + DensityUtil.dip2px(mContext,20f);</div><div class="line">        p = new PointF(x, y);</div><div class="line">        pointFs.add(p);</div><div class="line">        Log.d(TAG, &quot;oldX = &quot; + pointF.x + &quot;\toldY = &quot; + pointF.y);</div><div class="line">        Log.d(TAG, &quot;newX = &quot; + x + &quot;\tnewY = &quot; + y);</div><div class="line">    &#125;</div><div class="line">    return pointFs;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>这里只是一种方式,网上还有更好的方式,仅供参考</p>
+<h3 id="绘制贝塞尔曲线-1"><a href="#绘制贝塞尔曲线-1" class="headerlink" title="绘制贝塞尔曲线"></a>绘制贝塞尔曲线</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div></pre></td><td class="code"><pre><div class="line">//绘制曲线</div><div class="line">mLinePaint.setColor(mContext.getResources().getColor(R.color.competition_line_alpha_gray));</div><div class="line">mLinePaint.setStyle(Paint.Style.STROKE);</div><div class="line">mLinePaint.setStrokeWidth(DensityUtil.dip2px(mContext,1.5f));//设置线宽</div><div class="line">mLinePaint.setAntiAlias(true);//去除锯齿</div><div class="line">//下面设置让笔触和连接处更加圆滑</div><div class="line">mLinePaint.setStrokeJoin(Paint.Join.ROUND);</div><div class="line">mLinePaint.setStrokeCap(Paint.Cap.ROUND);</div><div class="line">List&lt;PointF&gt; androidPointList = changePoint(mPointFList);</div><div class="line">List&lt;ControlPoint&gt; lightControlPoints = ControlPoint.getControlPointList(androidPointList);</div><div class="line">Path lightLinePath = new Path();</div><div class="line">for (int i =0; i&lt;lightControlPoints.size(); i++)&#123;</div><div class="line">    if (i == 0)&#123;</div><div class="line">        lightLinePath.moveTo(androidPointList.get(i).x,androidPointList.get(i).y);</div><div class="line">    &#125;</div><div class="line">    //画三价贝塞尔曲线路径</div><div class="line">    //lightLinePath.rCubicTo();</div><div class="line">    lightLinePath.cubicTo(</div><div class="line">            lightControlPoints.get(i).getConPoint1().x,lightControlPoints.get(i).getConPoint1().y,</div><div class="line">            lightControlPoints.get(i).getConPoint2().x,lightControlPoints.get(i).getConPoint2().y,</div><div class="line">            androidPointList.get(i+1).x, androidPointList.get(i+1).y</div><div class="line">    );</div><div class="line">&#125;</div><div class="line">float gradientFactor = 0f;//比例,根据用户当前位置设置渐变色的起始,用户左边为蓝色,右边为灰色</div><div class="line">//求用户所在位置占总距离的比例</div><div class="line">for (CompetitionData data: mCompetitionDataList)&#123;</div><div class="line">    if (data.getCompetitionUserType()== CompetitionUserType.ME) &#123;</div><div class="line">        gradientFactor = data.getDistance()/mMaxDistance;</div><div class="line">        break;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line">LinearGradient linearGradient = new LinearGradient(</div><div class="line">        0,</div><div class="line">        0,</div><div class="line">        getMeasuredWidth()*gradientFactor,</div><div class="line">        0,</div><div class="line">        new int[]&#123;</div><div class="line">                mContext.getResources().getColor(R.color.color_default_light),</div><div class="line">                mContext.getResources().getColor(R.color.color_default_light),</div><div class="line">                mContext.getResources().getColor(R.color.color_default_blue),</div><div class="line">                mContext.getResources().getColor(R.color.color_default_blue),</div><div class="line">                mContext.getResources().getColor(R.color.color_default_blue),</div><div class="line">                mContext.getResources().getColor(R.color.color_default_blue),</div><div class="line">                mContext.getResources().getColor(R.color.color_default_blue),</div><div class="line">                mContext.getResources().getColor(R.color.color_default_blue),</div><div class="line">                mContext.getResources().getColor(R.color.color_default_blue),</div><div class="line">                mContext.getResources().getColor(R.color.color_default_blue),</div><div class="line">                mContext.getResources().getColor(R.color.competition_line_alpha_gray)&#125;,</div><div class="line">        null,</div><div class="line">        Shader.TileMode.CLAMP</div><div class="line">);</div><div class="line">mLinePaint.setShader(linearGradient);</div><div class="line">canvas.drawPath(lightLinePath,mLinePaint);</div><div class="line">canvas.save();</div></pre></td></tr></table></figure>
+<h3 id="获取控制点的方法"><a href="#获取控制点的方法" class="headerlink" title="获取控制点的方法"></a>获取控制点的方法</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div></pre></td><td class="code"><pre><div class="line">/**</div><div class="line"> * 求控制点</div><div class="line"> * @param pointFs Android坐标系坐标集合*/</div><div class="line">public static List&lt;ControlPoint&gt; getControlPointList(List&lt;PointF&gt; pointFs)&#123;</div><div class="line">    List&lt;ControlPoint&gt; controlPoints = new ArrayList&lt;&gt;();</div><div class="line"></div><div class="line">    PointF p1;</div><div class="line">    PointF p2;</div><div class="line">    float conP1x;</div><div class="line">    float conP1y;</div><div class="line">    float conP2x;</div><div class="line">    float conP2y;</div><div class="line">    for (int i=0; i&lt;pointFs.size()-1;i++)&#123;</div><div class="line">        if (i == 0)&#123;</div><div class="line">            //第一断1曲线 控制点</div><div class="line">            conP1x = pointFs.get(i).x + (pointFs.get(i + 1).x-pointFs.get(i).x)/4;</div><div class="line">            conP1y = pointFs.get(i).y + (pointFs.get(i + 1).y-pointFs.get(i).y)/4;</div><div class="line"></div><div class="line">            if (pointFs.size()&lt;3)&#123;</div><div class="line">                //当仅有两个数据,先取最后一个数据</div><div class="line">                conP2x = pointFs.get(i+1).x - (pointFs.get(i + 1).x - pointFs.get(i).x)/4;</div><div class="line">                conP2y = pointFs.get(i+1).y - (pointFs.get(i + 1).y - pointFs.get(i).y)/4;</div><div class="line">            &#125;else &#123;</div><div class="line">                conP2x = pointFs.get(i+1).x - (pointFs.get(i + 2).x - pointFs.get(i).x)/4;</div><div class="line">                conP2y = pointFs.get(i+1).y - (pointFs.get(i + 2).y - pointFs.get(i).y)/4;</div><div class="line">            &#125;</div><div class="line"></div><div class="line">        &#125;else if (i == pointFs.size() - 2)&#123;</div><div class="line">            //最后一段曲线 控制点</div><div class="line">            conP1x = pointFs.get(i).x + (pointFs.get(i + 1).x-pointFs.get(i - 1).x)/4;</div><div class="line">            conP1y = pointFs.get(i).y + (pointFs.get(i + 1).y-pointFs.get(i - 1).y)/4;</div><div class="line"></div><div class="line">            conP2x = pointFs.get(i+1).x - (pointFs.get(i + 1).x - pointFs.get(i).x)/4;</div><div class="line">            conP2y = pointFs.get(i+1).y - (pointFs.get(i + 1).y - pointFs.get(i).y)/4;</div><div class="line">        &#125;else &#123;</div><div class="line">            conP1x = pointFs.get(i).x + (pointFs.get(i + 1).x-pointFs.get(i - 1).x)/4;</div><div class="line">            conP1y = pointFs.get(i).y + (pointFs.get(i + 1).y-pointFs.get(i - 1).y)/4;</div><div class="line"></div><div class="line">            conP2x = pointFs.get(i+1).x - (pointFs.get(i + 2).x - pointFs.get(i).x)/4;</div><div class="line">            conP2y = pointFs.get(i+1).y - (pointFs.get(i + 2).y - pointFs.get(i).y)/4;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        p1 = new PointF(conP1x,conP1y);</div><div class="line">        p2 = new PointF(conP2x,conP2y);</div><div class="line"></div><div class="line">        ControlPoint controlPoint = new ControlPoint(p1, p2);</div><div class="line">        controlPoints.add(controlPoint);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    return controlPoints;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="在曲线上绘制图片或圆点"><a href="#在曲线上绘制图片或圆点" class="headerlink" title="在曲线上绘制图片或圆点"></a>在曲线上绘制图片或圆点</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div></pre></td><td class="code"><pre><div class="line">getShowedDataList();//显示4个数据</div><div class="line">if (mCompetitionDataList.size() == 0) return;</div><div class="line">//绘制圆形与文字</div><div class="line">int position;//数据点位置索引</div><div class="line">Bitmap bitmap;</div><div class="line">CompetitionData competitionData;</div><div class="line">float dXY; //头像偏移量</div><div class="line">Log.d(TAG, &quot;onDraw: mMaxDistance = &quot; + mMaxDistance);</div><div class="line">//</div><div class="line">for (int i=0; i&lt;mShowedDataList.size(); i++)&#123;</div><div class="line">    competitionData = mShowedDataList.get(i);</div><div class="line">    Log.d(TAG, &quot;onDraw: competitionData.getDistance() = &quot; + competitionData.getDistance());</div><div class="line">    Log.d(TAG, &quot;onDraw: mPointFList.size() = &quot; + mPointFList.size());</div><div class="line">    position =(int) ((competitionData.getDistance()/mMaxDistance)*mPointFList.size());//求数据点在曲线上的索引</div><div class="line">    if (position&lt;0) position = 0;</div><div class="line">    if (position&gt;44) position = 44;</div><div class="line">    if (competitionData.getCompetitionUserType() == CompetitionUserType.ME)&#123;</div><div class="line">        //是当前用户,绘制Bitmap</div><div class="line">        bitmap = BitmapFactory.decodeResource(getResources(),R.drawable.run_video_piont);</div><div class="line">        dXY = DensityUtil.dip2px(mContext,14f);</div><div class="line">        canvas.drawBitmap(bitmap,</div><div class="line">                androidPointList.get(position).x - dXY,</div><div class="line">                androidPointList.get(position).y - dXY,</div><div class="line">            mImagePaint);</div><div class="line">    &#125;else &#123;</div><div class="line">        //其他用户绘制圆点和排名</div><div class="line">        dXY =  DensityUtil.dip2px(mContext,10f);</div><div class="line">        float r = DensityUtil.dip2px(mContext,10f);</div><div class="line">        mLinePaint.setStyle(Paint.Style.FILL);</div><div class="line">        canvas.drawCircle(</div><div class="line">                androidPointList.get(position).x,</div><div class="line">                androidPointList.get(position).y,</div><div class="line">                r,mLinePaint);</div><div class="line">        //绘制排名</div><div class="line">        String rank = competitionData.getRank()+&quot;&quot;;</div><div class="line">        float dx = dx = DensityUtil.dip2px(mContext,6f);</div><div class="line">        float dy = DensityUtil.dip2px(mContext,4f);</div><div class="line">        if (competitionData.getRank() &lt;10)&#123;</div><div class="line">            dx = DensityUtil.dip2px(mContext,3f);</div><div class="line">        &#125;else if (competitionData.getRank() &gt;= 10 &amp;&amp; competitionData.getRank() &lt; 100)&#123;</div><div class="line">            dx = DensityUtil.dip2px(mContext,6f);</div><div class="line">        &#125;else &#123;</div><div class="line">            dx = DensityUtil.dip2px(mContext,8f);</div><div class="line">        &#125;</div><div class="line">        canvas.drawText(rank,0,rank.length(),</div><div class="line">                androidPointList.get(position).x -dx,</div><div class="line">                androidPointList.get(position).y + dy,</div><div class="line">                mRankPaint);</div><div class="line">    &#125;</div><div class="line">    Log.d(TAG, &quot;onDraw: position = &quot; + position);</div><div class="line">    canvas.save();</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="获取列表中的特定用户"><a href="#获取列表中的特定用户" class="headerlink" title="获取列表中的特定用户"></a>获取列表中的特定用户</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">/**</div><div class="line"> * 只获取显示四个数据*/</div><div class="line">private void getShowedDataList()&#123;</div><div class="line">    mShowedDataList.clear();</div><div class="line">    mShowedDataList.add(mCompetitionDataList.get(0));//第一个,用户</div><div class="line">    int fromIndex = 1;</div><div class="line">    Log.d(TAG, &quot;getShowedDataList: mCurDataIndex = &quot; + mCurDataIndex);</div><div class="line">    int counter = 0;</div><div class="line">    for (int i=mCurDataIndex;i&gt;0;i--)&#123;</div><div class="line">        if (counter &lt; 4)&#123;</div><div class="line">            fromIndex = i;</div><div class="line">            counter ++;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    Log.d(TAG, &quot;getShowedDataList: fromIndex = &quot; + fromIndex);</div><div class="line">    for (int j=fromIndex;j&lt;=mCurDataIndex;j++)&#123;</div><div class="line">        mShowedDataList.add(mCompetitionDataList.get(j));</div><div class="line">        Log.d(TAG, &quot;getShowedDataList: j = &quot; + j);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>当列表的数量小于</p>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    <div class="content">
+        
+<span class="post-time">
+    Last updated: <time datetime="2018-02-04T01:53:24.692Z" itemprop="dateUpdated">2018-02-04 09:53:24</time>
+</span><br>
+
+
+        这里写留言或版权声明：<a href="/2017/08/09/android-custom-view-compelition-progress-line/" target="_blank" rel="external">https://devallever.github.io/2017/08/09/android-custom-view-compelition-progress-line/</a>
+    </div>
+    <footer>
+        <a href="https://devallever.github.io">
+            <img src="/img/avatar.jpg" alt="Allever">
+            Allever
+        </a>
+    </footer>
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/View/">View</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://devallever.github.io/2017/08/09/android-custom-view-compelition-progress-line/&title=《Android 自定义竞赛进度条》 — Allever Blog&pic=https://devallever.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://devallever.github.io/2017/08/09/android-custom-view-compelition-progress-line/&title=《Android 自定义竞赛进度条》 — Allever Blog&source=Android Developer" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://devallever.github.io/2017/08/09/android-custom-view-compelition-progress-line/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Android 自定义竞赛进度条》 — Allever Blog&url=https://devallever.github.io/2017/08/09/android-custom-view-compelition-progress-line/&via=https://devallever.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://devallever.github.io/2017/08/09/android-custom-view-compelition-progress-line/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2017/08/09/android-language-setting/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">Android 修改App语言</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2017/08/15/android-drag-basic-use/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">Android 拖拽基本使用</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+<section class="comments" id="comments">
+    <!-- UY BEGIN -->
+    <div id="uyan_frame"></div>
+    <script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid=2131486"></script>
+    <!-- UY END -->
+</section>
+
+
+
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        Thanks
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <ul class="reward-items">
+        
+
+        
+    </ul>
+</div>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>This blog is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.</span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p>
+            <span>Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a></span>
+            <span>Allever &copy; 2015 - 2018</span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://devallever.github.io/2017/08/09/android-custom-view-compelition-progress-line/&title=《Android 自定义竞赛进度条》 — Allever Blog&pic=https://devallever.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://devallever.github.io/2017/08/09/android-custom-view-compelition-progress-line/&title=《Android 自定义竞赛进度条》 — Allever Blog&source=Android Developer" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://devallever.github.io/2017/08/09/android-custom-view-compelition-progress-line/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Android 自定义竞赛进度条》 — Allever Blog&url=https://devallever.github.io/2017/08/09/android-custom-view-compelition-progress-line/&via=https://devallever.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://devallever.github.io/2017/08/09/android-custom-view-compelition-progress-line/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="//api.qrserver.com/v1/create-qr-code/?data=https://devallever.github.io/2017/08/09/android-custom-view-compelition-progress-line/" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@1.6.1/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@1.6.1/js/search.min.js" async></script>
+
+
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+</body>
+</html>
