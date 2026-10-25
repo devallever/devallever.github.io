@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>隐私政策 | FakeCall 虚拟来电</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC",
+                         "Hiragino Sans GB", "Microsoft YaHei", Roboto, sans-serif;
+            background: #f8f9fa;
+            color: #2c3e50;
+            line-height: 1.8;
+            font-size: 15px;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .container {
+            max-width: 720px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+            color: #fff;
+            padding: 48px 24px 40px;
+            text-align: center;
+            border-radius: 0 0 24px 24px;
+            margin-bottom: 32px;
+        }
+
+        .header h1 {
+            font-size: 26px;
+            font-weight: 700;
+            margin-bottom: 8px;
+            letter-spacing: 0.5px;
+        }
+
+        .header .subtitle {
+            font-size: 14px;
+            opacity: 0.85;
+        }
+
+        .header .badge {
+            display: inline-block;
+            margin-top: 16px;
+            padding: 6px 16px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: 500;
+        }
+
+        .card {
+            background: #fff;
+            border-radius: 16px;
+            padding: 24px;
+            margin-bottom: 16px;
+            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04);
+        }
+
+        .card h2 {
+            font-size: 17px;
+            font-weight: 700;
+            color: #1e293b;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .card h2 .icon {
+            width: 28px;
+            height: 28px;
+            border-radius: 8px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 15px;
+            flex-shrink: 0;
+        }
+
+        .card h2 .icon.green { background: #dcfce7; color: #16a34a; }
+        .card h2 .icon.blue   { background: #dbeafe; color: #2563eb; }
+        .card h2 .icon.orange { background: #ffedd5; color: #ea580c; }
+        .card h2 .icon.purple { background: #ede9fe; color: #7c3aed; }
+        .card h2 .icon.red    { background: #fee2e2; color: #dc2626; }
+        .card h2 .icon.amber  { background: #fef3c7; color: #d97706; }
+
+        .card p {
+            color: #475569;
+            margin-bottom: 12px;
+            text-align: justify;
+        }
+
+        .card p:last-child {
+            margin-bottom: 0;
+        }
+
+        .permission-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .permission-list li {
+            padding: 14px 16px;
+            background: #f8fafc;
+            border-radius: 10px;
+            margin-bottom: 8px;
+            border-left: 3px solid #e2e8f0;
+        }
+
+        .permission-list li .perm-name {
+            font-weight: 600;
+            color: #1e293b;
+            display: block;
+            font-size: 14px;
+        }
+
+        .permission-list li .perm-desc {
+            color: #64748b;
+            font-size: 13px;
+            margin-top: 4px;
+            display: block;
+        }
+
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 14px;
+        }
+
+        .data-table th,
+        .data-table td {
+            padding: 12px 14px;
+            text-align: left;
+            border-bottom: 1px solid #f1f5f9;
+        }
+
+        .data-table th {
+            background: #f8fafc;
+            font-weight: 600;
+            color: #334155;
+            font-size: 13px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .data-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .data-table td {
+            color: #475569;
+        }
+
+        .highlight {
+            background: linear-gradient(120deg, #fff1f2 0%, #fff7ed 100%);
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 16px;
+            border: 1px solid #fed7aa;
+        }
+
+        .highlight p {
+            color: #9a3412;
+            margin-bottom: 0;
+            font-weight: 500;
+        }
+
+        .tag {
+            display: inline-block;
+            padding: 2px 10px;
+            border-radius: 12px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        .tag-yes { background: #dcfce7; color: #16a34a; }
+        .tag-no  { background: #fee2e2; color: #dc2626; }
+
+        .footer {
+            text-align: center;
+            padding: 32px 20px 48px;
+            color: #94a3b8;
+            font-size: 13px;
+        }
+
+        .footer .contact {
+            margin-top: 12px;
+            font-weight: 500;
+            color: #64748b;
+        }
+
+        @media (max-width: 480px) {
+            .header {
+                padding: 36px 20px 28px;
+                border-radius: 0 0 20px 20px;
+            }
+            .header h1 { font-size: 22px; }
+            .card { padding: 20px; border-radius: 14px; }
+            .data-table { font-size: 13px; }
+            .data-table th, .data-table td { padding: 10px 8px; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="header">
+    <h1>隐私政策</h1>
+    <div class="subtitle">FakeCall · 虚拟来电模拟</div>
+    <div class="badge">最后更新：2026 年 10 月</div>
+</div>
+
+<div class="container">
+
+    <!-- 核心声明 -->
+    <div class="highlight">
+        <p>
+            🔒 <strong>FakeCall 承诺：我们不收集、不存储、不传输您的任何个人数据。</strong><br>
+            本应用无需网络连接，所有设置仅保存在您的设备本地。
+        </p>
+    </div>
+
+    <!-- 一、应用介绍 -->
+    <div class="card">
+        <h2><span class="icon blue">📱</span>一、应用简介</h2>
+        <p>
+            FakeCall 是一款帮助用户模拟虚拟来电的Android应用。用户可以自定义来电号码、联系人姓名、归属地、铃声及壁纸，
+            并设置定时触发虚拟来电，用于演示、恶作剧或个人娱乐。
+        </p>
+        <p>
+            本应用是一款 <strong>完全本地运行</strong> 的工具类应用，不依赖任何网络服务。
+        </p>
+    </div>
+
+    <!-- 二、我们收集什么数据 -->
+    <div class="card">
+        <h2><span class="icon green">✅</span>二、我们收集什么数据？</h2>
+        <p>
+            <strong>简单来说：什么都不收集。</strong>
+        </p>
+        <p>
+            FakeCall <strong>未声明网络权限（INTERNET）</strong>，因此您的设备与我们之间不存在任何数据传输。
+            所有用户配置的信息（来电号码、联系人名称、铃声选择、壁纸设置、头像路径等）
+            仅以键值对形式保存在您设备的应用私有存储中，<strong>不会上传至任何服务器</strong>。
+        </p>
+
+        <table class="data-table">
+            <thead>
+                <tr>
+                    <th>数据类型</th>
+                    <th>是否收集</th>
+                    <th>说明</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>个人身份信息（姓名、邮箱）</td>
+                    <td><span class="tag tag-no">不收集</span></td>
+                    <td>无需注册、无需登录</td>
+                </tr>
+                <tr>
+                    <td>设备信息（型号、系统版本）</td>
+                    <td><span class="tag tag-no">不收集</span></td>
+                    <td>不采集任何设备标识</td>
+                </tr>
+                <tr>
+                    <td>网络浏览记录</td>
+                    <td><span class="tag tag-no">不收集</span></td>
+                    <td>无网络权限</td>
+                </tr>
+                <tr>
+                    <td>位置信息</td>
+                    <td><span class="tag tag-no">不收集</span></td>
+                    <td>无位置相关权限</td>
+                </tr>
+                <tr>
+                    <td>麦克风 / 摄像头</td>
+                    <td><span class="tag tag-no">不收集</span></td>
+                    <td>无录音 / 拍照权限</td>
+                </tr>
+                <tr>
+                    <td>联系人数据</td>
+                    <td><span class="tag tag-no">不收集</span></td>
+                    <td>通过系统选择器单次读取，不请求 READ_CONTACTS 权限</td>
+                </tr>
+                <tr>
+                    <td>崩溃日志</td>
+                    <td><span class="tag tag-no">不收集</span></td>
+                    <td>未集成任何崩溃上报SDK</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- 三、我们使用的权限 -->
+    <div class="card">
+        <h2><span class="icon orange">🔐</span>三、应用权限使用说明</h2>
+        <p>
+            为了实现虚拟来电的模拟效果，FakeCall 仅声明以下 3 项必要权限。
+            所有权限均为非敏感权限，不会触发系统弹窗请求用户授权：
+        </p>
+        <ul class="permission-list">
+            <li>
+                <span class="perm-name">震动权限（VIBRATE）</span>
+                <span class="perm-desc">模拟来电时触发设备震动，增强来电真实感。</span>
+            </li>
+            <li>
+                <span class="perm-name">禁用锁屏权限（DISABLE_KEYGUARD）</span>
+                <span class="perm-desc">来电触发时解锁屏幕，使虚拟来电界面可以正常显示。</span>
+            </li>
+            <li>
+                <span class="perm-name">唤醒锁权限（WAKE_LOCK）</span>
+                <span class="perm-desc">虚拟来电界面显示期间保持设备唤醒，防止系统自动熄屏。</span>
+            </li>
+        </ul>
+
+        <p style="margin-top: 16px;">
+            <strong>以下权限均未声明：</strong>
+            网络访问、通讯录、电话拨号、位置、麦克风、摄像头、存储读写、通知、悬浮窗、应用安装请求、精确闹钟、电池优化豁免等。
+        </p>
+    </div>
+
+    <!-- 四、第三方共享 -->
+    <div class="card">
+        <h2><span class="icon purple">🔗</span>四、第三方 SDK 与数据共享</h2>
+        <p>
+            FakeCall 的编译依赖中 <strong>未引入任何第三方数据分析、广告、崩溃上报或归因 SDK</strong>。
+            应用仅使用 Google AndroidX 官方组件（Material Design、Lifecycle、Coil 图片加载等）。
+        </p>
+        <p>
+            因此，我们 <strong>不会与任何第三方共享用户数据</strong>，也不存在 SDK 向外部服务器发送数据的情况。
+        </p>
+    </div>
+
+    <!-- 五、数据存储 -->
+    <div class="card">
+        <h2><span class="icon amber">💾</span>五、数据存储与本地隐私</h2>
+        <p>
+            您在应用内设置的所有数据（来电号码、联系人、归属地、铃声、壁纸、头像、定时参数等）
+            通过 Android SharedPreferences / MMKV 以键值对形式存储在
+            <code>/data/data/app.funnyappptech.android.fake.call/</code> 应用私有目录下。
+        </p>
+        <p>
+            该目录受 Android 沙箱保护，仅本应用可以读取。卸载应用后，所有本地存储数据将被系统自动清除，
+            不存在残留数据风险。
+        </p>
+
+        <p style="margin-top: 12px;"><strong>关于头像与壁纸：</strong></p>
+        <p>
+            自定义头像和壁纸通过系统相册选择器（ActivityResultContracts.PickVisualMedia）选取后，
+            应用将其复制至应用私有目录并保存绝对路径。原始相册文件不会被修改或删除。
+        </p>
+    </div>
+
+    <!-- 六、联系人选择 -->
+    <div class="card">
+        <h2><span class="icon blue">📇</span>六、关于联系人选择器</h2>
+        <p>
+            当您点击"选择联系人"按钮时，FakeCall 会发送 <code>ACTION_PICK</code> Intent 至系统联系人应用，
+            由您在系统界面中手动选择。
+        </p>
+        <p>
+            根据 Android 官方文档，这种"受信 Intent 路径"无需申请 <code>READ_CONTACTS</code> 运行时权限，
+            系统会在选择完成后仅回传被选中的那一条联系人数据（姓名和电话号码）。
+            <strong>应用不会读取您整个通讯录</strong>。
+        </p>
+    </div>
+
+    <!-- 七、儿童隐私 -->
+    <div class="card">
+        <h2><span class="icon red">👶</span>七、儿童隐私</h2>
+        <p>
+            FakeCall 面向全年龄段用户开放使用，不会收集任何 13 岁以下儿童的个人信息。
+            本应用不包含任何未成年人不宜内容，适合家庭共同使用。
+        </p>
+    </div>
+
+    <!-- 八、权限删除 -->
+    <div class="card">
+        <h2><span class="icon green">🗑️</span>八、数据删除方式</h2>
+        <p>
+            由于应用仅在本地存储数据，删除数据的方式非常简单：
+        </p>
+        <p>
+            1. <strong>清除应用数据：</strong>系统设置 → 应用管理 → FakeCall → 存储 → 清除数据（保留安装包）<br>
+            2. <strong>卸载应用：</strong>卸载后系统自动清除所有本地数据
+        </p>
+        <p>
+            由于没有后端服务器，不存在需要额外申请删除的云端数据。
+        </p>
+    </div>
+
+    <!-- 九、政策变更 -->
+    <div class="card">
+        <h2><span class="icon orange">📝</span>九、隐私政策变更</h2>
+        <p>
+            如果未来 FakeCall 的功能发生较大变化（例如引入网络功能、广告 SDK 等），
+            我们会同步更新本隐私政策，并在应用启动时提示用户重新审阅。
+            您可以随时在应用"关于"页面或 Google Play 商店查看最新版本的隐私政策。
+        </p>
+    </div>
+
+    <!-- 十、联系我们 -->
+    <div class="card">
+        <h2><span class="icon purple">✉️</span>十、联系我们</h2>
+        <p>
+            如果您对本隐私政策有任何疑问、建议或投诉，请通过应用内"设置 → 反馈"功能与我们联系，
+            或发送邮件至：<strong>funnyappptech@hotmail.com</strong>。
+        </p>
+        <p>
+            反馈功能会自动在邮件正文中预置您的设备型号、Android版本、屏幕参数等环境信息
+            （通过 Android Build 类本地读取，无需任何权限），帮助我们快速定位问题。
+            这些信息仅在您 <strong>主动点击发送邮件</strong> 时，由您的邮件客户端发出。
+            应用本身不会主动将任何信息上传至我们的服务器。
+        </p>
+    </div>
+
+</div>
+
+<div class="footer">
+    <div>© 2026 FakeCall. 保留所有权利。</div>
+    <div class="contact">app.funnyappptech.android.fake.call</div>
+</div>
+
+</body>
+</html>

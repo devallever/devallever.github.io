@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Privacy Policy | FakeCall - Virtual Call Simulator</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+                         "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+            background: #f8f9fa;
+            color: #2c3e50;
+            line-height: 1.8;
+            font-size: 15px;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .container {
+            max-width: 720px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+            color: #fff;
+            padding: 48px 24px 40px;
+            text-align: center;
+            border-radius: 0 0 24px 24px;
+            margin-bottom: 32px;
+        }
+
+        .header h1 {
+            font-size: 26px;
+            font-weight: 700;
+            margin-bottom: 8px;
+            letter-spacing: 0.5px;
+        }
+
+        .header .subtitle {
+            font-size: 14px;
+            opacity: 0.85;
+        }
+
+        .header .badge {
+            display: inline-block;
+            margin-top: 16px;
+            padding: 6px 16px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: 500;
+        }
+
+        .card {
+            background: #fff;
+            border-radius: 16px;
+            padding: 24px;
+            margin-bottom: 16px;
+            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04);
+        }
+
+        .card h2 {
+            font-size: 17px;
+            font-weight: 700;
+            color: #1e293b;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .card h2 .icon {
+            width: 28px;
+            height: 28px;
+            border-radius: 8px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 15px;
+            flex-shrink: 0;
+        }
+
+        .card h2 .icon.green { background: #dcfce7; color: #16a34a; }
+        .card h2 .icon.blue   { background: #dbeafe; color: #2563eb; }
+        .card h2 .icon.orange { background: #ffedd5; color: #ea580c; }
+        .card h2 .icon.purple { background: #ede9fe; color: #7c3aed; }
+        .card h2 .icon.red    { background: #fee2e2; color: #dc2626; }
+        .card h2 .icon.amber  { background: #fef3c7; color: #d97706; }
+
+        .card p {
+            color: #475569;
+            margin-bottom: 12px;
+            text-align: justify;
+        }
+
+        .card p:last-child {
+            margin-bottom: 0;
+        }
+
+        .permission-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .permission-list li {
+            padding: 14px 16px;
+            background: #f8fafc;
+            border-radius: 10px;
+            margin-bottom: 8px;
+            border-left: 3px solid #e2e8f0;
+        }
+
+        .permission-list li .perm-name {
+            font-weight: 600;
+            color: #1e293b;
+            display: block;
+            font-size: 14px;
+        }
+
+        .permission-list li .perm-desc {
+            color: #64748b;
+            font-size: 13px;
+            margin-top: 4px;
+            display: block;
+        }
+
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 14px;
+        }
+
+        .data-table th,
+        .data-table td {
+            padding: 12px 14px;
+            text-align: left;
+            border-bottom: 1px solid #f1f5f9;
+        }
+
+        .data-table th {
+            background: #f8fafc;
+            font-weight: 600;
+            color: #334155;
+            font-size: 13px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .data-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .data-table td {
+            color: #475569;
+        }
+
+        .highlight {
+            background: linear-gradient(120deg, #f0fdf4 0%, #eff6ff 100%);
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 16px;
+            border: 1px solid #bbf7d0;
+        }
+
+        .highlight p {
+            color: #166534;
+            margin-bottom: 0;
+            font-weight: 500;
+        }
+
+        .tag {
+            display: inline-block;
+            padding: 2px 10px;
+            border-radius: 12px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        .tag-yes { background: #dcfce7; color: #16a34a; }
+        .tag-no  { background: #fee2e2; color: #dc2626; }
+
+        .footer {
+            text-align: center;
+            padding: 32px 20px 48px;
+            color: #94a3b8;
+            font-size: 13px;
+        }
+
+        .footer .contact {
+            margin-top: 12px;
+            font-weight: 500;
+            color: #64748b;
+        }
+
+        @media (max-width: 480px) {
+            .header {
+                padding: 36px 20px 28px;
+                border-radius: 0 0 20px 20px;
+            }
+            .header h1 { font-size: 22px; }
+            .card { padding: 20px; border-radius: 14px; }
+            .data-table { font-size: 13px; }
+            .data-table th, .data-table td { padding: 10px 8px; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="header">
+    <h1>Privacy Policy</h1>
+    <div class="subtitle">FakeCall · Virtual Call Simulator</div>
+    <div class="badge">Last updated: October 2026</div>
+</div>
+
+<div class="container">
+
+    <!-- Core Statement -->
+    <div class="highlight">
+        <p>
+            🔒 <strong>FakeCall is committed: we do NOT collect, store, or transmit any of your personal data.</strong><br>
+            This app works entirely offline — all your settings stay on your device and nowhere else.
+        </p>
+    </div>
+
+    <!-- 1. About the App -->
+    <div class="card">
+        <h2><span class="icon blue">📱</span>1. About FakeCall</h2>
+        <p>
+            FakeCall is an Android app that simulates incoming phone calls on your device.
+            You can customize the caller number, contact name, location label, ringtone, wallpaper, and more —
+            then trigger a fake call manually or schedule it for later. It is intended for entertainment,
+            demonstration, or as a practical excuse to leave a situation.
+        </p>
+        <p>
+            FakeCall runs <strong>100% locally</strong>. No network connection is required. No cloud servers are involved.
+        </p>
+    </div>
+
+    <!-- 2. What Data We Collect -->
+    <div class="card">
+        <h2><span class="icon green">✅</span>2. What Data Do We Collect?</h2>
+        <p>
+            <strong>The short answer: absolutely nothing.</strong>
+        </p>
+        <p>
+            FakeCall does not declare the <code>INTERNET</code> permission in its AndroidManifest,
+            which means your device never opens a network connection on our behalf.
+            Everything you configure inside the app — fake phone number, contact name, ringtone choice,
+            wallpaper selection, avatar path, repeat interval — is stored only on your device's local storage
+            and <strong>never uploaded to any server</strong>.
+        </p>
+
+        <table class="data-table">
+            <thead>
+                <tr>
+                    <th>Data Category</th>
+                    <th>Collected?</th>
+                    <th>Details</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Personal identity (name, email)</td>
+                    <td><span class="tag tag-no">No</span></td>
+                    <td>No sign-up, no login required</td>
+                </tr>
+                <tr>
+                    <td>Device identifiers (model, IMEI, AAID)</td>
+                    <td><span class="tag tag-no">No</span></td>
+                    <td>No device fingerprinting</td>
+                </tr>
+                <tr>
+                    <td>Browsing history / app usage</td>
+                    <td><span class="tag tag-no">No</span></td>
+                    <td>No network access</td>
+                </tr>
+                <tr>
+                    <td>Location data</td>
+                    <td><span class="tag tag-no">No</span></td>
+                    <td>No location permissions</td>
+                </tr>
+                <tr>
+                    <td>Microphone / Camera</td>
+                    <td><span class="tag tag-no">No</span></td>
+                    <td>No recording or camera permissions</td>
+                </tr>
+                <tr>
+                    <td>Full contacts book</td>
+                    <td><span class="tag tag-no">No</span></td>
+                    <td>System picker returns only one selected contact entry</td>
+                </tr>
+                <tr>
+                    <td>Crash reports</td>
+                    <td><span class="tag tag-no">No</span></td>
+                    <td>No crash reporting SDK integrated</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- 3. Permissions We Use -->
+    <div class="card">
+        <h2><span class="icon orange">🔐</span>3. Permissions Explained</h2>
+        <p>
+            To deliver a realistic fake-call experience, FakeCall declares only three permissions —
+            all are non-sensitive and never trigger a runtime pop-up dialog:
+        </p>
+        <ul class="permission-list">
+            <li>
+                <span class="perm-name">Vibrate</span>
+                <span class="perm-desc">Triggers the device vibrator during the simulated call to mimic a real incoming call.</span>
+            </li>
+            <li>
+                <span class="perm-name">Disable Keyguard</span>
+                <span class="perm-desc">Wakes the device and bypasses the lock screen so the incoming-call UI can be displayed.</span>
+            </li>
+            <li>
+                <span class="perm-name">Wake Lock</span>
+                <span class="perm-desc">Keeps the device awake while the fake call screen is active, preventing automatic screen-off.</span>
+            </li>
+        </ul>
+
+        <p style="margin-top: 16px;">
+            <strong>The following permissions are NOT declared:</strong>
+            Internet access, Contacts (full read), Phone dialing, Fine/Coarse location, Microphone, Camera,
+            Storage read/write, Notifications, Overlay window, Request install packages,
+            Exact alarm, Battery optimization exemption, and more.
+        </p>
+    </div>
+
+    <!-- 4. Third-Party SDKs -->
+    <div class="card">
+        <h2><span class="icon purple">🔗</span>4. Third-Party SDKs & Data Sharing</h2>
+        <p>
+            FakeCall contains <strong>no third-party analytics, advertising, attribution, or crash-reporting SDKs</strong>.
+            The only external libraries used are the official Google AndroidX components (Material Design, Lifecycle,
+            Coil image loading, etc.), which are part of every modern Android app and do not send data off-device.
+        </p>
+        <p>
+            Accordingly, we <strong>do not share any user data with third parties</strong>,
+            because there is nothing to share.
+        </p>
+    </div>
+
+    <!-- 5. Local Storage -->
+    <div class="card">
+        <h2><span class="icon amber">💾</span>5. Local Storage & On-Device Privacy</h2>
+        <p>
+            Everything you configure inside FakeCall — caller number, contact label, location, ringtone, wallpaper,
+            avatar path, repeat count and interval, etc. — is stored as simple key-value pairs using Android's
+            SharedPreferences / MMKV engine, inside the app's private directory at
+            <code>/data/data/app.funnyappptech.android.fake.call/</code>.
+        </p>
+        <p>
+            This directory is protected by the Android sandbox and is readable only by FakeCall itself.
+            When you uninstall the app, the operating system automatically removes all stored data.
+            Nothing is left behind.
+        </p>
+
+        <p style="margin-top: 12px;"><strong>About custom avatars and wallpapers:</strong></p>
+        <p>
+            When you pick a custom avatar or wallpaper using the system photo picker (ActivityResultContracts.PickVisualMedia),
+            FakeCall copies the selected image into its private directory and stores the absolute file path.
+            Your original photo in the system gallery is never modified or deleted.
+        </p>
+    </div>
+
+    <!-- 6. Contact Picker -->
+    <div class="card">
+        <h2><span class="icon blue">📇</span>6. About the Contact Picker</h2>
+        <p>
+            When you tap "Pick from Contacts", FakeCall sends an <code>ACTION_PICK</code> Intent to the system
+            Contacts app. You make the selection in the native Android contact picker — not inside FakeCall.
+        </p>
+        <p>
+            Under Android's official guidelines, this is a "trusted Intent path" that does <strong>not</strong> require
+            the <code>READ_CONTACTS</code> runtime permission. The system only returns the single contact entry
+            you explicitly selected (name + phone number). <strong>FakeCall never reads your entire contacts book.</strong>
+        </p>
+    </div>
+
+    <!-- 7. Children's Privacy -->
+    <div class="card">
+        <h2><span class="icon red">👶</span>7. Children's Privacy</h2>
+        <p>
+            FakeCall is suitable for users of all ages. We do not knowingly collect any personal information
+            from children under 13. The app contains no mature content and is appropriate for family use.
+        </p>
+    </div>
+
+    <!-- 8. Data Deletion -->
+    <div class="card">
+        <h2><span class="icon green">🗑️</span>8. How to Delete Your Data</h2>
+        <p>
+            Since all data lives only on your device, deletion is straightforward:
+        </p>
+        <p>
+            1. <strong>Clear app data:</strong> System Settings → Apps → FakeCall → Storage → Clear Data (keeps the app installed)<br>
+            2. <strong>Uninstall the app:</strong> Removing FakeCall will automatically delete all local data.
+        </p>
+        <p>
+            There are no cloud servers involved, so no additional data-deletion request is needed.
+        </p>
+    </div>
+
+    <!-- 9. Changes to This Policy -->
+    <div class="card">
+        <h2><span class="icon orange">📝</span>9. Changes to This Policy</h2>
+        <p>
+            If FakeCall's functionality changes materially in the future — for example, if we introduce
+            online features, ad SDKs, or analytics — we will update this Privacy Policy accordingly and
+            notify you before the changes take effect. You can always review the latest version through the
+            "About" page inside the app or on the Google Play store listing.
+        </p>
+    </div>
+
+    <!-- 10. Contact Us -->
+    <div class="card">
+        <h2><span class="icon purple">✉️</span>10. Contact Us</h2>
+        <p>
+            If you have any questions, suggestions, or complaints about this Privacy Policy,
+            please use the in-app feedback option (Settings → Feedback), or email us at
+            <strong>funnyappptech@hotmail.com</strong>.
+        </p>
+        <p>
+            The feedback helper automatically prepends environment details (device model, Android version,
+            screen resolution, etc.) to the email body — read locally via Android's Build class, no permissions needed.
+            This information is <strong>only sent if and when you explicitly tap Send</strong> in your mail app.
+            FakeCall never uploads anything to our servers on its own.
+        </p>
+    </div>
+
+</div>
+
+<div class="footer">
+    <div>© 2026 FakeCall. All rights reserved.</div>
+    <div class="contact">app.funnyappptech.android.fake.call</div>
+</div>
+
+</body>
+</html>
