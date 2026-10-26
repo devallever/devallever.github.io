@@ -224,8 +224,9 @@
     <!-- Core Statement -->
     <div class="highlight">
         <p>
-            🔒 <strong>FakeCall is committed: we do NOT collect, store, or transmit any of your personal data.</strong><br>
-            This app works entirely offline — all your settings stay on your device and nowhere else.
+            🔒 <strong>FakeCall takes your privacy seriously.</strong><br>
+            This app uses AdMob for advertising and Google Play for subscriptions,
+            so certain third-party SDKs collect necessary device information. Beyond that, we do not collect any personal identity data.
         </p>
     </div>
 
@@ -239,7 +240,8 @@
             demonstration, or as a practical excuse to leave a situation.
         </p>
         <p>
-            FakeCall runs <strong>100% locally</strong>. No network connection is required. No cloud servers are involved.
+            FakeCall's core functionality runs locally without cloud dependency. However, the app uses AdMob
+            for advertising and Google Play Billing for paid subscriptions, which requires network access.
         </p>
     </div>
 
@@ -247,14 +249,13 @@
     <div class="card">
         <h2><span class="icon green">✅</span>2. What Data Do We Collect?</h2>
         <p>
-            <strong>The short answer: absolutely nothing.</strong>
+            <strong>FakeCall itself does not proactively collect your personal identity information.</strong>
+            However, the app integrates third-party SDKs for advertising and subscriptions, which collect necessary data to provide these services.
         </p>
         <p>
-            FakeCall does not declare the <code>INTERNET</code> permission in its AndroidManifest,
-            which means your device never opens a network connection on our behalf.
             Everything you configure inside the app — fake phone number, contact name, ringtone choice,
-            wallpaper selection, avatar path, repeat interval — is stored only on your device's local storage
-            and <strong>never uploaded to any server</strong>.
+            wallpaper selection, etc. — is stored only on your device's local storage
+            and <strong>never uploaded to any server operated by us</strong>.
         </p>
 
         <table class="data-table">
@@ -272,14 +273,14 @@
                     <td>No sign-up, no login required</td>
                 </tr>
                 <tr>
-                    <td>Device identifiers (model, IMEI, AAID)</td>
-                    <td><span class="tag tag-no">No</span></td>
-                    <td>No device fingerprinting</td>
+                    <td>Device info (model, OS version, advertising ID / GAID)</td>
+                    <td><span class="tag tag-yes">Yes</span></td>
+                    <td>Collected automatically by AdMob SDK for ad delivery and optimization</td>
                 </tr>
                 <tr>
-                    <td>Browsing history / app usage</td>
+                    <td>Browsing history</td>
                     <td><span class="tag tag-no">No</span></td>
-                    <td>No network access</td>
+                    <td>The app does not track browsing behavior</td>
                 </tr>
                 <tr>
                     <td>Location data</td>
@@ -292,9 +293,14 @@
                     <td>No recording or camera permissions</td>
                 </tr>
                 <tr>
-                    <td>Full contacts book</td>
-                    <td><span class="tag tag-no">No</span></td>
-                    <td>System picker returns only one selected contact entry</td>
+                    <td>Contact info (name, phone number)</td>
+                    <td><span class="tag tag-yes">Yes</span></td>
+                    <td>Obtained through the system contact picker, stored locally</td>
+                </tr>
+                <tr>
+                    <td>Subscription transaction data</td>
+                    <td><span class="tag tag-yes">Yes</span></td>
+                    <td>Processed by Google Play Billing for subscription validation</td>
                 </tr>
                 <tr>
                     <td>Crash reports</td>
@@ -309,10 +315,14 @@
     <div class="card">
         <h2><span class="icon orange">🔐</span>3. Permissions Explained</h2>
         <p>
-            To deliver a realistic fake-call experience, FakeCall declares only three permissions —
-            all are non-sensitive and never trigger a runtime pop-up dialog:
+            To deliver a realistic fake-call experience and support advertising and subscription features,
+            FakeCall declares the following four permissions:
         </p>
         <ul class="permission-list">
+            <li>
+                <span class="perm-name">Internet Access</span>
+                <span class="perm-desc">Required to load AdMob ads and verify subscription status via Google Play.</span>
+            </li>
             <li>
                 <span class="perm-name">Vibrate</span>
                 <span class="perm-desc">Triggers the device vibrator during the simulated call to mimic a real incoming call.</span>
@@ -329,7 +339,7 @@
 
         <p style="margin-top: 16px;">
             <strong>The following permissions are NOT declared:</strong>
-            Internet access, Contacts (full read), Phone dialing, Fine/Coarse location, Microphone, Camera,
+            Contacts full read (READ_CONTACTS), Phone dialing, Fine/Coarse location, Microphone, Camera,
             Storage read/write, Notifications, Overlay window, Request install packages,
             Exact alarm, Battery optimization exemption, and more.
         </p>
@@ -339,13 +349,37 @@
     <div class="card">
         <h2><span class="icon purple">🔗</span>4. Third-Party SDKs & Data Sharing</h2>
         <p>
-            FakeCall contains <strong>no third-party analytics, advertising, attribution, or crash-reporting SDKs</strong>.
-            The only external libraries used are the official Google AndroidX components (Material Design, Lifecycle,
-            Coil image loading, etc.), which are part of every modern Android app and do not send data off-device.
+            FakeCall integrates the following third-party SDKs for advertising and subscription services:
+        </p>
+
+        <p style="margin-top: 12px;"><strong>Google Mobile Ads SDK (AdMob)</strong></p>
+        <p>
+            AdMob is Google's mobile advertising platform. When this SDK is integrated, Google may collect
+            the following information: your advertising ID (GAID), device model, operating system version,
+            and in-app activity logs. This data is used to deliver personalized ads, measure ad performance,
+            and detect fraud.
         </p>
         <p>
-            Accordingly, we <strong>do not share any user data with third parties</strong>,
-            because there is nothing to share.
+            You can reset or disable your advertising ID at any time in your Android system settings,
+            or opt out of personalized ads through your device's ad settings.
+            For more details, see the <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Google Privacy Policy</a>.
+        </p>
+
+        <p style="margin-top: 12px;"><strong>Google Play Billing Library</strong></p>
+        <p>
+            Google Play Billing is Android's official in-app subscription service. This SDK handles
+            subscription purchases, renewal management, and status verification. Transaction data is
+            processed securely by Google Play; FakeCall only receives the subscription status to unlock premium features.
+        </p>
+        <p>
+            Processing of this data is governed by Google Play's Terms of Service. See
+            <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Google Privacy Policy</a> for details.
+        </p>
+
+        <p style="margin-top: 12px;"><strong>Other Dependencies</strong></p>
+        <p>
+            The app also uses official Google AndroidX components (Material Design, Lifecycle, Coil image loading, etc.),
+            which are standard Android development libraries and do not actively send user data.
         </p>
     </div>
 
@@ -374,7 +408,7 @@
 
     <!-- 6. Contact Picker -->
     <div class="card">
-        <h2><span class="icon blue">📇</span>6. About the Contact Picker</h2>
+        <h2><span class="icon blue">📇</span>6. About Contact Selection</h2>
         <p>
             When you tap "Pick from Contacts", FakeCall sends an <code>ACTION_PICK</code> Intent to the system
             Contacts app. You make the selection in the native Android contact picker — not inside FakeCall.
@@ -382,7 +416,12 @@
         <p>
             Under Android's official guidelines, this is a "trusted Intent path" that does <strong>not</strong> require
             the <code>READ_CONTACTS</code> runtime permission. The system only returns the single contact entry
-            you explicitly selected (name + phone number). <strong>FakeCall never reads your entire contacts book.</strong>
+            you explicitly selected (name + phone number).
+        </p>
+        <p>
+            <strong>How this data is handled:</strong> The app stores the selected contact's name and phone number
+            locally in SharedPreferences as the default fake caller information. This data stays exclusively
+            on your device and is never uploaded to any server. <strong>FakeCall never reads your entire contacts book.</strong>
         </p>
     </div>
 
@@ -390,8 +429,14 @@
     <div class="card">
         <h2><span class="icon red">👶</span>7. Children's Privacy</h2>
         <p>
-            FakeCall is suitable for users of all ages. We do not knowingly collect any personal information
-            from children under 13. The app contains no mature content and is appropriate for family use.
+            FakeCall is suitable for users of all ages. The app contains no mature content and is appropriate for family use.
+        </p>
+        <p>
+            We do not proactively collect personal identity information from children under 13. However, please note
+            that third-party SDKs such as AdMob integrated into this app may automatically collect technical data
+            including device identifiers (e.g., GAID), and such collection does not distinguish user age.
+            For AdMob's handling of child users, please refer to Google Play Families policies and AdMob's
+            guidelines for advertising to minors.
         </p>
     </div>
 
@@ -399,14 +444,21 @@
     <div class="card">
         <h2><span class="icon green">🗑️</span>8. How to Delete Your Data</h2>
         <p>
-            Since all data lives only on your device, deletion is straightforward:
+            To delete local app data:
         </p>
         <p>
             1. <strong>Clear app data:</strong> System Settings → Apps → FakeCall → Storage → Clear Data (keeps the app installed)<br>
             2. <strong>Uninstall the app:</strong> Removing FakeCall will automatically delete all local data.
         </p>
+        <p style="margin-top: 12px;"><strong>About subscription data:</strong></p>
         <p>
-            There are no cloud servers involved, so no additional data-deletion request is needed.
+            Subscription purchases and renewals are managed by Google Play. To cancel a subscription or remove transaction data,
+            please visit the <a href="https://play.google.com/store/account/subscriptions" target="_blank" rel="noopener">Google Play Subscriptions page</a>.
+        </p>
+        <p style="margin-top: 12px;"><strong>About your advertising ID:</strong></p>
+        <p>
+            You can reset your advertising ID (GAID) or opt out of personalized ads at any time in your Android
+            system settings, reducing how AdMob uses your data.
         </p>
     </div>
 
@@ -414,8 +466,13 @@
     <div class="card">
         <h2><span class="icon orange">📝</span>9. Changes to This Policy</h2>
         <p>
+            This Privacy Policy was last updated in October 2026 to reflect the following changes:
+            the app now integrates the AdMob SDK for advertising and Google Play Billing for subscriptions,
+            and the INTERNET permission has been added.
+        </p>
+        <p>
             If FakeCall's functionality changes materially in the future — for example, if we introduce
-            online features, ad SDKs, or analytics — we will update this Privacy Policy accordingly and
+            new SDKs or additional data collection — we will update this Privacy Policy accordingly and
             notify you before the changes take effect. You can always review the latest version through the
             "About" page inside the app or on the Google Play store listing.
         </p>
@@ -433,7 +490,11 @@
             The feedback helper automatically prepends environment details (device model, Android version,
             screen resolution, etc.) to the email body — read locally via Android's Build class, no permissions needed.
             This information is <strong>only sent if and when you explicitly tap Send</strong> in your mail app.
-            FakeCall never uploads anything to our servers on its own.
+        </p>
+        <p>
+            Please note: <strong>FakeCall itself does not proactively upload any user information to our servers</strong>,
+            but third-party SDKs (such as AdMob) automatically transmit necessary data to their respective service providers
+            according to their own privacy policies.
         </p>
     </div>
 

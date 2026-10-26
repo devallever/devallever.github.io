@@ -224,8 +224,9 @@
     <!-- 核心声明 -->
     <div class="highlight">
         <p>
-            🔒 <strong>FakeCall 承诺：我们不收集、不存储、不传输您的任何个人数据。</strong><br>
-            本应用无需网络连接，所有设置仅保存在您的设备本地。
+            🔒 <strong>FakeCall 重视您的隐私。</strong><br>
+            本应用通过 AdMob 投放广告、通过 Google Play 提供订阅服务，
+            因此部分第三方 SDK 会收集必要的设备信息。除此之外，我们不收集任何个人身份数据。
         </p>
     </div>
 
@@ -237,7 +238,8 @@
             并设置定时触发虚拟来电，用于演示、恶作剧或个人娱乐。
         </p>
         <p>
-            本应用是一款 <strong>完全本地运行</strong> 的工具类应用，不依赖任何网络服务。
+            本应用的核心功能在本地运行，不依赖云端服务。但应用通过 AdMob 投放广告、
+            通过 Google Play Billing 提供付费订阅服务，因此需要网络访问权限。
         </p>
     </div>
 
@@ -245,12 +247,12 @@
     <div class="card">
         <h2><span class="icon green">✅</span>二、我们收集什么数据？</h2>
         <p>
-            <strong>简单来说：什么都不收集。</strong>
+            <strong>FakeCall 本身不主动收集您的个人身份信息。</strong>
+            但应用集成了广告和订阅相关的第三方 SDK，这些 SDK 会收集必要的数据以提供正常服务。
         </p>
         <p>
-            FakeCall <strong>未声明网络权限（INTERNET）</strong>，因此您的设备与我们之间不存在任何数据传输。
-            所有用户配置的信息（来电号码、联系人名称、铃声选择、壁纸设置、头像路径等）
-            仅以键值对形式保存在您设备的应用私有存储中，<strong>不会上传至任何服务器</strong>。
+            所有用户在应用内配置的信息（来电号码、联系人名称、铃声选择、壁纸设置等）
+            仅以键值对形式保存在您设备的应用私有存储中，<strong>不会上传至我们的服务器</strong>。
         </p>
 
         <table class="data-table">
@@ -268,14 +270,14 @@
                     <td>无需注册、无需登录</td>
                 </tr>
                 <tr>
-                    <td>设备信息（型号、系统版本）</td>
-                    <td><span class="tag tag-no">不收集</span></td>
-                    <td>不采集任何设备标识</td>
+                    <td>设备信息（型号、系统版本、广告标识符 GAID）</td>
+                    <td><span class="tag tag-yes">收集</span></td>
+                    <td>由 AdMob SDK 自动收集，用于广告投放与优化</td>
                 </tr>
                 <tr>
                     <td>网络浏览记录</td>
                     <td><span class="tag tag-no">不收集</span></td>
-                    <td>无网络权限</td>
+                    <td>应用本身不采集浏览行为</td>
                 </tr>
                 <tr>
                     <td>位置信息</td>
@@ -288,14 +290,19 @@
                     <td>无录音 / 拍照权限</td>
                 </tr>
                 <tr>
-                    <td>联系人数据</td>
-                    <td><span class="tag tag-no">不收集</span></td>
-                    <td>通过系统选择器单次读取，不请求 READ_CONTACTS 权限</td>
+                    <td>联系人信息（姓名、电话）</td>
+                    <td><span class="tag tag-yes">收集</span></td>
+                    <td>通过系统联系人选择器获取用户选中的条目，存储在本地</td>
+                </tr>
+                <tr>
+                    <td>订阅交易信息</td>
+                    <td><span class="tag tag-yes">收集</span></td>
+                    <td>由 Google Play Billing 处理，用于验证订阅状态</td>
                 </tr>
                 <tr>
                     <td>崩溃日志</td>
                     <td><span class="tag tag-no">不收集</span></td>
-                    <td>未集成任何崩溃上报SDK</td>
+                    <td>未集成任何崩溃上报 SDK</td>
                 </tr>
             </tbody>
         </table>
@@ -305,10 +312,13 @@
     <div class="card">
         <h2><span class="icon orange">🔐</span>三、应用权限使用说明</h2>
         <p>
-            为了实现虚拟来电的模拟效果，FakeCall 仅声明以下 3 项必要权限。
-            所有权限均为非敏感权限，不会触发系统弹窗请求用户授权：
+            为了实现虚拟来电的模拟效果，以及广告和订阅功能的正常运行，FakeCall 声明以下 4 项权限：
         </p>
         <ul class="permission-list">
+            <li>
+                <span class="perm-name">网络访问权限（INTERNET）</span>
+                <span class="perm-desc">用于加载 AdMob 广告以及通过 Google Play 验证订阅状态。</span>
+            </li>
             <li>
                 <span class="perm-name">震动权限（VIBRATE）</span>
                 <span class="perm-desc">模拟来电时触发设备震动，增强来电真实感。</span>
@@ -325,7 +335,8 @@
 
         <p style="margin-top: 16px;">
             <strong>以下权限均未声明：</strong>
-            网络访问、通讯录、电话拨号、位置、麦克风、摄像头、存储读写、通知、悬浮窗、应用安装请求、精确闹钟、电池优化豁免等。
+            通讯录读取（READ_CONTACTS）、电话拨号、位置、麦克风、摄像头、存储读写、通知、悬浮窗、
+            应用安装请求、精确闹钟、电池优化豁免等。
         </p>
     </div>
 
@@ -333,11 +344,34 @@
     <div class="card">
         <h2><span class="icon purple">🔗</span>四、第三方 SDK 与数据共享</h2>
         <p>
-            FakeCall 的编译依赖中 <strong>未引入任何第三方数据分析、广告、崩溃上报或归因 SDK</strong>。
-            应用仅使用 Google AndroidX 官方组件（Material Design、Lifecycle、Coil 图片加载等）。
+            FakeCall 集成了以下第三方 SDK，用于广告投放和订阅功能：
+        </p>
+
+        <p style="margin-top: 12px;"><strong>Google Mobile Ads SDK (AdMob)</strong></p>
+        <p>
+            AdMob 是 Google 提供的移动广告平台。集成该 SDK 后，Google 可能会收集以下信息：
+            设备广告标识符（GAID）、设备型号、操作系统版本、应用内活动日志等，
+            用于提供个性化广告、广告效果衡量和反欺诈检测。
         </p>
         <p>
-            因此，我们 <strong>不会与任何第三方共享用户数据</strong>，也不存在 SDK 向外部服务器发送数据的情况。
+            您可以在 Android 系统设置中重置或关闭 GAID，也可以通过广告设置选择退出个性化广告。
+            详情请参阅 <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Google 隐私政策</a>。
+        </p>
+
+        <p style="margin-top: 12px;"><strong>Google Play Billing Library</strong></p>
+        <p>
+            Google Play Billing 是 Android 官方的应用内订阅服务。该 SDK 负责处理订阅购买、
+            续费管理和状态验证。交易相关数据由 Google Play 安全处理，FakeCall 仅获取订阅状态以解锁高级功能。
+        </p>
+        <p>
+            此类数据的处理受 Google Play 服务条款约束，详情请参阅
+            <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Google 隐私政策</a>。
+        </p>
+
+        <p style="margin-top: 12px;"><strong>其他依赖</strong></p>
+        <p>
+            应用还使用 Google AndroidX 官方组件（Material Design、Lifecycle、Coil 图片加载等），
+            这些组件属于 Android 标准开发库，不主动发送用户数据。
         </p>
     </div>
 
@@ -363,7 +397,7 @@
 
     <!-- 六、联系人选择 -->
     <div class="card">
-        <h2><span class="icon blue">📇</span>六、关于联系人选择器</h2>
+        <h2><span class="icon blue">📇</span>六、关于联系人选择</h2>
         <p>
             当您点击"选择联系人"按钮时，FakeCall 会发送 <code>ACTION_PICK</code> Intent 至系统联系人应用，
             由您在系统界面中手动选择。
@@ -371,7 +405,11 @@
         <p>
             根据 Android 官方文档，这种"受信 Intent 路径"无需申请 <code>READ_CONTACTS</code> 运行时权限，
             系统会在选择完成后仅回传被选中的那一条联系人数据（姓名和电话号码）。
-            <strong>应用不会读取您整个通讯录</strong>。
+        </p>
+        <p>
+            <strong>收集机制说明：</strong>应用会将您选中的联系人姓名和电话号码存储在本地 SharedPreferences 中，
+            作为虚拟来电的默认来电人信息。这些数据仅存储在您的设备本地，不会上传至任何服务器。
+            应用 <strong>不会读取您整个通讯录</strong>，仅获取您主动选择的那一条。
         </p>
     </div>
 
@@ -379,8 +417,12 @@
     <div class="card">
         <h2><span class="icon red">👶</span>七、儿童隐私</h2>
         <p>
-            FakeCall 面向全年龄段用户开放使用，不会收集任何 13 岁以下儿童的个人信息。
-            本应用不包含任何未成年人不宜内容，适合家庭共同使用。
+            FakeCall 面向全年龄段用户开放使用，本应用不包含任何未成年人不宜内容，适合家庭共同使用。
+        </p>
+        <p>
+            我们不会主动收集 13 岁以下儿童的个人身份信息。但请注意，应用集成的 AdMob 等第三方 SDK
+            可能会自动收集设备标识符（如 GAID）等技术数据，此类数据收集不区分用户年龄。
+            关于 AdMob 对儿童用户的处理，请参阅 Google Play Families 政策和 AdMob 未成年人广告指南。
         </p>
     </div>
 
@@ -388,14 +430,21 @@
     <div class="card">
         <h2><span class="icon green">🗑️</span>八、数据删除方式</h2>
         <p>
-            由于应用仅在本地存储数据，删除数据的方式非常简单：
+            应用本地数据的删除方式：
         </p>
         <p>
             1. <strong>清除应用数据：</strong>系统设置 → 应用管理 → FakeCall → 存储 → 清除数据（保留安装包）<br>
             2. <strong>卸载应用：</strong>卸载后系统自动清除所有本地数据
         </p>
+        <p style="margin-top: 12px;"><strong>关于订阅数据：</strong></p>
         <p>
-            由于没有后端服务器，不存在需要额外申请删除的云端数据。
+            订阅购买和续费信息由 Google Play 管理，如需取消订阅或删除交易数据，
+            请访问 <a href="https://play.google.com/store/account/subscriptions" target="_blank" rel="noopener">Google Play 订阅管理页面</a>。
+        </p>
+        <p style="margin-top: 12px;"><strong>关于广告标识符：</strong></p>
+        <p>
+            您可以随时在 Android 系统设置中重置广告标识符（GAID），或关闭个性化广告，
+            以减少 AdMob 对您数据的使用。
         </p>
     </div>
 
@@ -403,7 +452,11 @@
     <div class="card">
         <h2><span class="icon orange">📝</span>九、隐私政策变更</h2>
         <p>
-            如果未来 FakeCall 的功能发生较大变化（例如引入网络功能、广告 SDK 等），
+            本次隐私政策更新（2026 年 10 月）主要反映了以下变更：
+            应用集成了 AdMob 广告 SDK 和 Google Play Billing 订阅服务，新增了 INTERNET 权限。
+        </p>
+        <p>
+            如果未来 FakeCall 的功能发生其他重大变化（例如引入新的 SDK、新增数据收集项等），
             我们会同步更新本隐私政策，并在应用启动时提示用户重新审阅。
             您可以随时在应用"关于"页面或 Google Play 商店查看最新版本的隐私政策。
         </p>
@@ -420,7 +473,10 @@
             反馈功能会自动在邮件正文中预置您的设备型号、Android版本、屏幕参数等环境信息
             （通过 Android Build 类本地读取，无需任何权限），帮助我们快速定位问题。
             这些信息仅在您 <strong>主动点击发送邮件</strong> 时，由您的邮件客户端发出。
-            应用本身不会主动将任何信息上传至我们的服务器。
+        </p>
+        <p>
+            请注意：FakeCall <strong>本身不会主动向我们的服务器上传任何用户信息</strong>，
+            但第三方 SDK（如 AdMob）会根据其自身的隐私政策自动向对应服务提供商传输必要的数据。
         </p>
     </div>
 
