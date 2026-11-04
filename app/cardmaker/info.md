@@ -1,3 +1,4 @@
+- 隐私政策：https://www.privacypolicies.com/live/01bbffb5-0610-43dc-8a1a-ef18de59b3b5
 - 标题：Card Maker
 - 短描述：Make Text To Beautiful Cards !
 - 长描述：
@@ -20,3 +21,4 @@ Share your creations directly to friends.
 Your cards, your art – export clean, professional-quality images.
 ✅ Works Offline
 Design cards anytime, anywhere – no internet needed!
+

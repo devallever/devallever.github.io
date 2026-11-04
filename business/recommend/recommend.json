@@ -8,7 +8,7 @@
       "name": "FakeCall",
       "desc": "FakeCall — Virtual Call Simulator",
       "longDesc": "FakeCall — Virtual Call Simulator",
-      "iconUrl": "",
+      "iconUrl": "https://devallever.github.io/app/fakecall/image/logo",
       "screenUrl": [
         ""
       ],
@@ -20,7 +20,7 @@
       "name": "Device Detector",
       "desc": "Bluetooth Device Detector & Metal Detector",
       "longDesc": "Bluetooth Device Detector & Metal Detector",
-      "iconUrl": "",
+      "iconUrl": "https://devallever.github.io/app/devicedetector/image/logo",
       "screenUrl": [
         ""
       ],
@@ -35,7 +35,7 @@
       "screenUrl": [
         ""
       ],
-      "iconUrl": "",
+      "iconUrl": "https://devallever.github.io/app/justnote/image/logo",
       "version": "v1.0.0"
     },
     {
@@ -47,7 +47,7 @@
       "screenUrl": [
         ""
       ],
-      "iconUrl": "",
+      "iconUrl": "https://devallever.github.io/app/cardmaker/image/logo",
       "version": "v1.0.0"
     },
     {
@@ -59,7 +59,7 @@
         ""
       ],
       "longDesc": "recommend & search & download gif",
-      "iconUrl": "",
+      "iconUrl": "https://devallever.github.io/app/gif/image/logo",
       "version": "v1.0.0"
     },
     {
@@ -71,7 +71,7 @@
         ""
       ],
       "longDesc": "Link Link Game - Challenge your brain",
-      "iconUrl": "",
+      "iconUrl": "https://devallever.github.io/app/linklinkgame/image/logo",
       "version": "v1.0.0"
     },
     {
@@ -83,7 +83,7 @@
         ""
       ],
       "longDesc": "Kitties Memory Game - Challenge your brain",
-      "iconUrl": "",
+      "iconUrl": "https://devallever.github.io/app/memorykitties/image/logo",
       "version": "v1.0.0"
     },
 
@@ -96,7 +96,7 @@
         ""
       ],
       "longDesc": "Water Reminder & Tracking",
-      "iconUrl": "",
+      "iconUrl": "https://devallever.github.io/app/waterremider/image/logo",
       "version": "v1.0.0"
     },
 
@@ -109,7 +109,7 @@
       ],
       "desc": "Scan, Create & Share Codes Effortlessly",
       "longDesc": "Scan, Create & Share Codes Effortlessly",
-      "iconUrl": "",
+      "iconUrl": "https://devallever.github.io/app/qrcode/image/logo",
       "version": "v1.0.0"
     }
 
