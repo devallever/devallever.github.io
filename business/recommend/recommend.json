@@ -90,8 +90,7 @@
         "https://devallever.github.io/app/gif/image/screen/01.webp",
         "https://devallever.github.io/app/gif/image/screen/02.webp",
         "https://devallever.github.io/app/gif/image/screen/03.webp",
-        "https://devallever.github.io/app/gif/image/screen/04.webp",
-        "https://devallever.github.io/app/gif/image/screen/05.webp"
+        "https://devallever.github.io/app/gif/image/screen/04.webp"
       ],
       "longDesc": "Gif Memes is funny app to get all list of Gif Memes.\nApp contains following features.\n\n1)\uD83D\uDC4D List of Hot gifs memes.\n2)\uD83D\uDE0D Search your like for gifs using keyword.\n3)\uD83D\uDE0E Collect your Gif memes.\n4)\uD83D\uDE09Share on social media platforms.\n5)\uD83D\uDE03Save Gif to local\n6)\uD83E\uDDBECreate your gif memes（Video to Gif）",
       "version": "v1.0.0"
