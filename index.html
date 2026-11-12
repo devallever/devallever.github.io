@@ -257,11 +257,11 @@
 
   // 渲染 Apps
   const appGrid = document.getElementById('appGrid');
-  getAppsByType('app').forEach(app => appGrid.appendChild(createCard(app)));
+  getAppsByType('app').then(apps => apps.forEach(app => appGrid.appendChild(createCard(app))));
 
   // 渲染 Games
   const gameGrid = document.getElementById('gameGrid');
-  getAppsByType('game').forEach(app => gameGrid.appendChild(createCard(app)));
+  getAppsByType('game').then(apps => apps.forEach(app => gameGrid.appendChild(createCard(app))));
 
   // AdSense 广告位渲染（clientId 未配置时自动跳过）
   window.renderAd('ad-index-hero', 'index_hero_banner');

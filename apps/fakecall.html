@@ -154,6 +154,7 @@ Download now — it's just a few MB!</div>
 </footer>
 
 <script src="../js/adsense.js"></script>
+<script src="../js/apps.js"></script>
 <script>
   // Navbar
   const navbar = document.querySelector('.navbar');
@@ -162,62 +163,9 @@ Download now — it's just a few MB!</div>
     else navbar.classList.remove('scrolled');
   });
 
-    // Screenshot carousel
-  (function() {
-    const track = document.getElementById('screenTrack');
-    const prevBtn = document.getElementById('screenPrev');
-    const nextBtn = document.getElementById('screenNext');
-    const counter = document.getElementById('screenCounter');
-    const total = track.children.length;
-    let currentIdx = 0;
-
-    function scrollToIndex(idx) {
-      currentIdx = Math.max(0, Math.min(total - 1, idx));
-      const img = track.children[currentIdx];
-      if (!img) return;
-      const trackRect = track.getBoundingClientRect();
-      const imgRect = img.getBoundingClientRect();
-      const offset = imgRect.left - trackRect.left;
-      const centerOffset = offset - (trackRect.width - imgRect.width) / 2;
-      track.scrollBy({ left: centerOffset, behavior: 'smooth' });
-      updateUI();
-    }
-
-    function updateUI() {
-      counter.textContent = (currentIdx + 1) + ' / ' + total;
-      prevBtn.disabled = currentIdx === 0;
-      nextBtn.disabled = currentIdx === total - 1;
-    }
-
-    prevBtn.addEventListener('click', () => scrollToIndex(currentIdx - 1));
-    nextBtn.addEventListener('click', () => scrollToIndex(currentIdx + 1));
-
-    // Scroll wheel step support
-    let wheelTimer = null;
-    track.addEventListener('wheel', (e) => {
-      if (wheelTimer) clearTimeout(wheelTimer);
-      wheelTimer = setTimeout(() => {
-        if (e.deltaX > 30 || e.deltaY > 30) scrollToIndex(currentIdx + 1);
-        else if (e.deltaX < -30 || e.deltaY < -30) scrollToIndex(currentIdx - 1);
-      }, 50);
-    }, { passive: true });
-
-    // Touch swipe support
-    let touchStartX = 0;
-    track.addEventListener('touchstart', (e) => { touchStartX = e.touches[0].clientX; });
-    track.addEventListener('touchend', (e) => {
-      const dx = e.changedTouches[0].clientX - touchStartX;
-      if (Math.abs(dx) > 60) {
-        if (dx < 0) scrollToIndex(currentIdx + 1);
-        else scrollToIndex(currentIdx - 1);
-      }
-    });
-
-    updateUI();
-  })();;
-
   // AdSense
   window.renderAd("ad-detail-inarticle", "detail_inarticle");
+  initDetailPage('fakecall');
   // 动态年份
   const _y = document.getElementById("year"); if(_y) _y.textContent = new Date().getFullYear();
 </script>
