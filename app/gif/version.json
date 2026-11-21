@@ -1,6 +1,6 @@
 {
-  "version_name": "1.0.0",
-  "version_code": 1,
-  "desc": "update feature",
+  "version_name": "1.0.33",
+  "version_code": 33,
+  "desc": "optimize launch performance",
   "force": false
 }
